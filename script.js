@@ -235,7 +235,7 @@ function createImageWithFallback(src, alt, className) {
     img.onerror = function() {
         this.style.display = 'none';
         const fallback = document.createElement('div');
-        fallback.className = `image-fallback ${className}`;
+        fallback.className = `image_placeholder ${className}`;
         fallback.innerHTML = '<i class="fas fa-image"></i>';
         this.parentNode.replaceChild(fallback, this);
     };
@@ -265,7 +265,7 @@ function showPage(pageId) {
     }
     
     // Update navigation
-    document.querySelectorAll('.navbar-link').forEach(item => {
+    document.querySelectorAll('.nav_link').forEach(item => {
         item.classList.remove('active');
     });
     
@@ -280,7 +280,7 @@ function showPage(pageId) {
 // Property functions
 function createPropertyCard(property) {
     return `
-        <div class="property-card bg-white rounded-lg shadow-sm border overflow-hidden hover:shadow-lg transition-shadow">
+        <div class="property_card bg-white rounded-lg shadow-sm border overflow-hidden hover:shadow-lg transition-shadow">
             <div class="relative">
                 ${createImageWithFallback(property.image, property.title, 'w-full h-48 object-cover').outerHTML}
                 <span class="absolute top-4 left-4 bg-primary text-primary-foreground px-2 py-1 rounded text-sm">
@@ -341,8 +341,8 @@ function updateFeatureCarousel() {
     
     const visibleFeatures = features.slice(currentFeatureIndex, currentFeatureIndex + 3);
     carousel.innerHTML = visibleFeatures.map((feature, index) => `
-        <div class="carousel-item">
-            <div class="feature-card bg-white rounded-2xl shadow-lg border-2 border-transparent hover:border-primary/20 p-8 cursor-pointer group transition-all duration-500 hover:shadow-2xl" style="animation-delay: ${index * 0.1}s;">
+        <div class="carousel_item">
+            <div class="feature_card bg-white rounded-2xl shadow-lg border-2 border-transparent hover:border-primary/20 p-8 cursor-pointer group transition-all duration-500 hover:shadow-2xl" style="animation-delay: ${index * 0.1}s;">
                 <div class="text-center">
                     <div class="p-4 rounded-2xl ${feature.color} w-16 h-16 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                         <i class="${feature.icon} h-8 w-8"></i>
@@ -365,7 +365,7 @@ function updateFeatureCarousel() {
     updatePaginationDots();
     
     // Add stagger animation to cards
-    const cards = carousel.querySelectorAll('.feature-card');
+    const cards = carousel.querySelectorAll('.feature_card');
     cards.forEach((card, index) => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(30px)';
@@ -378,7 +378,7 @@ function updateFeatureCarousel() {
 }
 
 function updatePaginationDots() {
-    const dotsContainer = document.querySelector('.pagination-dot').parentElement;
+    const dotsContainer = document.querySelector('.pagination_dot').parentElement;
     if (!dotsContainer) return;
     
     const totalPages = Math.ceil(features.length / 3);
@@ -386,7 +386,7 @@ function updatePaginationDots() {
     
     for (let i = 0; i < totalPages; i++) {
         const dot = document.createElement('button');
-        dot.className = `pagination-dot w-2 h-2 rounded-full transition-all ${
+        dot.className = `pagination_dot w-3 h-3 rounded-full transition-all ${
             Math.floor(currentFeatureIndex / 3) === i ? 'bg-primary' : 'bg-gray-300 hover:bg-gray-400'
         }`;
         dot.onclick = () => {
@@ -481,7 +481,7 @@ function handleContactForm(e) {
 // Initialize the application
 function initializeApp() {
     // Set up navigation
-    document.querySelectorAll('.navbar-link').forEach(item => {
+    document.querySelectorAll('.nav_link').forEach(item => {
         item.addEventListener('click', (e) => {
             const page = e.target.getAttribute('data-page');
             if (page) {
@@ -491,14 +491,15 @@ function initializeApp() {
     });
     
     // Set up tab navigation
-    document.querySelectorAll('[data-tab]').forEach(tab => {
+    document.querySelectorAll('.tab_button').forEach(tab => {
         tab.addEventListener('click', (e) => {
-            document.querySelectorAll('[data-tab]').forEach(t => {
+            document.querySelectorAll('.tab_button').forEach(t => {
                 t.classList.remove('active', 'text-red-600', 'bg-red-50', 'border-b-2', 'border-red-600');
-                t.classList.add('text-muted-foreground');
+                t.classList.add('text-muted-foreground', 'hover:text-primary', 'hover:bg-white/70');
             });
-            e.target.classList.add('active', 'text-red-600', 'bg-red-50', 'border-b-2', 'border-red-600');
-            e.target.classList.remove('text-muted-foreground');
+            const currentTarget = e.currentTarget;
+            currentTarget.classList.add('active', 'text-red-600', 'bg-red-50', 'border-b-2', 'border-red-600');
+            currentTarget.classList.remove('text-muted-foreground', 'hover:text-primary', 'hover:bg-white/70');
         });
     });
     
@@ -536,7 +537,7 @@ function initializeApp() {
     const testimonialsContainer = document.getElementById('testimonials');
     if (testimonialsContainer) {
         testimonialsContainer.innerHTML = testimonials.map(testimonial => `
-            <div class="testimonial-card bg-white rounded-lg shadow-sm border p-6">
+            <div class="testimonial_card bg-white rounded-lg shadow-sm border p-6">
                 <div class="flex items-center mb-4">
                     ${createStarRating(testimonial.rating)}
                 </div>
@@ -593,7 +594,7 @@ function initializeApp() {
     const teamContainer = document.getElementById('team');
     if (teamContainer) {
         teamContainer.innerHTML = teamMembers.map(member => `
-            <div class="team-card bg-white rounded-lg shadow-sm border text-center p-6">
+            <div class="team_card bg-white rounded-lg shadow-sm border text-center p-6">
                 <div class="relative mb-4">
                     <div class="w-24 h-24 rounded-full mx-auto bg-muted flex items-center justify-center">
                         <img src="${member.image}" alt="${member.name}" class="w-24 h-24 rounded-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -617,7 +618,7 @@ function initializeApp() {
     const contactInfoContainer = document.getElementById('contactInfo');
     if (contactInfoContainer) {
         contactInfoContainer.innerHTML = contactInfo.map(info => `
-            <div class="contact-card bg-white rounded-lg shadow-sm border p-6">
+            <div class="contact_card bg-white rounded-lg shadow-sm border p-6">
                 <div class="flex items-start">
                     <div class="bg-primary/10 p-3 rounded-lg mr-4 flex-shrink-0">
                         <i class="${info.icon} h-6 w-6 text-primary"></i>
@@ -688,14 +689,16 @@ function initializeVideoBackground() {
         
         // Handle visibility change to restart video when user returns to tab
         document.addEventListener('visibilitychange', () => {
-            if (!document.hidden && homePage.classList.contains('active')) {
+            const homePage = document.getElementById('home');
+            if (!document.hidden && homePage && homePage.classList.contains('active')) {
                 playVideo();
             }
         });
         
         // Restart video on window focus
         window.addEventListener('focus', () => {
-            if (homePage.classList.contains('active')) {
+            const homePage = document.getElementById('home');
+            if (homePage && homePage.classList.contains('active')) {
                 playVideo();
             }
         });
@@ -704,7 +707,8 @@ function initializeVideoBackground() {
         let lastScrollTop = 0;
         window.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop < lastScrollTop && homePage.classList.contains('active')) {
+            const homePage = document.getElementById('home');
+            if (scrollTop < lastScrollTop && homePage && homePage.classList.contains('active')) {
                 // User scrolled up, restart video
                 playVideo();
             }
@@ -737,7 +741,7 @@ function initializeAnimations() {
     // Add parallax effect to hero content
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
-        const heroContent = document.querySelector('.hero-content');
+        const heroContent = document.querySelector('.hero_content_container');
         if (heroContent) {
             const rate = scrolled * -0.5;
             heroContent.style.transform = `translateY(${rate}px)`;
@@ -745,22 +749,32 @@ function initializeAnimations() {
     });
 
     // Add floating animation to action buttons
-    const floatingBtns = document.querySelectorAll('.floating-btn');
+    const floatingBtns = document.querySelectorAll('.action_btn');
     floatingBtns.forEach((btn, index) => {
         btn.style.animation = `float 3s ease-in-out infinite ${index * 0.5}s`;
     });
 
     // Add typing effect to hero title
-    const heroTitle = document.querySelector('.hero-title');
+    const heroTitle = document.querySelector('.hero_title');
     if (heroTitle) {
-        const text = heroTitle.textContent;
-        heroTitle.textContent = '';
+        const textSpans = heroTitle.querySelectorAll('.hero_title_line');
+        const originalTexts = Array.from(textSpans).map(span => span.textContent);
+        textSpans.forEach(span => span.textContent = '');
+
         let i = 0;
+        let currentSpan = 0;
         const typeWriter = () => {
-            if (i < text.length) {
-                heroTitle.textContent += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
+            if (currentSpan < textSpans.length) {
+                const text = originalTexts[currentSpan];
+                if (i < text.length) {
+                    textSpans[currentSpan].textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                } else {
+                    currentSpan++;
+                    i = 0;
+                    setTimeout(typeWriter, 500); // Pause between lines
+                }
             }
         };
         setTimeout(typeWriter, 1000);
