@@ -38,6 +38,7 @@
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="footer.css">
 </head>
 <body class="page_body">
     <!-- Main Navigation Header -->
@@ -197,47 +198,6 @@
                 </div>
             </section>
 
-            <!-- Features Section - Moved Outside Video -->
-            <section class="features_section">
-                <div class="container">
-                    <div class="section_header">
-                        <h2 class="section_title">
-                            <span class="title_part">Explore Our</span>
-                            <span class="title_part accent">Features</span>
-                        </h2>
-                        <p class="section_subtitle">
-                            Discover powerful tools and services designed to make your property journey seamless and successful
-                        </p>
-                    </div>
-
-                    <!-- Features Carousel -->
-                    <div class="carousel_wrapper">
-                        <div class="carousel_nav">
-                            <div class="nav_buttons">
-                                <button id="prevFeature" class="nav_prev_btn" disabled>
-                                    <i class="fas fa-chevron-left"></i>
-                                </button>
-                                <button id="nextFeature" class="nav_next_btn">
-                                    <i class="fas fa-chevron-right"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="carousel_container">
-                            <div id="features-carousel-track" class="carousel_track">
-                                <!-- Feature cards will be populated by JavaScript -->
-                            </div>
-                        </div>
-
-                        <!-- Pagination Dots -->
-                        <div class="pagination_dots">
-                            <button class="pagination_dot active"></button>
-                            <button class="pagination_dot"></button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <!-- Featured Properties Section -->
             <section class="properties_section">
                 <div class="container">
@@ -254,18 +214,59 @@
                 </div>
             </section>
 
-            <!-- Testimonials Section -->
+                        <!-- Features Section - Moved Outside Video -->
+                        <section class="features_section">
+                            <div class="container">
+                                <div class="section_header">
+                                    <h2 class="section_title">
+                                        <span class="title_part">Explore Our</span>
+                                        <span class="title_part accent">Features</span>
+                                    </h2>
+                                    <p class="section_subtitle">
+                                        Discover powerful tools and services designed to make your property journey seamless and successful
+                                    </p>
+                                </div>
+            
+                                <!-- Features Carousel -->
+                                <div class="carousel_wrapper">
+                                    <div class="carousel_nav">
+                                        <div class="nav_buttons">
+                                            <button id="prevFeature" class="nav_prev_btn">
+                                                <i class="fas fa-chevron-left"></i>
+                                            </button>
+                                            <button id="nextFeature" class="nav_next_btn">
+                                                <i class="fas fa-chevron-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+            
+                                    <div class="carousel_container">
+                                        <div id="features-carousel-track" class="carousel_track">
+                                            <!-- Feature cards will be populated by JavaScript -->
+                                        </div>
+                                    </div>
+            
+                                    <!-- Pagination Dots -->
+                                    <div class="pagination_dots">
+                                        <button class="pagination_dot active"></button>
+                                        <button class="pagination_dot"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+            <!-- Reviews Section -->
             <section class="testimonials_section">
                 <div class="container">
                     <div class="section_header">
-                        <h2 class="section_title">What Our Clients Say</h2>
+                        <h2 class="section_title">What Our Clients say about us</h2>
                         <p class="section_subtitle">
                             Hear from satisfied customers who found their perfect properties with us
                         </p>
                     </div>
                     
                     <div class="testimonial_grid" id="testimonials">
-                        <!-- Testimonials will be populated by JavaScript -->
+                        <!-- Reviews will be populated by JavaScript -->
                     </div>
                 </div>
             </section>
@@ -532,103 +533,8 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer_container">
-            <div class="footer_grid">
-                <!-- Company Info -->
-                <div class="company_info">
-                    <h3 class="footer_logo">PropertyHub</h3>
-                    <p class="company_desc">
-                        Your trusted partner in finding the perfect property. With over 15 years of experience, 
-                        we make real estate dreams come true.
-                    </p>
-                    <div class="contact_details">
-                        <div class="contact_item">
-                            <i class="contact_icon fas fa-map-marker-alt"></i>
-                            <span class="contact_text">123 Real Estate Blvd, Los Angeles, CA 90210</span>
-                        </div>
-                        <div class="contact_item">
-                            <i class="contact_icon fas fa-phone"></i>
-                            <span class="contact_text">+1 (555) 123-4567</span>
-                        </div>
-                        <div class="contact_item">
-                            <i class="contact_icon fas fa-envelope"></i>
-                            <span class="contact_text">info@propertyhub.com</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Quick Links -->
-                <div class="footer_links">
-                    <h4 class="footer_heading">Quick Links</h4>
-                    <ul class="link_list">
-                        <li><a href="#" class="footer_link">Home</a></li>
-                        <li><a href="#" class="footer_link">Properties</a></li>
-                        <li><a href="#" class="footer_link">About Us</a></li>
-                        <li><a href="#" class="footer_link">Contact</a></li>
-                    </ul>
-                </div>
-
-                <!-- Services -->
-                <div class="footer_services">
-                    <h4 class="footer_heading">Our Services</h4>
-                    <ul class="link_list">
-                        <li><a href="#" class="footer_link">Buy Property</a></li>
-                        <li><a href="#" class="footer_link">Sell Property</a></li>
-                        <li><a href="#" class="footer_link">Rent Property</a></li>
-                        <li><a href="#" class="footer_link">Property Management</a></li>
-                        <li><a href="#" class="footer_link">Market Analysis</a></li>
-                        <li><a href="#" class="footer_link">Investment Consultation</a></li>
-                    </ul>
-                </div>
-
-                <!-- Newsletter & Social -->
-                <div class="footer_connect">
-                    <h4 class="footer_heading">Stay Connected</h4>
-                    <p class="connect_desc">
-                        Follow us on social media for the latest property listings and market updates.
-                    </p>
-                    
-                    <div class="social_icons">
-                        <a href="#" class="social_link">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                        <a href="#" class="social_link">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social_link">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social_link">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </div>
-
-                    <div class="business_hours">
-                        <p class="hours_title">Business Hours:</p>
-                        <p class="hours_text">Mon - Fri: 9:00 AM - 6:00 PM</p>
-                        <p class="hours_text">Sat: 10:00 AM - 4:00 PM</p>
-                        <p class="hours_text">Sun: Closed</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bottom Bar -->
-            <div class="footer_bottom">
-                <div class="bottom_container">
-                    <p class="copyright">
-                        © 2024 PropertyHub. All rights reserved.
-                    </p>
-                    <div class="policy_links">
-                        <a href="#" class="policy_link">Privacy Policy</a>
-                        <a href="#" class="policy_link">Terms of Service</a>
-                        <a href="#" class="policy_link">Cookie Policy</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer will be injected here -->
+    <div id="footer-placeholder"></div>
 
     <script src="script.js"></script>
 </body>

@@ -786,4 +786,22 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeApp();
     initializeVideoBackground();
     initializeAnimations();
+    // Inject footer
+    const footerMount = document.getElementById('footer-placeholder');
+    if (footerMount) {
+        fetch('footer.html')
+            .then(res => res.text())
+            .then(html => {
+                const temp = document.createElement('div');
+                temp.innerHTML = html;
+                const footerEl = temp.querySelector('footer');
+                if (footerEl) {
+                    footerMount.replaceWith(footerEl);
+                }
+            })
+            .catch(() => {
+                // Fallback minimal footer
+                footerMount.innerHTML = '<footer class="footer"><div class="footer_container"><p>Footer failed to load.</p></div></footer>';
+            });
+    }
 });
