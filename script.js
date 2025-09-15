@@ -805,3 +805,50 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 });
+
+//To add funtionality 
+document.addEventListener('DOMContentLoaded', function() {
+  const customSelects = document.querySelectorAll('.custom-select');
+  
+  customSelects.forEach(select => {
+    const selectedDiv = select.querySelector('.select-selected');
+    const itemsDiv = select.querySelector('.select-items');
+    const nativeSelect = select.querySelector('select');
+    
+    // Toggle dropdown on click
+    selectedDiv.addEventListener('click', function(e) {
+      e.stopPropagation();
+      itemsDiv.classList.toggle('select-hide');
+    });
+    
+    // Handle item selection
+    const items = itemsDiv.querySelectorAll('div');
+    items.forEach(item => {
+      item.addEventListener('click', function() {
+        const value = this.getAttribute('data-value');
+        const icon = this.querySelector('i').cloneNode(true);
+        const text = this.textContent;
+        
+        // Update the selected display
+        selectedDiv.innerHTML = '';
+        selectedDiv.appendChild(icon);
+        selectedDiv.appendChild(document.createTextNode(text));
+        
+        // Update the native select
+        nativeSelect.value = value;
+        
+        // Trigger change event on native select
+        const event = new Event('change', { bubbles: true });
+        nativeSelect.dispatchEvent(event);
+        
+        // Hide dropdown
+        itemsDiv.classList.add('select-hide');
+      });
+    });
+    
+    // Close dropdown when clicking elsewhere
+    document.addEventListener('click', function() {
+      itemsDiv.classList.add('select-hide');
+    });
+  });
+});

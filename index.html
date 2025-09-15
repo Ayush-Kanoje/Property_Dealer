@@ -105,7 +105,7 @@
                             <span class="hero_title_line accent">Dream Property</span>
                         </h1>
                         <p class="hero_subtitle">
-                            Discover the perfect home, apartment, or commercial space with our comprehensive property search
+                            Turning Dreams into Addresses – Find the home that truly belongs to you.
                         </p>
                     </div>
 
@@ -152,13 +152,24 @@
 
                                     <!-- Property Type Dropdown -->
                                     <div class="property_type_container">
-                                        <select class="property_type_select">
-                                            <option value="">Property Type</option>
-                                            <option value="flat">Flat +1</option>
-                                            <option value="house">House</option>
-                                            <option value="plot">Plot</option>
-                                            <option value="commercial">Commercial</option>
-                                        </select>
+                                        <div class="custom-select">
+                                            <div class="select-selected">
+                                                <i class="fas fa-building mr-2"></i>Property Type
+                                            </div>
+                                            <div class="select-items select-hide">
+                                                <div data-value="flat"><i class="fas fa-building mr-2"></i>Flat +1</div>
+                                                <div data-value="house"><i class="fas fa-home mr-2"></i>House</div>
+                                                <div data-value="plot"><i class="fas fa-map mr-2"></i>Plot</div>
+                                                <div data-value="commercial"><i class="fas fa-briefcase mr-2"></i>Commercial</div>
+                                            </div>
+                                            <select class="property_type_select hidden">
+                                                <option value="">Property Type</option>
+                                                <option value="flat">Flat +1</option>
+                                                <option value="house">House</option>
+                                                <option value="plot">Plot</option>
+                                                <option value="commercial">Commercial</option>
+                                            </select>
+                                        </div>
                                     </div>
 
                                     <!-- Budget Dropdown -->
@@ -520,7 +531,7 @@
                         <div class="quick_contact_buttons">
                             <button class="call_btn">
                                 <i class="call_icon fas fa-phone"></i>
-                                Call Now: (555) 123-4567
+                                Call Now: +(555) 123-4567
                             </button>
                             <button class="email_btn">
                                 <i class="email_icon fas fa-envelope"></i>
