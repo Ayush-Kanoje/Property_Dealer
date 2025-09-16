@@ -340,9 +340,9 @@ function updateFeatureCarousel() {
     if (!carousel) return;
     
     const visibleFeatures = features.slice(currentFeatureIndex, currentFeatureIndex + 3);
-    carousel.innerHTML = visibleFeatures.map((feature, index) => `
+    carousel.innerHTML = visibleFeatures.map ((feature, index) => `
         <div class="carousel_item">
-            <div class="feature_card bg-white rounded-2xl shadow-lg border-2 border-transparent hover:border-primary/20 p-8 cursor-pointer group transition-all duration-500 hover:shadow-2xl" style="animation-delay: ${index * 0.1}s;">
+            <div class="feature_card bg[-#eef1f0] rounded-2xl shadow-lg border-2 border-transparent hover:border-primary/20 p-8 cursor-pointer group transition-all duration-500 hover:shadow-2xl" style="animation-delay: ${index * 0.1}s;">
                 <div class="text-center">
                     <div class="p-4 rounded-2xl ${feature.color} w-16 h-16 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                         <i class="${feature.icon} h-8 w-8"></i>
@@ -826,13 +826,17 @@ document.addEventListener('DOMContentLoaded', function() {
     items.forEach(item => {
       item.addEventListener('click', function() {
         const value = this.getAttribute('data-value');
-        const icon = this.querySelector('i').cloneNode(true);
-        const text = this.textContent;
+        let textContent = this.textContent;
+        let icon = this.querySelector('i');
         
         // Update the selected display
         selectedDiv.innerHTML = '';
-        selectedDiv.appendChild(icon);
-        selectedDiv.appendChild(document.createTextNode(text));
+        if (icon) {
+            selectedDiv.appendChild(icon.cloneNode(true));
+            // Add a space if there's an icon
+            selectedDiv.appendChild(document.createTextNode(' '));
+        }
+        selectedDiv.appendChild(document.createTextNode(textContent));
         
         // Update the native select
         nativeSelect.value = value;
@@ -851,4 +855,41 @@ document.addEventListener('DOMContentLoaded', function() {
       itemsDiv.classList.add('select-hide');
     });
   });
+});
+
+// Load the footer
+document.addEventListener('DOMContentLoaded', function() {
+    const footerPlaceholder = document.getElementById('footer-placeholder');
+    
+    fetch('Footer/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            footerPlaceholder.innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error loading footer:', error);
+            footerPlaceholder.innerHTML = '<p>Failed to load footer content.</p>';
+        });
+});
+
+// Load Property List
+document.addEventListener('DOMContentLoaded', function() {
+    // Load Property List
+    const propertyListPlaceholder = document.getElementById('property-list-placeholder');
+    if (propertyListPlaceholder) {
+        fetch('propertyList/propertyList.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                propertyListPlaceholder.innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error loading property list:', error);
+                propertyListPlaceholder.innerHTML = '<p style="color: red; text-align: center;">Error: Could not load property listings.</p>';
+            });
+    }
 });
