@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Your Property for Free | PropertyHub</title>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts for a modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="postProperty.css">
+</head>
+<body>
+
+    <div id="page_container">
+        <!-- Sidebar Section -->
+        <aside id="sidebar_container">
+            <div class="sidebar_content">
+                <a href="#" class="header_class">
+                     <svg class="logo_icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    <span class="logo_text">PropertyHub</span>
+                </a>
+                <h1 class="sidebar_title">Find the Right Person for Your Perfect Place.</h1>
+                <p class="sidebar_description">Post your property for free and connect with thousands of verified buyers and tenants today.</p>
+                <div class="features_list">
+                    <div class="feature_item">
+                        <div class="feature_icon_background"><i class="fas fa-check-shield feature_icon"></i></div>
+                        <div>
+                            <h3 class="feature_title">Verified Leads Only</h3>
+                            <p class="feature_description">We filter out time-wasters so you can focus on genuine enquiries.</p>
+                        </div>
+                    </div>
+                    <div class="feature_item">
+                        <div class="feature_icon_background"><i class="fas fa-rocket feature_icon"></i></div>
+                        <div>
+                            <h3 class="feature_title">Faster & More Secure</h3>
+                            <p class="feature_description">Reach a wider audience and close deals with confidence and speed.</p>
+                        </div>
+                    </div>
+                    <div class="feature_item">
+                        <div class="feature_icon_background"><i class="fas fa-mobile-screen-button feature_icon"></i></div>
+                        <div>
+                            <h3 class="feature_title">All-in-One Dashboard</h3>
+                            <p class="feature_description">Track listings, manage enquiries, and sign deals from anywhere.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Form Section -->
+        <main id="main_content_container">
+            <!-- Background Image -->
+            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=2070&auto=format&fit=crop" alt="Modern apartment background" class="background_image">
+            <div class="background_overlay"></div>
+
+            <div class="form_wrapper">
+                <h2 class="form_title">Sell or Rent your Property for <span class="form_title_highlight">Free!</span></h2>
+                <p class="form_description">Follow these simple steps to get your property listed.</p>
+
+                <!-- Stepper -->
+                <div id="stepper_container">
+                    <div class="stepper-item active" data-step-item="1">
+                        <div class="step-counter">1</div>
+                        <div class="step-name">Details</div>
+                    </div>
+                    <div class="stepper-item" data-step-item="2">
+                        <div class="step-counter">2</div>
+                        <div class="step-name">Location</div>
+                    </div>
+                    <div class="stepper-item" data-step-item="3">
+                        <div class="step-counter">3</div>
+                        <div class="step-name">Media</div>
+                    </div>
+                    <div class="stepper-item" data-step-item="4">
+                        <div class="step-counter">4</div>
+                        <div class="step-name">Contact</div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <form id="property-form" onsubmit="return false;">
+                    
+                    <!-- Step 1: Property Details -->
+                    <div class="form-step active" data-step="1">
+                        <h3 class="step_heading">Property Details</h3>
+                        <div class="form_fields_container">
+                            <div>
+                                <label class="form_label">You are listing this property for:</label>
+                                <div class="custom-radio">
+                                    <div>
+                                        <input type="radio" id="for-rent" name="propertyFor" value="rent" checked>
+                                        <label for="for-rent">
+                                            <i class="fa-solid fa-key"></i>
+                                            <span>Rent / Lease</span>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="for-sale" name="propertyFor" value="sale">
+                                        <label for="for-sale">
+                                            <i class="fa-solid fa-tag"></i>
+                                            <span>Sale</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="property-type" class="form_label">Property Type</label>
+                                <select id="property-type" name="propertyType" class="select_field">
+                                    <option>Select Property Type</option>
+                                    <option>Apartment / Flat</option>
+                                    <option>Independent House / Villa</option>
+                                    <option>Plot / Land</option>
+                                    <option>Commercial Space</option>
+                                    <option>PG / Hostel</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Property Location -->
+                    <div class="form-step" data-step="2">
+                        <h3 class="step_heading">Property Location</h3>
+                        <div class="form_fields_container">
+                             <div>
+                                <label for="city" class="form_label">City</label>
+                                <input type="text" id="city" name="city" placeholder="e.g., Mumbai" class="input_field">
+                            </div>
+                             <div>
+                                <label for="locality" class="form_label">Locality / Area</label>
+                                <input type="text" id="locality" name="locality" placeholder="e.g., Bandra West" class="input_field">
+                            </div>
+                             <div>
+                                <label for="address" class="form_label">Building / Project Name</label>
+                                <input type="text" id="address" name="address" placeholder="e.g., Galaxy Apartments" class="input_field">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Media Upload -->
+                    <div class="form-step" data-step="3">
+                        <h3 class="step_heading">Photos & Videos</h3>
+                         <div class="media_upload_area">
+                            <div class="media_cards_container">
+                              <!-- Photo Upload Card -->
+                              <div class="upload-card" id="photo-card">
+                                <div class="upload_card_header">
+                                  <i class="fas fa-images photo_icon"></i>
+                                  <span>Property Photos</span>
+                                </div>
+                                <div id="photo-upload-initial">
+                                  <p class="upload_card_description">Upload up to 10 photos. Good photos get 5x more responses.</p>
+                                  <input type="file" id="property-photos" multiple accept="image/*" class="hidden" style="display:none;" />
+                                  <label for="property-photos" class="upload_button photo_upload_button">Select Photos</label>
+                                </div>
+                                <div id="photo-upload-complete" style="display: none;">
+                                  <div class="photo_preview_grid" id="photo-preview"></div>
+                                  <button type="button" class="upload_button reupload_button" id="photo-reupload">
+                                    <i class="fas fa-sync-alt mr-2"></i>Change Photos
+                                  </button>
+                                </div>
+                              </div>
+                              
+                              <!-- Video Upload Card -->
+                              <div class="upload-card" id="video-card">
+                                <div class="upload_card_header">
+                                  <i class="fas fa-video video_icon"></i>
+                                  <span>Property Videos</span>
+                                </div>
+                                <div id="video-upload-initial">
+                                  <p class="upload_card_description">Upload up to 2 videos. Add a walk-through tour!</p>
+                                  <input type="file" id="property-videos" multiple accept="video/*" class="hidden" style="display:none;" />
+                                  <label for="property-videos" class="upload_button video_upload_button">Select Videos</label>
+                                </div>
+                                <div id="video-upload-complete" style="display: none;">
+                                  <div class="video_preview_grid" id="video-preview"></div>
+                                  <button type="button" class="upload_button reupload_button" id="video-reupload">
+                                    <i class="fas fa-sync-alt mr-2"></i>Change Videos
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div class="progress_bar_container">
+                              <div class="progress_bar_background">
+                                <div id="upload-progress-fill" style="width: 0%"></div>
+                              </div>
+                              <p id="upload-status">Ready to upload</p>
+                            </div>
+                          </div>
+                    </div>
+                    
+                    <!-- Step 4: Personal Details -->
+                    <div class="form-step" data-step="4">
+                        <h3 class="step_heading">Your Contact Details</h3>
+                        <div class="form_fields_container">
+                            <div>
+                                <label for="user-type" class="form_label">I am the:</label>
+                                <select id="user-type" name="userType" class="select_field">
+                                    <option disabled selected>Select your role</option>
+                                    <option value="owner">Owner</option>
+                                    <option value="agent">Agent</option>
+                                    <option value="builder">Builder</option>
+                                </select>
+                            </div>
+                             <div>
+                                <label for="name" class="form_label">Full Name</label>
+                                <input type="text" id="name" name="name" placeholder="Enter Your Name" class="input_field">
+                            </div>
+                             <div>
+                                <label for="phone" class="form_label">Mobile Number</label>
+                                <div class="mobile_input_container">
+                                    <span class="country_code">IND +91</span>
+                                    <input type="tel" id="phone" name="phone" placeholder="98765 43210" class="input_field">
+                                </div>
+                            </div>
+                             <div>
+                                <label for="email" class="form_label">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="you@example.com" class="input_field">
+                            </div>
+                            <div class="whatsapp_banner">
+                                <i class="fab fa-whatsapp"></i>
+                                <p>Enter your <strong>WhatsApp No.</strong> to get instant enquiries from buyers/tenants.</p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Navigation Buttons -->
+                <div class="navigation_buttons_container">
+                    <button id="prev-btn" class="nav_button" style="display: none;">
+                        Back
+                    </button>
+                    <button id="next-btn" class="nav_button">
+                        Next Step
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+<script src="postProperty.js">
+</script>
+
+</body>
+</html>
+
