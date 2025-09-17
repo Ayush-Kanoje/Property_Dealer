@@ -1,4 +1,5 @@
-ocument.addEventListener('DOMContentLoaded', function() {
+
+document.addEventListener('DOMContentLoaded', function() {
     
     // --- Stepper and Form Navigation ---
     const prevBtn = document.getElementById('prev-btn');
@@ -105,6 +106,24 @@ ocument.addEventListener('DOMContentLoaded', function() {
     
     showStep(currentStep); // Initialize first step
 
+    // --- Dynamic Price Fields ---
+    const propertyForRadios = document.querySelectorAll('input[name="propertyFor"]');
+    const rentPriceSection = document.getElementById('rent-price-section');
+    const salePriceSection = document.getElementById('sale-price-section');
+
+    propertyForRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            if (radio.value === 'rent') {
+                rentPriceSection.style.display = 'block';
+                salePriceSection.style.display = 'none';
+            } else if (radio.value === 'sale') {
+                rentPriceSection.style.display = 'none';
+                salePriceSection.style.display = 'block';
+            }
+        });
+    });
+
+
     // --- Media Uploader (from original JS, integrated) ---
     const photoInput = document.getElementById('property-photos');
     const videoInput = document.getElementById('property-videos');
@@ -166,23 +185,23 @@ ocument.addEventListener('DOMContentLoaded', function() {
         const reader = new FileReader();
         reader.onload = function(e) {
             const previewItem = document.createElement('div');
-            previewItem.className = 'preview-item relative w-full pt-[100%] rounded-md overflow-hidden shadow-sm';
+            previewItem.className = 'preview_item_container';
             
             const mediaEl = file.type.startsWith('image/') ? document.createElement('img') : document.createElement('video');
             mediaEl.src = e.target.result;
-            mediaEl.className = 'absolute top-0 left-0 w-full h-full object-cover';
+            mediaEl.className = 'preview_media';
             previewItem.appendChild(mediaEl);
 
             if (file.type.startsWith('video/')) {
                  const videoIndicator = document.createElement('div');
-                 videoIndicator.className = 'absolute bottom-1 right-1 bg-black bg-opacity-50 text-white text-xs px-1.5 py-0.5 rounded';
+                 videoIndicator.className = 'preview_video_indicator';
                  videoIndicator.textContent = 'VIDEO';
                  previewItem.appendChild(videoIndicator);
             }
 
             const removeBtn = document.createElement('button');
             removeBtn.type = 'button';
-            removeBtn.className = 'remove-btn absolute top-1 right-1 bg-red-500 hover:bg-red-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs transition z-10';
+            removeBtn.className = 'preview_remove_button';
             removeBtn.innerHTML = '&times;';
             removeBtn.title = 'Remove';
             
@@ -260,11 +279,22 @@ ocument.addEventListener('DOMContentLoaded', function() {
             uploadStatus.textContent = 'Upload complete!';
             document.querySelectorAll('.upload-card').forEach(c => c.classList.remove('pulse'));
             
+            const rentPrice = formData.get('rent-price');
+            const rentPeriod = formData.get('rent-period');
+            const salePrice = formData.get('sale-price');
+            let displayPrice = '';
+
+            if (rentPrice) {
+                displayPrice = `₹${rentPrice} ${rentPeriod === 'yearly' ? '/ year' : '/ month'}`;
+            } else if (salePrice) {
+                displayPrice = `₹${salePrice}`;
+            }
+
             // Mock data for success modal
             const mockPropertyData = {
                 id: '12345',
                 title: formData.get('address') || 'Beautiful New Property',
-                price: '25,000 / month', // Example price
+                price: displayPrice,
                 location: `${formData.get('locality')}, ${formData.get('city')}`
             };
             showPropertyConfirmation(mockPropertyData);
@@ -359,4 +389,44 @@ ocument.addEventListener('DOMContentLoaded', function() {
         currentStep = 1;
         showStep(1);
     }
+
+    // --- FAQ Accordion ---
+    const faqItems = document.querySelectorAll('.faq_item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq_question');
+        const answer = item.querySelector('.faq_answer');
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            // Close all items
+            faqItems.forEach(i => {
+                i.classList.remove('active');
+                i.querySelector('.faq_answer').style.maxHeight = null;
+            });
+            // Open the clicked one if it wasn't active
+            if (!isActive) {
+                item.classList.add('active');
+                answer.style.maxHeight = answer.scrollHeight + "px";
+            }
+        });
+    });
 });
+
+    // Inject shared footer
+    const footerMount = document.getElementById('footer-placeholder');
+    if (footerMount) {
+        fetch('../Footer/footer.html')
+            .then(res => res.text())
+            .then(html => {
+                const temp = document.createElement('div');
+                temp.innerHTML = html;
+                const footerEl = temp.querySelector('footer');
+                if (footerEl) {
+                    footerMount.replaceWith(footerEl);
+                } else {
+                    footerMount.innerHTML = '<p>Footer failed to load.</p>';
+                }
+            })
+            .catch(() => {
+                footerMount.innerHTML = '<p>Failed to load footer content.</p>';
+            });
+    }
