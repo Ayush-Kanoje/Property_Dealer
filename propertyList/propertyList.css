@@ -1,543 +1,554 @@
-/* Property Detail Page Styles */
-
-.property-detail {
-    padding: 20px 0;
-    max-width: 1100px;
-}
-
-/* Gallery Styles */
-.gallery {
-    margin-bottom: 20px;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.main-image {
-    position: relative;
-    height: 350px;
-    overflow: hidden;
-}
-
-.main-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.image-count {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-}
-
-.thumbnail-strip {
-    display: flex;
-    margin-top: 10px;
-    gap: 10px;
-}
-
-.thumbnail {
-    width: 80px;
-    height: 60px;
-    border-radius: 4px;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.thumbnail.active {
-    border: 2px solid var(--primary);
-}
-
-.thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Property Header Styles */
-.property-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 20px;
-}
-
-.property-title {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-.property-location {
-    font-size: 14px;
-    color: #666;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    margin-bottom: 8px;
-}
-
-.developer {
-    font-size: 13px;
-    color: #777;
-}
-
-.by {
-    color: #999;
-}
-
-.action-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.favorite-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #ddd;
-    color: #666;
-}
-
-.brochure-btn {
-    background: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 8px 16px;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-/* Status Styles */
-.property-status {
-    margin-bottom: 20px;
-}
-
-.section-label {
-    font-size: 12px;
-    color: #777;
-    margin-bottom: 8px;
-}
-
-.status-box {
-    border: 1px solid #eee;
-    padding: 12px;
-    border-radius: 6px;
-}
-
-.status-tag {
-    font-weight: 600;
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 4px;
-}
-
-.completion-date {
-    font-size: 14px;
-    color: #666;
-}
-
-/* Price Overview */
-.pricing-overview {
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.price-tag {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.price-icon {
-    font-size: 18px;
-    font-weight: 600;
-    color: #333;
-}
-
-.price-range {
-    font-size: 20px;
-    font-weight: 700;
-    color: #333;
-}
-
-.charges-link {
-    font-size: 12px;
-    color: #2563eb;
-    text-decoration: none;
-}
-
-.download-btn {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 8px 12px;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-/* Property Types */
-.property-types {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.type-tab {
-    padding: 10px 20px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.type-tab.active {
-    background: #2563eb;
-    color: white;
-    border-color: #2563eb;
-}
-
-/* Land Details */
-.land-details {
-    border: 1px solid #e5e7eb;
-    padding: 15px;
-    border-radius: 6px;
-    margin-bottom: 30px;
-}
-
-.plot-size h3 {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 5px;
-}
-
-.size-range {
-    font-size: 16px;
-    font-weight: 600;
-    color: #333;
-}
-
-.sqft-range {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 10px;
-}
-
-/* Floor Plans */
-.floor-plans-section {
-    margin-top: 30px;
-}
-
-.section-heading {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 15px;
-}
-
-.category-tabs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-
-.category-tab {
-    padding: 8px 16px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.category-tab.active {
-    background: #2563eb;
-    color: white;
-    border-color: #2563eb;
-}
-
-.plan-count {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 15px;
-}
-
-.plans-container {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.plan-card {
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    overflow: hidden;
-    width: calc(50% - 10px);
-    background: white;
-}
-
-.plan-header {
-    padding: 10px 15px;
-    border-bottom: 1px solid #eee;
-}
-
-.plan-size {
-    font-size: 16px;
-    font-weight: 600;
-    color: #333;
-}
-
-.plan-sqft {
-    font-size: 13px;
-    color: #666;
-}
-
-.plan-image {
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #f5f5f5;
-    padding: 10px;
-}
-
-.plan-image img {
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: contain;
-}
-
-.plan-price {
-    padding: 10px 15px;
-    font-size: 18px;
-    font-weight: 700;
-    color: #333;
-    border-top: 1px solid #eee;
-}
-
-.plan-status {
-    padding: 0 15px;
-    font-size: 14px;
-    color: #666;
-}
-
-.plan-payment {
-    padding: 5px 15px 15px;
-    font-size: 13px;
-    color: #777;
-    border-bottom: 1px solid #eee;
-}
-
-.plan-actions {
-    padding: 15px;
-    display: flex;
-    gap: 10px;
-}
-
-.callback-btn {
-    flex: 1;
-    background: white;
-    border: 1px solid #2563eb;
-    color: #2563eb;
-    padding: 8px;
-    border-radius: 4px;
-    font-size: 14px;
-}
-
-.call-btn {
-    width: 40px;
-    height: 36px;
-    background: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Property Reviews Section */
-.reviews-section {
-    margin-top: 40px;
-    margin-bottom: 40px;
-}
-
-/* Overall Rating */
-.overall-rating {
-    display: flex;
-    align-items: center;
-    background: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-.rating-number {
-    font-size: 36px;
-    font-weight: 700;
-    color: #333;
-    margin-right: 15px;
-}
-
-.rating-stars {
-    display: flex;
-    align-items: center;
-    margin-right: 15px;
-}
-
-.rating-stars i {
-    color: #ffc107;
-    font-size: 18px;
-    margin-right: 2px;
-}
-
-.rating-count {
-    font-size: 14px;
-    color: #666;
-}
-
-/* Review List */
-.review-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.review-item {
-    padding: 15px;
-    border: 1px solid #e5e7eb;
-    border-radius: 6px;
-    margin-bottom: 10px;
-    background: white;
-}
-
-.review-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.reviewer-name {
-    font-size: 14px;
-    font-weight: 600;
-    color: #333;
-}
-
-.review-date {
-    font-size: 12px;
-    color: #999;
-}
-
-.review-rating {
-    display: flex;
-    align-items: center;
-}
-
-.review-rating i {
-    color: #ffc107;
-    font-size: 16px;
-    margin-right: 2px;
-}
-
-.review-content {
-    font-size: 14px;
-    color: #666;
-    line-height: 1.5;
-}
-
-/* Review Form */
-.review-form {
-    margin-top: 30px;
-    padding: 20px;
-    border: 1px solid #e5e7eb;
-    border-radius: 6px;
-    background: #f9f9f9;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.label {
-    font-size: 14px;
-    color: #333;
-    margin-bottom: 5px;
-    display: block;
-}
-
-.input,
-.textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-    color: #333;
-}
-
-.textarea {
-    min-height: 100px;
-    resize: vertical;
-}
-
-.submit-btn {
-    background: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 15px;
-    font-size: 16px;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.submit-btn:hover {
-    background: #1d4ed8;
-}
-
-@media (max-width: 768px) {
-    .property-header {
+    /* General Body Styles */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+        margin: 0;
+        padding: 2rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Main Container for the entire layout */
+    .main_container {
+        display: flex;
+        gap: 2rem;
+        width: 100%;
+        max-width: 1400px;
+    }
+    
+    /* Left Sidebar for Filters */
+    .filter_class {
+        background-color: #fff;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        width: 300px;
+        flex-shrink: 0;
+        height: fit-content;
+    }
+
+    .filter_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .filter_header h2 {
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
+
+    .filter_header a {
+        color: #007bff;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        cursor: pointer;
+    }
+
+    .filter_section {
+        margin-bottom: 1.5rem;
+    }
+
+    .filter_section h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    /* Price Range Input Styles */
+    .price_range_inputs {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .price_range_inputs input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+    }
+    .price_range_inputs span {
+        font-weight: 600;
+    }
+    
+    /* Button group for Bedrooms/Bathrooms */
+    .button_group {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .button_group button {
+        flex: 1;
+        min-width: 40px;
+        padding: 0.6rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #fff;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .button_group button.active {
+        background-color: #007bff;
+        color: #fff;
+        border-color: #007bff;
+    }
+    
+    /* Amenities Checkbox Styles */
+    .amenities_list .amenity_item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.75rem;
+    }
+
+    .amenities_list input[type="checkbox"] {
+        margin-right: 0.75rem;
+        width: 18px;
+        height: 18px;
+        accent-color: #007bff;
+    }
+
+    /* Select Dropdown Style */
+    .Select_option {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #fff;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    /* Right Section for Property Listings */
+    .property_list_container {
+        width: 100%;
+    }
+
+    .list_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .list_header h1 {
+        margin: 0;
+        font-size: 1.75rem;
+        font-weight: 700;
+    }
+    .list_header p {
+        margin: 0;
+        color: #6c757d;
+    }
+
+    /* Grid for Property Cards */
+    #property_list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    /* Pagination Styles */
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem;
+        gap: 0.5rem;
+    }
+
+    .pagination a {
+        color: #333;
+        padding: 0.75rem 1rem;
+        text-decoration: none;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+    }
+
+    .pagination a:hover,
+    .pagination a.active {
+        background-color: #007bff;
+        color: white;
+        border-color: #007bff;
+    }
+
+    .pagination-ellipsis {
+        padding: 0.75rem 0.5rem;
+        color: #6c757d;
+        font-weight: 500;
+    }
+
+    .card {
+        position: relative;
+        width: 100%; /* Make it responsive */
+        height: 420px;
+        background-color: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid #e0e0e0;
+        box-sizing: border-box; /* Ensures padding/border doesn't affect width */
+    }
+    
+    .top-card {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        height: 65%;
+        transition: height 0.3s ease;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+    
+    .bottom-card {
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        height: 35%;
+        transition: height 0.3s ease;
+        background-color: #201f30; /* Changed color to match theme */
+    }
+    
+    .bottom-card::before {
+        content: "";
+        position: absolute;
+        background-color: transparent;
+        bottom: 147px; /* Adjusted initial position based on new height */
+        height: 50px;
+        width: 95%; /* Make it responsive */
+        transition: bottom 0.3s ease;
+        border-bottom-left-radius: 20px;
+    }
+    
+    .card-content {
+        padding: 1rem;
+        display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: flex-start; /* Align content to the left */
+        color: #fff;
+        height: 100%;
+    }
+
+    .card-price {
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+    .card-price span {
+        font-size: 1rem;
+        font-weight: 400;
+        color: #e0e0e0;
+    }
+
+    .card-title {
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-top: 0.25rem;
+    }
+
+    .card-txt {
+        font-size: 0.9rem;
+        margin: 0.25rem 0 1rem 0;
+        color: #e0e0e0;
+    }
+
+    .card-details {
+        display: flex;
+        gap: 1rem;
+        width: 100%;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .card-details span {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
     }
     
-    .action-buttons {
-        margin-top: 15px;
-        width: 100%;
-        justify-content: flex-end;
+    /* --- Card Hover Animations (as requested) --- */
+    .card:hover {
+        box-shadow: 0px 4px 15px #007bffa1;
+        border: solid 1px #007bff;
     }
     
-    .plan-card {
+    .card:hover .top-card {
+        height: 35%;
+        transition: height 0.3s ease;
+    }
+    
+    .card:hover .bottom-card {
+        height: 65%;
+        transition: height 0.3s ease;
+    }
+    
+    .card:hover .bottom-card::before {
+        bottom: 273px; /* Adjusted hover position based on new height */
+        transition: bottom 0.3s ease;
+    }
+    
+    /* Additional elements inside card */
+    .card_tags {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        display: flex;
+        gap: 0.5rem;
+    }
+    .card_tags .tag {
+        padding: 0.25rem 0.75rem;
+        border-radius: 15px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: #fff;
+    }
+    .tag.new { background-color: #28a745; }
+    .tag.featured { background-color: #ffc107; color: #333;}
+
+    .card_heart {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: rgba(255, 255, 255, 0.8);
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        color: #333;
+    }
+    .card_heart.liked {
+        color: #dc3545;
+    }
+    
+    .property_type_tag {
+        position: absolute;
+        bottom: 1rem;
+        left: 1rem;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        padding: 0.25rem 0.75rem;
+        border-radius: 8px;
+        font-size: 0.8rem;
+    }
+
+    /* -------------------------------- */
+    /* --- PROVIDED CARD STYLES END --- */
+    /* -------------------------------- */
+
+
+    /* --------------------------------------------- */
+    /* --- PROVIDED RADIO BUTTON STYLES START --- */
+    /* --------------------------------------------- */
+    .radio-input {
+        display: flex;
+        flex-direction: column; /* Changed to column for vertical layout */
+        font-family: 'Poppins', sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #333;
+    }
+    
+    .radio-input input[type="radio"] {
+        display: none;
+    }
+    
+    .radio-input label {
+        display: flex;
+        align-items: center;
+        padding: 0; /* Remove padding */
+        background-color: transparent; /* Remove background */
+        border: none; /* Remove border */
+        margin-bottom: 0.75rem; /* Add spacing */
+        cursor: pointer;
+        position: relative;
+        transition: all 0.3s ease-in-out;
+        padding-left: 30px; /* Space for custom radio circle */
+    }
+    
+    .radio-input label:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 18px; /* Adjusted size */
+        height: 18px; /* Adjusted size */
+        border-radius: 50%;
+        background-color: #fff;
+        border: 2px solid #ccc;
+        transition: all 0.3s ease-in-out;
+    }
+    
+    .radio-input input[type="radio"]:checked + label:before {
+        background-color: #007bff; /* Changed color */
+        border-color: #007bff; /* Changed color */
+    }
+
+    .radio-input input[type="radio"]:checked + label {
+        color: #007bff; /* Changed color */
+        font-weight: 600;
+        animation: radio-translate 0.5s ease-in-out;
+    }
+    
+    @keyframes radio-translate {
+        0% { transform: translateX(0); }
+        50% { transform: translateY(-5px); } /* Reduced effect */
+        100% { transform: translateX(0); }
+    }
+    /* ------------------------------------------- */
+    /* --- PROVIDED RADIO BUTTON STYLES END --- */
+    /* ------------------------------------------- */
+
+
+    /* -------------------------------------- */
+    /* --- PROVIDED BUTTON STYLES START --- */
+    /* -------------------------------------- */
+    .fancy_button_container {
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    .fancy {
+        background-color: #007bff; /* Changed color */
+        border: 2px solid #007bff; /* Changed color */
+        border-radius: 8px; /* Adjusted border radius */
+        box-sizing: border-box;
+        color: #fff; /* Changed color */
+        cursor: pointer;
+        display: inline-block;
+        font-weight: 600; /* Adjusted font weight */
+        letter-spacing: 0.05em;
+        margin: 0;
+        outline: none;
+        overflow: visible;
+        padding: 1em 1.5em; /* Adjusted padding */
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        text-transform: none;
+        transition: all 0.3s ease-in-out;
+        user-select: none;
+        font-size: 1rem; /* Adjusted font size */
         width: 100%;
     }
-}
-
-
-.reviewer-avatar{
-
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-right: 10px;
-}
+    
+    .fancy::before {
+        content: " ";
+        width: 1.5625rem;
+        height: 2px;
+        background: white;
+        top: 50%;
+        left: 1.5em;
+        position: absolute;
+        transform: translateY(-50%);
+        transform-origin: center;
+        transition: background 0.3s linear, width 0.3s linear;
+    }
+    
+    .fancy .text {
+        font-size: 1em; /* Adjusted font size */
+        line-height: 1.33333em;
+        padding-left: 2em;
+        display: block;
+        text-align: left;
+        transition: all 0.3s ease-in-out;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: white;
+    }
+    
+    .fancy .top-key {
+        height: 2px;
+        width: 1.5625rem;
+        top: -2px;
+        left: 0.625rem;
+        position: absolute;
+        background: #f8f9fa; /* Changed to match body bg */
+        transition: width 0.5s ease-out, left 0.3s ease-out;
+    }
+    
+    .fancy .bottom-key-1 {
+        height: 2px;
+        width: 1.5625rem;
+        right: 1.875rem;
+        bottom: -2px;
+        position: absolute;
+        background: #f8f9fa; /* Changed to match body bg */
+        transition: width 0.5s ease-out, right 0.3s ease-out;
+    }
+    
+    .fancy .bottom-key-2 {
+        height: 2px;
+        width: 0.625rem;
+        right: 0.625rem;
+        bottom: -2px;
+        position: absolute;
+        background: #f8f9fa; /* Changed to match body bg */
+        transition: width 0.5s ease-out, right 0.3s ease-out;
+    }
+    
+    .fancy:hover {
+        color: #007bff; /* Changed color */
+        background: white;
+    }
+    
+    .fancy:hover::before {
+        width: 0.9375rem;
+        background: #007bff; /* Changed color */
+    }
+    
+    .fancy:hover .text {
+        color: #007bff; /* Changed color */
+        padding-left: 1.5em;
+    }
+    
+    .fancy:hover .top-key {
+        left: -2px;
+        width: 0px;
+    }
+    
+    .fancy:hover .bottom-key-1,
+    .fancy:hover .bottom-key-2 {
+        right: 0;
+        width: 0;
+    }
+    /* ------------------------------------ */
+    /* --- PROVIDED BUTTON STYLES END --- */
+    /* ------------------------------------ */
+    
+    /* Responsive Media Queries */
+    @media (max-width: 1200px) {
+        .main_container {
+            flex-direction: column;
+        }
+        .filter_class {
+            width: 100%;
+            box-sizing: border-box;
+        }
+    }
+    @media (max-width: 768px) {
+        body {
+            padding: 1rem;
+        }
+         #property_list {
+            grid-template-columns: 1fr;
+        }
+        .list_header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+    }

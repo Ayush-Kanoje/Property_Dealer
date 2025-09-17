@@ -3,336 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Property Details - PropertyHub</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="Footer/footer.css">
+    <title>Available Properties</title>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="propertyList.css">
 </head>
+<body>
 
-<body class="page_body">
-    <!-- Header will be the same as your main page -->
-    <header class="header">
-        <div class="header_container">
-            <div class="logo_wrapper">
-                <h1 class="logo">PropertyHub</h1>
-            </div>
-            
-            <nav class="nav_menu">
-                <button class="nav_link" data-page="home">Home</button>
-                <button class="nav_link active" data-page="listings">Properties</button>
-                <button class="nav_link" data-page="about">About Us</button>
-                <button class="nav_link" data-page="contact">Contact</button>
-            </nav>
-
-            <div class="header_actions">
-                <button class="signin_btn">
-                    Sign In
-                </button>
-                <button class="list_property_btn">
-                    List Property
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <main>
-        <div class="container property-detail">
-            <!-- Property Gallery -->
-            <div class="gallery">
-                <div class="main-image">
-                    <img src="assests/PropertyEnterence.jpeg" alt="Property Entrance">
-                    <img src="assests/PropertyPlayground.jpeg" alt="Playground">
-                    <img src="assests/PropertyViewFromTop.jpg" alt="Aerial View">
-                    <span class="image-count">2/3</span>
+    <div class="main_container">
+        <!-- Filters Sidebar -->
+        <aside class="filter_class">
+            <form id="filter_form">
+                <div class="filter_header">
+                    <h2>Filters</h2>
+                    <a id="clear_all_filters">Clear all</a>
                 </div>
-                <div class="thumbnail-strip">
-                    <div class="thumbnail active">
-                        <img src="assests/PropertyEnterence.jpeg" alt="Property Entrance">
-                    </div>
-                    <div class="thumbnail">
-                        <img src="assests/PropertyPlayground.jpeg" alt="Playground">
-                    </div>
-                    <div class="thumbnail">
-                        <img src="assests/PropertyViewFromTop.jpg" alt="Aerial View">
+
+                <div class="filter_section">
+                    <h3>Price Range</h3>
+                    <div class="price_range_inputs">
+                        <input type="number" id="min_price" placeholder="₹ Min">
+                        <span>-</span>
+                        <input type="number" id="max_price" placeholder="₹ Max">
                     </div>
                 </div>
-            </div>
 
-            <!-- Property Header -->
-            <div class="property-header">
-                <div class="title-section">
-                    <h1 class="property-title">Modern Villa</h1>
-                    <p class="property-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Shabad Road, Hyderabad
-                    </p>
-                    <div class="developer">
-                        <span class="by">by</span>
-                        <span class="developer-name">Akash Builder</span>
+                <div class="filter_section">
+                    <h3>Property Type</h3>
+                    <div class="radio-input">
+                        <div>
+                            <input value="any" name="property_type" id="type_any" type="radio" checked>
+                            <label for="type_any">Any</label>
+                        </div>
+                        <div>
+                            <input value="House" name="property_type" id="type_house" type="radio">
+                            <label for="type_house">House</label>
+                        </div>
+                        <div>
+                            <input value="Apartment" name="property_type" id="type_apartment" type="radio">
+                            <label for="type_apartment">Apartment</label>
+                        </div>
+                        <div>
+                            <input value="Villa" name="property_type" id="type_villa" type="radio">
+                            <label for="type_villa">Villa</label>
+                        </div>
+                        <div>
+                            <input value="Condo" name="property_type" id="type_condo" type="radio">
+                            <label for="type_condo">Condo</label>
+                        </div>
                     </div>
                 </div>
-                <div class="action-buttons">
-                    <button class="favorite-btn">
-                        <i class="far fa-heart"></i>
-                    </button>
-                    <button class="brochure-btn">
-                        <i class="fas fa-download"></i>
-                        View Brochure
-                    </button>
-                </div>
-            </div>
 
-            <!-- Property Status -->
-            <div class="property-status">
-                <h2 class="section-label">CONSTRUCTION STATUS</h2>
-                <div class="status-box">
-                    <div class="status-tag">New Launch</div>
-                    <div class="completion-date">Completion in Dec, 2026</div>
-                </div>
-            </div>
-
-            <!-- Property Pricing -->
-            <div class="pricing-overview">
-                <div class="price-tag">
-                    <div class="price-icon">₹</div>
-                    <div class="price-range">54.06 - 85.54 L</div>
-                    <a href="#" class="charges-link">+ Charges</a>
-                </div>
-                <button class="download-btn">
-                    <i class="fas fa-download"></i>
-                    Download Brochure
-                </button>
-            </div>
-
-            <!-- Property Type -->
-            <div class="property-types">
-                <div class="type-tab active">Land</div>
-            </div>
-
-            <!-- Land Details -->
-            <div class="land-details">
-                <div class="plot-size">
-                    <h3>Plot Sizes</h3>
-                    <div class="size-range">167.22 sq.yd. to 220.77 sq.yd.</div>
-                    <div class="sqft-range">(1501 sq.ft. - 1987 sq.ft.)</div>
-                </div>
-                <div class="price-details">
-                    <div class="price-range">₹ 54.06 - 85.54 L</div>
-                    <a href="#" class="charges-link">+ Charges</a>
-                </div>
-            </div>
-
-            <!-- Floor Plans Section -->
-            <div class="floor-plans-section">
-                <h2 class="section-heading">Floor Plans & Pricing</h2>
-                <div class="category-tabs">
-                    <div class="category-tab active">Land</div>
+                <div class="filter_section">
+                    <h3>Bedrooms</h3>
+                    <div class="button_group" id="bedrooms_group">
+                        <button class="active" data-value="0">Any</button>
+                        <button data-value="1">1+</button>
+                        <button data-value="2">2+</button>
+                        <button data-value="3">3+</button>
+                        <button data-value="4">4+</button>
+                    </div>
                 </div>
                 
-                <p class="plan-count">2 Floor Plans available</p>
+                <div class="filter_section">
+                    <h3>Bathrooms</h3>
+                    <div class="button_group" id="bathrooms_group">
+                        <button class="active" data-value="0">Any</button>
+                        <button data-value="1">1+</button>
+                        <button data-value="2">2+</button>
+                        <button data-value="3">3+</button>
+                    </div>
+                </div>
+
+                <div class="filter_section">
+                    <h3>Amenities</h3>
+                    <div class="amenities_list">
+                        <div class="amenity_item"><input type="checkbox" id="parking" value="Parking"><label for="parking">Parking</label></div>
+                        <div class="amenity_item"><input type="checkbox" id="pool" value="Swimming Pool"><label for="pool">Swimming Pool</label></div>
+                        <div class="amenity_item"><input type="checkbox" id="gym" value="Gym"><label for="gym">Gym</label></div>
+                        <div class="amenity_item"><input type="checkbox" id="garden" value="Garden"><label for="garden">Garden</label></div>
+                        <div class="amenity_item"><input type="checkbox" id="security" value="Security"><label for="security">Security</label></div>
+                    </div>
+                </div>
+
+                <div class="filter_section">
+                    <h3>Sort By</h3>
+                    <select class="Select_option" id="sort_by">
+                        <option value="newest">Newest First</option>
+                        <option value="price_asc">Price (Low to High)</option>
+                        <option value="price_desc">Price (High to Low)</option>
+                    </select>
+                </div>
                 
-                <div class="plans-container">
-                    <!-- Plan 1 -->
-                    <div class="plan-card">
-                        <div class="plan-header">
-                            <div class="plan-size">167.22 sq.yd.</div>
-                            <div class="plan-sqft">(1501 sq.ft.)</div>
-                        </div>
-                        <div class="plan-image">
-                            <img src="assests/plot1_2bhk.jpg" alt="Plot Plan 1">
-                        </div>
-                        <div class="plan-price">₹ 54.06 L</div>
-                        <div class="plan-status">New Launch</div>
-                        <div class="plan-payment">EMI: Rs. 35k/month</div>
-                        <div class="plan-actions">
-                            <button class="callback-btn">Request callback</button>
-                            <button class="call-btn"><i class="fas fa-phone"></i></button>
-                        </div>
-                    </div>
-                    
-                    <!-- Plan 2 -->
-                    <div class="plan-card">
-                        <div class="plan-header">
-                            <div class="plan-size">220.77 sq.yd.</div>
-                            <div class="plan-sqft">(1987 sq.ft.)</div>
-                        </div>
-                        <div class="plan-image">
-                            <img src="assests/plot2_3bhk.jpg" alt="Plot Plan 2">
-                        </div>
-                        <div class="plan-price">₹ 85.54 L</div>
-                        <div class="plan-status">New Launch</div>
-                        <div class="plan-payment">EMI: Rs. 45k/month</div>
-                        <div class="plan-actions">
-                            <button class="callback-btn">Request callback</button>
-                            <button class="call-btn"><i class="fas fa-phone"></i></button>
-                        </div>
-                    </div>
+                <div class="fancy_button_container">
+                    <a class="fancy" href="#" id="apply_filters_btn">
+                        <span class="top-key"></span>
+                        <span class="text">Apply Filters</span>
+                        <span class="bottom-key-1"></span>
+                        <span class="bottom-key-2"></span>
+                    </a>
+                </div>
+            </form>
+        </aside>
+
+        <!-- Property Listings -->
+        <main class="property_list_container">
+            <div class="list_header">
+                <div>
+                    <h1>Available Properties</h1>
+                    <p id="property_count">6 properties found</p>
+                </div>
+                <div>
+                    <a href="../postProperty/postProperty.html" class="fancy" id="post_property_btn">
+                        <span class="top-key"></span>
+                        <span class="text">Post Property</span>
+                        <span class="bottom-key-1"></span>
+                        <span class="bottom-key-2"></span>
+                    </a>
                 </div>
             </div>
 
-            <!-- Property Reviews Section -->
-            <div class="reviews-section">
-                <h2 class="section-heading">Reviews & Ratings</h2>
-                
-                <!-- Overall Rating -->
-                <div class="overall-rating">
-                    <div class="rating-number">4.5</div>
-                    <div class="rating-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <div class="rating-count">Based on 12 reviews</div><br>
-                    <button class="write-review-btn">
-                        <i class="fas fa-pencil-alt"></i>
-                        Write a Review
-                    </button>
-                </div>
-                
-                <!-- Review List -->
-                <div class="reviews-list">
-                    <!-- Review 1 -->
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div class="reviewer-info">
-                                <div class="reviewer-avatar">
-                                    <img src="assests/Rahul_Sharma.jpeg" alt="User Avatar">
-                                </div>
-                                <div class="reviewer-details">
-                                    <div class="reviewer-name">Rahul Sharma</div>
-                                    <div class="review-date">Reviewed on 12 Aug 2025</div>
-                                </div>
-                            </div>
-                            <div class="review-rating">
-                                <div class="rating-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <div class="rating-value">5.0</div>
-                            </div>
-                        </div>
-                        <div class="review-content">
-                            <p>One of the best investment opportunities in Hyderabad right now. The location is perfect with upcoming infrastructure projects nearby. The plots are well planned with all necessary amenities. The green spaces are a major plus for future residents.</p>
-                        </div>
-                        <div class="review-footer">
-                            <div class="review-tags">
-                                <span class="review-tag">Great Location</span>
-                                <span class="review-tag">Good Investment</span>
-                            </div>
-                            <div class="review-helpful">
-                                <span class="helpful-question">Was this review helpful?</span>
-                                <button class="helpful-btn"><i class="far fa-thumbs-up"></i> Yes (8)</button>
-                                <button class="helpful-btn"><i class="far fa-thumbs-down"></i> No (1)</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Review 2 -->
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div class="reviewer-info">
-                                <div class="reviewer-avatar">
-                                    <img src="assets/Priya.jpeg" alt="User Avatar">
-                                </div>
-                                <div class="reviewer-details">
-                                    <div class="reviewer-name">Priya Patel</div>
-                                    <div class="review-date">Reviewed on 5 Aug 2025</div>
-                                </div>
-                            </div>
-                            <div class="review-rating">
-                                <div class="rating-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <div class="rating-value">4.0</div>
-                            </div>
-                        </div>
-                        <div class="review-content">
-                            <p>The plot sizes and layout are excellent. I particularly like the wide internal roads and planned green spaces. Only giving 4 stars because the completion timeline seems a bit stretched. Overall, it's a good investment for the future.</p>
-                        </div>
-                        <div class="review-footer">
-                            <div class="review-tags">
-                                <span class="review-tag">Good Planning</span>
-                                <span class="review-tag">Spacious</span>
-                            </div>
-                            <div class="review-helpful">
-                                <span class="helpful-question">Was this review helpful?</span>
-                                <button class="helpful-btn"><i class="far fa-thumbs-up"></i> Yes (5)</button>
-                                <button class="helpful-btn"><i class="far fa-thumbs-down"></i> No (0)</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Review 3 -->
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div class="reviewer-info">
-                                <div class="reviewer-avatar">
-                                    <img src="assests/Amit.jpeg" alt="User Avatar">
-                                </div>
-                                <div class="reviewer-details">
-                                    <div class="reviewer-name">Amit Kumar</div>
-                                      <div class="review-date">Reviewed on 18 Dec 2024</div>
-                                   <p>I recently booked a flat here and was impressed with the planning and amenities. The project is progressing well and the surrounding area looks promising for future growth. The developer’s reputation adds to the trust factor. Definitely worth considering for both living and investment.</p>
-                                </div>
-                            </div>
-
-                            <div class="review-rating">
-                                <div class="rating-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </div>
-                                <div class="rating-value">4.5</div>
-                            </div>
-                        </div>
-                         
-                        </div>
-                    <!-- Review 4 -->
-                          <div class="review-card">
-                        <div class="review-header">
-                            <div class="reviewer-info">
-                                <div class="reviewer-avatar">
-                                    <img src="assests/CornerPlot.jpeg" alt="User_Avatar">
-                                </div>
-                                <div class="reviewer-details">
-                                    <div class="reviewer-name">corner plot</div>
-                                    <div class="review-date">Reviewed on 15 Mar 2023</div>
-                                </div>
-                                  <p>I booked a corner plot after visiting the site. The development is coming up well and the location has good potential for appreciation. The builders have a good track record which gives me confidence. Would recommend considering this if you're looking for a long-term investment.</p>
-                                </div>
-                                  <div class="review-rating">
-                                <div class="rating-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </div>
-                                <div class="rating-value">3.8</div>
-                            </div>
-                            
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+            <div id="property_list">
+                <!-- Property cards will be dynamically inserted here by JavaScript -->
             </div>
-    </main>
 
-    <!-- Footer will be injected here -->
-    <div id="footer-container"></div>
-    
-    <script src="script.js"></script>
+            <div class="pagination" id="pagination"></div>
+
+        </main>
+    </div>
+
+    <script src="propertyList.js"></script>
+
 </body>
 </html>
+

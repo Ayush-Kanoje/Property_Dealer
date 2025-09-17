@@ -96,6 +96,7 @@ const featuredProperties = [
         sqft: 1800,
         type: "Condo"
     }
+  
 ];
 
 const allProperties = [

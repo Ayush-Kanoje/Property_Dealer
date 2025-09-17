@@ -290,12 +290,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 displayPrice = `₹${salePrice}`;
             }
 
-            // Mock data for success modal
-            const mockPropertyData = {
-                id: '12345',
+            // Persist minimal listing to localStorage for Property List page
+            const newListing = {
+                id: Date.now(),
                 title: formData.get('address') || 'Beautiful New Property',
+                address: formData.get('address') || '',
+                locality: formData.get('locality') || '',
+                city: formData.get('city') || '',
+                type: formData.get('propertyType') || 'House',
+                bedrooms: formData.get('bedrooms') || 0,
+                bathrooms: formData.get('bathrooms') || 0,
+                sqft: formData.get('builtup-area') || 0,
+                rentPrice: formData.get('rent-price') || '',
+                salePrice: formData.get('sale-price') || '',
+                imageUrl: selectedPhotos.length > 0 ? URL.createObjectURL(selectedPhotos[0]) : '',
+                photos: selectedPhotos.map(f => URL.createObjectURL(f))
+            };
+            const existing = JSON.parse(localStorage.getItem('postedProperties') || '[]');
+            existing.unshift(newListing);
+            localStorage.setItem('postedProperties', JSON.stringify(existing));
+
+            // Data for success modal
+            const mockPropertyData = {
+                id: String(newListing.id),
+                title: newListing.title,
                 price: displayPrice,
-                location: `${formData.get('locality')}, ${formData.get('city')}`
+                location: `${newListing.locality}, ${newListing.city}`
             };
             showPropertyConfirmation(mockPropertyData);
         }, 3000);
