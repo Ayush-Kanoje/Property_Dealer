@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     
     // --- Stepper and Form Navigation ---
@@ -37,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const validateStep = (stepNumber) => {
         const currentStepEl = document.querySelector(`.form-step[data-step="${stepNumber}"]`);
+        const inputs = currentStepEl.querySelectorAll('input[required], select[required]');
         let isValid = true;
         
         // Simple validation for required fields, extend as needed
@@ -103,6 +105,24 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     showStep(currentStep); // Initialize first step
+
+    // --- Dynamic Price Fields ---
+    const propertyForRadios = document.querySelectorAll('input[name="propertyFor"]');
+    const rentPriceSection = document.getElementById('rent-price-section');
+    const salePriceSection = document.getElementById('sale-price-section');
+
+    propertyForRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            if (radio.value === 'rent') {
+                rentPriceSection.style.display = 'block';
+                salePriceSection.style.display = 'none';
+            } else if (radio.value === 'sale') {
+                rentPriceSection.style.display = 'none';
+                salePriceSection.style.display = 'block';
+            }
+        });
+    });
+
 
     // --- Media Uploader (from original JS, integrated) ---
     const photoInput = document.getElementById('property-photos');
@@ -259,11 +279,22 @@ document.addEventListener('DOMContentLoaded', function() {
             uploadStatus.textContent = 'Upload complete!';
             document.querySelectorAll('.upload-card').forEach(c => c.classList.remove('pulse'));
             
+            const rentPrice = formData.get('rent-price');
+            const rentPeriod = formData.get('rent-period');
+            const salePrice = formData.get('sale-price');
+            let displayPrice = '';
+
+            if (rentPrice) {
+                displayPrice = `₹${rentPrice} ${rentPeriod === 'yearly' ? '/ year' : '/ month'}`;
+            } else if (salePrice) {
+                displayPrice = `₹${salePrice}`;
+            }
+
             // Mock data for success modal
             const mockPropertyData = {
                 id: '12345',
                 title: formData.get('address') || 'Beautiful New Property',
-                price: '25,000 / month', // Example price
+                price: displayPrice,
                 location: `${formData.get('locality')}, ${formData.get('city')}`
             };
             showPropertyConfirmation(mockPropertyData);
@@ -358,4 +389,44 @@ document.addEventListener('DOMContentLoaded', function() {
         currentStep = 1;
         showStep(1);
     }
+
+    // --- FAQ Accordion ---
+    const faqItems = document.querySelectorAll('.faq_item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq_question');
+        const answer = item.querySelector('.faq_answer');
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            // Close all items
+            faqItems.forEach(i => {
+                i.classList.remove('active');
+                i.querySelector('.faq_answer').style.maxHeight = null;
+            });
+            // Open the clicked one if it wasn't active
+            if (!isActive) {
+                item.classList.add('active');
+                answer.style.maxHeight = answer.scrollHeight + "px";
+            }
+        });
+    });
 });
+
+    // Inject shared footer
+    const footerMount = document.getElementById('footer-placeholder');
+    if (footerMount) {
+        fetch('../Footer/footer.html')
+            .then(res => res.text())
+            .then(html => {
+                const temp = document.createElement('div');
+                temp.innerHTML = html;
+                const footerEl = temp.querySelector('footer');
+                if (footerEl) {
+                    footerMount.replaceWith(footerEl);
+                } else {
+                    footerMount.innerHTML = '<p>Footer failed to load.</p>';
+                }
+            })
+            .catch(() => {
+                footerMount.innerHTML = '<p>Failed to load footer content.</p>';
+            });
+    }
