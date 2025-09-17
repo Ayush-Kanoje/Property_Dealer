@@ -1,5 +1,66 @@
 // PropertyHub JavaScript
 
+// loading animayion code
+(function () {
+  const loader = document.getElementById('loader');
+  const content = document.getElementById('content');
+
+  if (!loader || !content) {
+    // nothing to do if structure is not present
+    return;
+  }
+
+  // it Make sure main content stays hidden until loader removed
+  content.style.display = 'none';
+
+  // Prevent scrolling while loader is visible
+  const disableScroll = () => {
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+  };
+  const enableScroll = () => {
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+  };
+  disableScroll();
+
+  function finalizeHide() {
+    // Ensure loader removed from layout after fade
+    if (loader) loader.style.display = 'none';
+    enableScroll();
+  }
+
+  function hideLoader() {
+    if (!loader) return;
+    // show content right away (so it can paint while loader fades)
+    content.style.display = 'block';
+    // add class that triggers CSS fade
+    loader.classList.add('loader--fadeout');
+
+    // Wait for transition to finish and then remove loader from DOM/layout
+    const onTransitionEnd = (e) => {
+      if (e.propertyName === 'opacity') {
+        finalizeHide();
+        loader.removeEventListener('transitionend', onTransitionEnd);
+      }
+    };
+    loader.addEventListener('transitionend', onTransitionEnd);
+
+    // Safety fallback in case transitionend doesn't fire
+    setTimeout(finalizeHide, 800);
+  }
+
+  // Hide when whole page (images, css, subresources) finishes loading
+  window.addEventListener('load', hideLoader);
+
+  // Extra safety: if load never fires (rare), hide after 6s
+  setTimeout(() => {
+    if (loader && getComputedStyle(loader).display !== 'none') hideLoader();
+  }, 6000);
+})();
+
+
+
 // Data
 const featuredProperties = [
     {

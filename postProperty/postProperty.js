@@ -1,4 +1,4 @@
-ocument.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     
     // --- Stepper and Form Navigation ---
     const prevBtn = document.getElementById('prev-btn');
@@ -37,7 +37,6 @@ ocument.addEventListener('DOMContentLoaded', function() {
 
     const validateStep = (stepNumber) => {
         const currentStepEl = document.querySelector(`.form-step[data-step="${stepNumber}"]`);
-        const inputs = currentStepEl.querySelectorAll('input[required], select[required]');
         let isValid = true;
         
         // Simple validation for required fields, extend as needed
@@ -166,23 +165,23 @@ ocument.addEventListener('DOMContentLoaded', function() {
         const reader = new FileReader();
         reader.onload = function(e) {
             const previewItem = document.createElement('div');
-            previewItem.className = 'preview-item relative w-full pt-[100%] rounded-md overflow-hidden shadow-sm';
+            previewItem.className = 'preview_item_container';
             
             const mediaEl = file.type.startsWith('image/') ? document.createElement('img') : document.createElement('video');
             mediaEl.src = e.target.result;
-            mediaEl.className = 'absolute top-0 left-0 w-full h-full object-cover';
+            mediaEl.className = 'preview_media';
             previewItem.appendChild(mediaEl);
 
             if (file.type.startsWith('video/')) {
                  const videoIndicator = document.createElement('div');
-                 videoIndicator.className = 'absolute bottom-1 right-1 bg-black bg-opacity-50 text-white text-xs px-1.5 py-0.5 rounded';
+                 videoIndicator.className = 'preview_video_indicator';
                  videoIndicator.textContent = 'VIDEO';
                  previewItem.appendChild(videoIndicator);
             }
 
             const removeBtn = document.createElement('button');
             removeBtn.type = 'button';
-            removeBtn.className = 'remove-btn absolute top-1 right-1 bg-red-500 hover:bg-red-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs transition z-10';
+            removeBtn.className = 'preview_remove_button';
             removeBtn.innerHTML = '&times;';
             removeBtn.title = 'Remove';
             
