@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PropertyHub - Find Your Dream Property</title>
+    <title>PropDeal - Find Your Dream Property</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -38,7 +38,8 @@
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="Footer/footer.css">  <!-- Add this line -->
+    <link rel="stylesheet" href="Footer/footer.css">
+    <link rel="stylesheet" href="logindetail/login.css"> <!-- Add this line for modal styles -->
 </head>
 <body class="page_body">
 
@@ -61,7 +62,7 @@
     <header class="header">
         <div class="header_container">
             <div class="logo_wrapper">
-                <h1 class="logo">PropertyHub</h1>
+                <h1 class="logo">PropDeal</h1>
             </div>
             
             <nav class="nav_menu">
@@ -69,7 +70,8 @@
                 <button class="nav_link" data-page="listings">Properties</button>
                 <button class="nav_link" data-page="about">About Us</button>
                 <button class="nav_link" data-page="contact">Contact</button>
-                <button class="nav_link" data-page="contact">Sign In</button>
+                <!-- Modified Sign In button to trigger the modal -->
+                <button id="open-login-modal-btn" class="nav_link">Sign In</button>
             </nav>
 
             <!-- post property svg button -->
@@ -590,7 +592,6 @@
     <!-- Footer will be injected here -->
     <div id="footer-placeholder"></div>
     </div>
- 
 
     <script src="script.js"></script>
     <script src="postProperty/postProperty.js"></script>

@@ -377,7 +377,7 @@
     font-weight: 700;
     margin-bottom: 1.5rem;
     color: white;
-    filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+    filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0, 0, 0 / 0.06));
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     letter-spacing: -0.02em;
 }
@@ -406,7 +406,7 @@
     max-width: 52rem;
     margin: 0 auto;
     line-height: 1.625;
-    filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+    filter: drop-shadow(0 10px 8px rgb(0, 0, 0 / 0.04)) drop-shadow(0 4px 3px rgb(0, 0, 0 / 0.1));
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 1s ease-out 0.6s forwards;
@@ -821,10 +821,6 @@
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 1s ease-out 0.6s forwards;
-}
-
-.section_subtitle.large {
-    font-size: 1.25rem;
 }
 
 /* Carousel */
@@ -1510,4 +1506,52 @@
 .contact_card:hover {
     transform: translateY(-4px) scale(1.01);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Add this to your main CSS file */
+
+/* Keyframes for the sliding animation */
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Container to act as a viewport */
+.testimonial-carousel-container {
+  overflow: hidden;
+  padding: 2rem 0;
+  position: relative;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+}
+
+/* The slider track that holds all cards */
+.testimonial-slider {
+  display: flex;
+  /* Duplicate the content to create a seamless loop */
+  width: calc(250px * 14); /* 250px card width * 7 original cards * 2 */
+  animation: slide 60s linear infinite;
+}
+
+/* Style for individual cards in the carousel */
+.testimonial-slider .testimonial_card {
+  width: 250px; /* Or your desired card width */
+  flex-shrink: 0;
+  margin: 0 1rem;
+  transition: transform 0.3s ease;
+}
+
+/* Pause animation on hover */
+.testimonial-carousel-container:hover .testimonial-slider {
+  animation-play-state: paused;
+}
+
+/* Optional: Add a subtle hover effect to cards */
+.testimonial-slider .testimonial_card:hover {
+    transform: translateY(-10px);
 }
