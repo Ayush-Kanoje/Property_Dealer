@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../propertyList/propertyList.css"> <!-- Reusing property list styles -->
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+      <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <img src="https://via.placeholder.com/50" alt="PropertyPro Logo" class="logo">
+                <h1>PropertyPro</h1>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li class="nav-item active">
+                        <a href="#dashboard"><i class="fas fa-home"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#properties"><i class="fas fa-building"></i> My Properties</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#saved"><i class="fas fa-heart"></i> Saved Properties</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#messages"><i class="fas fa-envelope"></i> Messages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#appointments"><i class="fas fa-calendar-alt"></i> Appointments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#transactions"><i class="fas fa-money-bill-wave"></i> Transactions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#analytics"><i class="fas fa-chart-line"></i> Analytics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#settings"><i class="fas fa-cog"></i> Settings</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="user-info">
+                <img src="https://via.placeholder.com/40" alt="User Avatar" class="user-avatar">
+                <div class="user-details">
+                    <h3>Ayush Kanoje</h3>
+                    <p>Premium Agent</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header with search and notifications -->
+            <header class="header">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search properties, clients...">
+                </div>
+                <div class="header-actions">
+                    <button class="btn add-property-btn"><i class="fas fa-plus"></i> Add Property</button>
+                    <div class="notification-icon">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="messages-icon">
+                        <i class="fas fa-envelope"></i>
+                        <span class="notification-badge">5</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Overview Section -->
+            <section class="dashboard-overview">
+                <h2>Dashboard Overview</h2>
+                
+                <!-- Stats Cards -->
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-card-content">
+                            <h3>Total Properties</h3>
+                            <p class="stat-number">24</p>
+                            <p class="stat-trend positive"><i class="fas fa-arrow-up"></i> 8% from last month</p>
+                        </div>
+                        <div class="stat-icon property-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-card-content">
+                            <h3>Property Views</h3>
+                            <p class="stat-number">1,284</p>
+                            <p class="stat-trend positive"><i class="fas fa-arrow-up"></i> 12% from last month</p>
+                        </div>
+                        <div class="stat-icon views-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-card-content">
+                            <h3>Inquiries</h3>
+                            <p class="stat-number">36</p>
+                            <p class="stat-trend positive"><i class="fas fa-arrow-up"></i> 5% from last month</p>
+                        </div>
+                        <div class="stat-icon inquiries-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-card-content">
+                            <h3>Revenue</h3>
+                            <p class="stat-number">$52,500</p>
+                            <p class="stat-trend negative"><i class="fas fa-arrow-down"></i> 3% from last month</p>
+                        </div>
+                        <div class="stat-icon revenue-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Charts -->
+                <div class="charts-container">
+                    <div class="chart-card">
+                        <h3>Monthly Performance</h3>
+                        <canvas id="performanceChart"></canvas>
+                    </div>
+                    
+                    <div class="chart-card">
+                        <h3>Property Type Distribution</h3>
+                        <canvas id="propertyTypeChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Properties Section -->
+            <section class="recent-properties">
+                <div class="section-header">
+                    <h2>Recent Properties</h2>
+                    <a href="#properties" class="view-all">View All</a>
+                </div>
+                
+                <div class="property-cards">
+                    <div class="property-card">
+                        <div class="property-image">
+                            <img src="https://via.placeholder.com/300x200" alt="Modern Apartment">
+                            <span class="property-badge sale">For Sale</span>
+                            <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="property-details">
+                            <h3 class="property-title">Modern Apartment in Downtown</h3>
+                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> 123 Main St, New York</p>
+                            <div class="property-features">
+                                <span><i class="fas fa-bed"></i> 3 Beds</span>
+                                <span><i class="fas fa-bath"></i> 2 Baths</span>
+                                <span><i class="fas fa-ruler-combined"></i> 1,200 sqft</span>
+                            </div>
+                            <div class="property-price-row">
+                                <p class="property-price">$425,000</p>
+                                <button class="btn property-action-btn">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="property-card">
+                        <div class="property-image">
+                            <img src="https://via.placeholder.com/300x200" alt="Luxury Villa">
+                            <span class="property-badge rent">For Rent</span>
+                            <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="property-details">
+                            <h3 class="property-title">Luxury Villa with Pool</h3>
+                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> 456 Ocean Dr, Miami</p>
+                            <div class="property-features">
+                                <span><i class="fas fa-bed"></i> 5 Beds</span>
+                                <span><i class="fas fa-bath"></i> 4 Baths</span>
+                                <span><i class="fas fa-ruler-combined"></i> 3,500 sqft</span>
+                            </div>
+                            <div class="property-price-row">
+                                <p class="property-price">$7,500/mo</p>
+                                <button class="btn property-action-btn">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="property-card">
+                        <div class="property-image">
+                            <img src="https://via.placeholder.com/300x200" alt="Family Home">
+                            <span class="property-badge sale">For Sale</span>
+                            <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="property-details">
+                            <h3 class="property-title">Family Home in Suburbs</h3>
+                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> 789 Oak St, Chicago</p>
+                            <div class="property-features">
+                                <span><i class="fas fa-bed"></i> 4 Beds</span>
+                                <span><i class="fas fa-bath"></i> 3 Baths</span>
+                                <span><i class="fas fa-ruler-combined"></i> 2,400 sqft</span>
+                            </div>
+                            <div class="property-price-row">
+                                <p class="property-price">$580,000</p>
+                                <button class="btn property-action-btn">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Activities & Calendar Section -->
+            <div class="activity-calendar-container">
+                <!-- Recent Activities -->
+                <section class="recent-activities">
+                    <h2>Recent Activities</h2>
+                    <ul class="activity-list">
+                        <li class="activity-item">
+                            <div class="activity-icon message">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="activity-details">
+                                <p class="activity-text"><strong>John Smith</strong> sent you a message about Modern Apartment</p>
+                                <p class="activity-time">2 hours ago</p>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon view">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div class="activity-details">
+                                <p class="activity-text">Your <strong>Luxury Villa</strong> listing received 15 new views</p>
+                                <p class="activity-time">5 hours ago</p>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon appointment">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="activity-details">
+                                <p class="activity-text"><strong>Emma Johnson</strong> scheduled a viewing for Family Home</p>
+                                <p class="activity-time">Yesterday</p>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon review">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="activity-details">
+                                <p class="activity-text"><strong>Michael Brown</strong> left a 5-star review on your profile</p>
+                                <p class="activity-time">2 days ago</p>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon offer">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="activity-details">
+                                <p class="activity-text">New offer received on <strong>Modern Apartment</strong></p>
+                                <p class="activity-time">3 days ago</p>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Upcoming Appointments -->
+                <section class="upcoming-appointments">
+                    <h2>Upcoming Appointments</h2>
+                    <div class="appointment-list">
+                        <div class="appointment-item">
+                            <div class="appointment-date">
+                                <p class="day">18</p>
+                                <p class="month">Sep</p>
+                            </div>
+                            <div class="appointment-details">
+                                <h4>Property Viewing - Modern Apartment</h4>
+                                <p><i class="fas fa-user"></i> Sarah Williams</p>
+                                <p><i class="fas fa-clock"></i> 10:00 AM - 11:00 AM</p>
+                            </div>
+                            <div class="appointment-actions">
+                                <button class="btn btn-small confirm-btn">Confirm</button>
+                                <button class="btn btn-small reschedule-btn">Reschedule</button>
+                            </div>
+                        </div>
+                        
+                        <div class="appointment-item">
+                            <div class="appointment-date">
+                                <p class="day">20</p>
+                                <p class="month">Sep</p>
+                            </div>
+                            <div class="appointment-details">
+                                <h4>Client Meeting - Luxury Villa</h4>
+                                <p><i class="fas fa-user"></i> David Thompson</p>
+                                <p><i class="fas fa-clock"></i> 2:00 PM - 3:30 PM</p>
+                            </div>
+                            <div class="appointment-actions">
+                                <button class="btn btn-small confirm-btn">Confirm</button>
+                                <button class="btn btn-small reschedule-btn">Reschedule</button>
+                            </div>
+                        </div>
+                        
+                        <div class="appointment-item">
+                            <div class="appointment-date">
+                                <p class="day">22</p>
+                                <p class="month">Sep</p>
+                            </div>
+                            <div class="appointment-details">
+                                <h4>Contract Signing - Family Home</h4>
+                                <p><i class="fas fa-user"></i> James & Lisa Wilson</p>
+                                <p><i class="fas fa-clock"></i> 4:00 PM - 5:00 PM</p>
+                            </div>
+                            <div class="appointment-actions">
+                                <button class="btn btn-small confirm-btn">Confirm</button>
+                                <button class="btn btn-small reschedule-btn">Reschedule</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+
+</body>
+</html>
