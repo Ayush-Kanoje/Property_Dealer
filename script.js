@@ -95,7 +95,46 @@ const featuredProperties = [
         baths: 2,
         sqft: 1800,
         type: "Condo"
-    }
+    },
+    {
+              id: 4,
+              title: "Contemporary 3BHK — Bright & Airy",
+              price: 8500000,
+              location: "Bandra West, Mumbai",
+              image: " https://images.unsplash.com/photo-1638454668466-e8dbd5462f20?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBhcGFydG1lbnQlMjBpbnRlcmlvcnxlbnwxfHx8fDE3NTc4MDM1NDB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+              bedrooms: 3,
+              bathrooms: 2,
+              sqft: 1200,
+              type: "Apartment",
+              amenities: [],
+              tags: ["New"]
+            },
+            {
+              id: 5,
+              title: "Modern Villa with Private Garden",
+              price: 42000000,
+              location: "Whitefield, Bengaluru",
+              image: " https://images.unsplash.com/photo-1638284457192-27d3d0ec51aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb250ZW1wb3JhcnklMjBob21lJTIwbGl2aW5nJTIwcm9vbXxlbnwxfHx8fDE3NTc3NTY5MjV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+              bedrooms: 4,
+              bathrooms: 4,
+              sqft: 3000,
+              type: "Villa",
+              amenities: ["Parking", "Garden"],
+              tags: ["New", "Featured"]
+            },
+            {
+              id: 6,
+              title: "Chic 2BHK Near Metro — Ready to Move",
+              price: 6500000,
+              location: "Hauz Khas, New Delhi",
+              image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBob3VzZSUyMGV4dGVyaW9yfGVufDF8fHx8MTc1Nzg0OTU1Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+              bedrooms: 2,
+              bathrooms: 2,
+              sqft: 950,
+              type: "Apartment",
+              amenities: [],
+              tags: ["New"]
+            },
   
 ];
 
@@ -153,7 +192,7 @@ const testimonials = [
         name: "Michael Chen",
         role: "Property Investor",
         content: "I've used several property platforms, but PropertyHub stands out with its detailed listings and market insights. Highly recommend for serious buyers.",
-        rating: 5,
+        rating: 4.8,
         avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
     },
     {
@@ -163,7 +202,40 @@ const testimonials = [
         content: "The team at PropertyHub guided me through my first home purchase with patience and expertise. I couldn't have asked for better service.",
         rating: 5,
         avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
-    }
+    },
+    {
+    id: 4,
+    name: "Rajesh Verma",
+    role: "Seller",
+    content: "Listing my property on PropertyHub was quick and hassle-free. I received genuine leads within a week and closed the deal smoothly.",
+    rating: 5,
+    avatar: "https://images.unsplash.com/photo-1603415526960-f7e0328d5b9b?w=100&h=100&fit=crop&crop=face"
+},
+{
+    id: 5,
+    name: "Sophia Martinez",
+    role: "Tenant",
+    content: "I was searching for a rental flat in a new city and PropertyHub made the process so much simpler. Clear details, verified listings, and no surprises!",
+    rating: 4.2,
+    avatar: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=100&h=100&fit=crop&crop=face"
+},
+{
+    id: 6,
+    name: "Arun Nair",
+    role: "Property Agent",
+    content: "As a realtor, PropertyHub gives me a reliable platform to connect with serious buyers. The dashboard is easy to use and saves me a lot of time.",
+    rating: 5,
+    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face"
+},
+{
+    id: 7,
+    name: "Grace Williams",
+    role: "Home Buyer",
+    content: "From browsing to booking site visits, the entire experience felt seamless. PropertyHub really understands what buyers need.",
+    rating: 4.1,
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face"
+}
+
 ];
 
 const features = [
@@ -540,6 +612,43 @@ function handleContactForm(e) {
     e.target.reset();
 }
 
+// --- NEW: Testimonial Carousel Function ---
+function initializeTestimonialCarousel() {
+    const container = document.getElementById('testimonials');
+    if (!container) return;
+
+    // 1. Create the slider structure
+    container.innerHTML = `
+        <div class="testimonial-slider">
+            ${[...testimonials, ...testimonials].map(testimonial => `
+                <div class="testimonial_card bg-white rounded-lg shadow-sm border p-6">
+                    <div class="flex items-center mb-4">
+                        ${createStarRating(testimonial.rating)}
+                    </div>
+                    <p class="text-muted-foreground mb-6 italic">
+                        "${testimonial.content}"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="h-10 w-10 rounded-full bg-muted mr-3 flex items-center justify-center">
+                            <img src="${testimonial.avatar}" alt="${testimonial.name}" class="h-10 w-10 rounded-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="h-10 w-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-semibold" style="display: none;">
+                                ${testimonial.name.split(' ').map(n => n[0]).join('')}
+                            </div>
+                        </div>
+                        <div>
+                            <p class="font-semibold">${testimonial.name}</p>
+                            <p class="text-sm text-muted-foreground">${testimonial.role}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+
+    // 2. Add animation class to the container
+    container.classList.add('testimonial-carousel-container');
+}
+
 // Initialize the application
 function initializeApp() {
     // Set up navigation
@@ -596,33 +705,7 @@ function initializeApp() {
     }
     
     // Populate testimonials
-    const testimonialsContainer = document.getElementById('testimonials');
-    if (testimonialsContainer) {
-        testimonialsContainer.innerHTML = testimonials.map(testimonial => `
-            <div class="testimonial_card bg-white rounded-lg shadow-sm border p-6">
-                <div class="flex items-center mb-4">
-                    ${createStarRating(testimonial.rating)}
-                </div>
-                
-                <p class="text-muted-foreground mb-6 italic">
-                    "${testimonial.content}"
-                </p>
-                
-                <div class="flex items-center">
-                    <div class="h-10 w-10 rounded-full bg-muted mr-3 flex items-center justify-center">
-                        <img src="${testimonial.avatar}" alt="${testimonial.name}" class="h-10 w-10 rounded-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="h-10 w-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-semibold" style="display: none;">
-                            ${testimonial.name.split(' ').map(n => n[0]).join('')}
-                        </div>
-                    </div>
-                    <div>
-                        <p class="font-semibold">${testimonial.name}</p>
-                        <p class="text-sm text-muted-foreground">${testimonial.role}</p>
-                    </div>
-                </div>
-            </div>
-        `).join('');
-    }
+    initializeTestimonialCarousel();
     
     // Populate stats
     const statsContainer = document.getElementById('stats');
