@@ -146,11 +146,11 @@
 }
 
 .header_container {
-    max-width: 1280px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 1rem; /* Add padding for smaller screens */
 }
 
 .logo_wrapper {
@@ -164,6 +164,18 @@
     color: var(--primary);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* Hide desktop nav on mobile */
+.nav_menu {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .nav_menu {
+        display: flex;
+    }
+}
+
 
 /* nav menu bar */ 
 .nav_link {
@@ -223,6 +235,13 @@
     gap: 1rem;
 }
 
+/* Responsive adjustments for header actions */
+@media (max-width: 1023px) {
+    .header_actions .group {
+        display: none; /* Hide Post Property button on tablets and mobile */
+    }
+}
+
 .signin_btn {
     padding: 0.5rem 1rem;
     background-color: var(--primary);
@@ -254,7 +273,7 @@
     border: none;
     cursor: pointer;
 }
-@media (min-width: 768px) {
+@media (min-width: 1024px) { /* Show only on screens smaller than 1024px */
     .mobile_menu_btn {
         display: none;
     }
@@ -368,12 +387,27 @@
     width: 100%;
 }
 
+/* Responsive Hero Content */
+@media (max-width: 767px) {
+    .hero_content {
+        padding: 1rem 1rem 3rem 1rem; /* Reduce bottom padding on mobile */
+        justify-content: center;
+    }
+}
+
+
 .hero_text {
     margin-bottom: 3rem;
 }
 
+@media (max-width: 767px) {
+    .hero_text {
+        margin-bottom: 1.5rem; /* Less space on mobile */
+    }
+}
+
 .hero_title {
-    font-size: 3rem;
+    font-size: 2.5rem; /* Adjusted for smaller screens */
     font-weight: 700;
     margin-bottom: 1.5rem;
     color: white;
@@ -384,7 +418,13 @@
 
 @media (min-width: 768px) {
     .hero_title {
-        font-size: 4.5rem;
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero_title {
+        font-size: 2rem; /* Smaller font for small mobile */
     }
 }
 
@@ -401,354 +441,285 @@
 }
 
 .hero_subtitle {
-    font-size: 1.25rem;
+    font-size: 1.1rem; /* Adjusted for smaller screens */
     color: rgba(255, 255, 255, 0.9);
     max-width: 52rem;
     margin: 0 auto;
-    line-height: 1.625;
-    filter: drop-shadow(0 10px 8px rgb(0, 0, 0 / 0.04)) drop-shadow(0 4px 3px rgb(0, 0, 0 / 0.1));
+    line-height: 1.6;
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
     animation: fadeInUp 1s ease-out 0.6s forwards;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 @media (min-width: 768px) {
     .hero_subtitle {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
 }
 
-/* Animations used by the search container */
-@keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
+@media (max-width: 480px) {
+    .hero_subtitle {
+        font-size: 1rem; /* Smaller font for small mobile */
+        line-height: 1.5;
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
+}
+
+/* Animated Search Container */
+.search_container {
+    width: 100%;
+    max-width: 60rem; /* Increased max-width for better layout */
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out 0.8s forwards;
+}
+
+/* Main search box with backdrop blur */
+.search_box {
+    background: rgba(15, 23, 42, 0.4); /* Darker, less transparent background */
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-radius: 1rem; /* Larger border radius */
+    padding: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Tab container styling */
+.search_tabs {
+    display: flex;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 1rem;
+    overflow-x: auto; /* Allow horizontal scrolling for tabs on small screens */
+    white-space: nowrap; /* Prevent tabs from wrapping */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+     color: #ffffff;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.search_tabs::-webkit-scrollbar {
+    display: none;
+}
+
+/* Individual tab button styling */
+.tab_btn {
+    padding: 1rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.25s ease;
+    position: relative;
+    color: var(--muted-foreground);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 767px) {
+    .tab_btn {
+        padding: 0.75rem 1rem; /* Less padding on mobile tabs */
+        font-size: 0.8rem;
     }
-  }
-  
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.02); }
-    100% { transform: scale(1); }
-  }
-  
-  /* ---------- Container / Main Glass ---------- */
-  .search_container {
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 1s ease-out 0.8s forwards;
-      position: relative;
-      z-index: 30;
-  }
-  
-  /* Main search box: translucent + blur + subtle border + lift */
-  .search_box {
-      background: rgba(255, 255, 255, 0.12);      /* transparent white glass */
-      -webkit-backdrop-filter: blur(12px);         /* Safari */
-      backdrop-filter: blur(12px);                 /* blur the background behind it */
-      border-radius: 1.5rem;
-      box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.45);
-      max-width: 64rem;
-      margin: 0 auto;
-      border: 1px solid rgba(255, 255, 255, 0.18); /* soft light border */
-      transition: background 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
-  }
-  
-  /* Tabs row: subtle and semi-transparent so it blends */
-  .search_tabs {
-      display: flex;
-      overflow-x: auto;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      background-color: rgba(255, 255, 255, 0.04);
-  }
-  
-  /* Tab buttons */
-  .tab_btn {
-      padding: 1rem 1.5rem;
-      white-space: nowrap;
-      font-size: 0.875rem;
-      font-weight: 500;
-      transition: all 0.25s ease;
-      position: relative;
-      color: var(--muted-foreground);
-      background: transparent;
-      border-radius: 0.5rem;
-      border: none;
-  }
-  
-  .tab_btn:hover {
-      color: var(--primary);
-      background-color: rgba(255, 255, 255, 0.08);
-  }
-  
-  .tab_btn.active {
-      color: #dc2626;
-      background-color: rgba(255, 226, 226, 0.08);
-      border-bottom: 2px solid #dc2626;
-  }
-  
-  /* Form area remains transparent */
-  .search_form {
-      padding: 2rem;
-      background: transparent;
-  }
-  
-  /* Inputs grouping */
-  .search_inputs {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      align-items: flex-end;
-  }
-  
-  @media (min-width: 1024px) {
-      .search_inputs {
-          flex-direction: row;
-      }
-  }
-  
-  /* Location container/icon */
-  .location_container {
-      flex: 1;
-      position: relative;
-  }
-  
-  .location_icon {
-      position: absolute;
-      left: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      height: 1.25rem;
-      width: 1.25rem;
-      color: var(--muted-foreground);
-      transition: color 0.3s;
-  }
-  
-  .location_container:focus-within .location_icon {
-      color: #ef4444;
-  }
-  
-  
-  .location_input,
-  .property_type_select,
-  .budget_select {
-      width: 100%;
-      height: 3.5rem;
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 0.75rem;
-      background-color: rgba(22, 16, 16, 0.06); /* light translucent glass */
-      -webkit-backdrop-filter: blur(8px);
-      backdrop-filter: blur(8px);
-      color: #ffffff;                                /* white font color */
-      font-size: 1.125rem;
-      padding-left: 3rem; /* for .location_input; harmless for selects */
-      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: none;
-      appearance: none;
-  }
-  
-  /*focus for readability + red focus ring */
-  .location_input:focus,
-  .property_type_select:focus,
-  .budget_select:focus {
-      background: rgba(255, 255, 255, 0.12);
-      box-shadow: 0 0 0 6px rgba(239, 68, 68, 0.12); /* red focus ring */
-      border-color: rgba(255,255,255,0.22);
-      color: #fff;
-      outline: none;
-      transform: translateY(-2px);
-  }
-  
-  /* Placeholders: lighter white so they're readable but subtle */
-  .location_input::placeholder,
-  .property_type_select::placeholder,
-  .budget_select::placeholder {
-      color: rgba(255, 255, 255, 0.8);
-  }
-  
-  /* Layout widths for selects */
-  .property_type_container,
-  .budget_container {
-      width: 100%;
-  }
-  
-  @media (min-width: 1024px) {
-      .property_type_container,
-      .budget_container {
-          width: 14rem;
-      }
-  }
-  
-  /*Icons styles*/
+}
+
+.tab_btn:hover {
+    color: #ffffff;
+}
+
+.tab_btn.active {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.tab_btn:hover {
+    cursor: pointer;
+    color: red;
+}
+
+/* Form area remains transparent */
+.search_form {
+    padding: 1rem; /* Simplified padding */
+    background: transparent;
+}
+
+@media (max-width: 767px) {
+    .search_form {
+        padding: 0.5rem; /* Less padding on mobile */
+    }
+}
+
+/* Inputs grouping */
+.search_inputs {
+    display: grid;
+    grid-template-columns: 1fr; /* Default to single column for mobile */
+    gap: 1rem;
+    align-items: flex-end;
+}
+
+@media (min-width: 1024px) {
+    .search_inputs {
+        grid-template-columns: 2fr 1fr 1fr auto; /* Multi-column for desktop */
+    }
+}
+
+/* Location container/icon */
+.location_container,
+.property_type_container,
+.budget_container {
+    position: relative;
+    width: 100%;
+}
+
+.location_icon {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease; /* Add transition for smooth effect */
+}
+
+/* Add this new rule for the icon glow effect */
+.location_container:focus-within .location_icon {
+    color: #ef4444;
+    text-shadow: 0 0 8px rgba(239, 68, 68, 0.7);
+}
+
+/* Shared input styles */
+.location_input,
+.property_type_select,
+.budget_select {
+    width: 100%;
+    height: 3.5rem;
+    border: 1px solid rgba(255,255,255,0.14);
+    background-color: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+    padding-left: 3rem;
+    border-radius: 0.75rem;
+    font-size: 1.125rem;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: none;
+    appearance: none;
+}
+
+@media (max-width: 767px) {
+    .location_input,
+    .property_type_select,
+    .budget_select,
+    .select-selected {
+        height: 3rem !important; /* Smaller height for inputs on mobile */
+        font-size: 1rem !important; /* Smaller font size */
+        padding-left: 2.5rem; /* Adjust icon padding */
+    }
+}
+
+/* Placeholder text color */
+.location_input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Custom select styles */
 .custom-select {
-  position: relative;
-  width: 100%;
+    position: relative;
 }
 
 .select-selected {
-  background-color: rgba(255, 255, 255, 0.06);
-  padding: 0.875rem 1rem;
-  cursor: pointer;
-  border-radius: 0.75rem;
-  display: flex;
-  align-items: center;
-  border: 1px solid rgba(255,255,255,0.14);
-  color: #ffffff;
-  font-size: 1.125rem;
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  height: 3.5rem;
+    background-color: rgba(255, 255, 255, 0.06);
+    padding: 0.875rem 1rem;
+    cursor: pointer;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,0.14);
+    color: #ffffff;
+    font-size: 1.125rem;
+    /* -webkit-backdrop-filter: blur(8px); */
+    /* backdrop-filter: blur(8px); */
+    height: 3.5rem;
 }
 
 .select-items {
-  position: absolute;
-  background-color: #1b1c2b;
-  backdrop-filter: blur(12px);
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 99;
-  border-radius: 0.75rem;
-  margin-top: 4px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  border: 1px solid rgba(255,255,255,0.14);
+    position: absolute;
+    background-color: #0a0c1f;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid rgba(54, 24, 24, 0.1);
+    margin-top: 0.5rem;
 }
 
 .select-items div {
-  padding: 0.75rem 1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  color: #ffffff;
+    color: #ffffff;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
 
 .select-items div:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(235, 47, 47, 0.5);
 }
 
 .select-hide {
-  display: none;
+    display: none;
 }
 
 .hidden {
   display: none;
 }
 
-  /* Original red CTA */
-  .search_btn {
-      height: 3.5rem;
-      padding: 0 2.5rem;
-      background: linear-gradient(to right, #dc2626, #b91c1c);
-      border-radius: 0.75rem;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.125rem;
-      font-weight: 600;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.12), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      border: none;
-  }
-  
-  /* Red CTA hover */
-  .search_btn:hover {
-      background: linear-gradient(to right, #b91c1c, #991b1b);
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      animation: pulse 2s infinite;
-  }
-  
-  /* Glass variant for button  */
-  .search_btn.glass,
-  .white-btn,
-  .btn--light {
-      height: 3.5rem;
-      padding: 0 2.5rem;
-      background: rgba(255, 255, 255, 0.06);
-      -webkit-backdrop-filter: blur(8px);
-      backdrop-filter: blur(8px);
-      border-radius: 0.75rem;
-      color: #ffffff;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.125rem;
-      font-weight: 600;
-      border: 1px solid rgba(255,255,255,0.14);
-      transition: background 200ms ease, transform 200ms ease, border-color 200ms ease;
-  }
-  
-  /* Hover for glass buttons */
-  .search_btn.glass:hover,
-  .white-btn:hover,
-  .btn--light:hover {
-      background: rgba(255, 255, 255, 0.10);
-      transform: translateY(-2px);
-  }
-  
-  /* Icon spacing */
-  .search_icon {
-      height: 1.25rem;
-      width: 1.25rem;
-      margin-right: 0.75rem;
-  }
-  
-  /* Tab placeholder color override to white when glassified */
-  .tab_btn,
-  .tab_btn.active {
-      color: #ffffff;
-  }
-  
+/* Search button */
+.search_btn {
+    height: 3.5rem;
+    padding: 0 2.5rem;
+    background: linear-gradient(to right, #dc2626, #b91c1c);
+    color: white;
+    font-weight: 600;
+    font-size: 1.125rem;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+}
 
-  /*add a .dark class to <body> */
-  @media (prefers-color-scheme: dark) {
-    .search_box {
-      background: rgba(10, 10, 10, 0.36);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.6);
+@media (max-width: 1023px) {
+    .search_btn {
+        width: 100%; /* Full width button on tablet/mobile */
     }
-    .search_tabs {
-      border-bottom: 1px solid rgba(255,255,255,0.03);
-      background-color: rgba(255,255,255,0.02);
-    }
-    .location_input,
-    .property_type_select,
-    .budget_select {
-      background-color: rgba(255,255,255,0.04);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-    .location_input::placeholder,
-    .property_type_select::placeholder,
-    .budget_select::placeholder {
-      color: rgba(255,255,255,0.65);
-    }
-    .tab_btn { color: rgba(255,255,255,0.9); }
-    .tab_btn.active { color: #ffb3b3; }
-    .search_btn.glass,
-    .white-btn,
-    .btn--light {
-      border: 1px solid rgba(255,255,255,0.06);
-      background: rgba(255,255,255,0.04);
-    }
-  }
-  
+}
 
+@media (max-width: 767px) {
+    .search_btn {
+        height: 3rem; /* Match input height on mobile */
+        font-size: 1rem;
+    }
+}
+
+/* Red CTA hover */
+.search_btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(220, 38, 38, 0.25);
+}
+
+.search_icon {
+    font-size: 1rem;
+}
   
 /* Hero Actions */
 .hero_actions {
-    margin-top: 2rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
     opacity: 0;
+    margin-top: 50px;
     transform: translateY(30px);
     animation: fadeInUp 1s ease-out 1s forwards;
 }
@@ -884,13 +855,26 @@
 }
 
 .carousel_item {
-    flex: 0 0 33.333%;
+    flex: 0 0 100%; /* Full width on mobile */
     padding: 0 0.75rem;
+}
+
+@media (min-width: 640px) {
+    .carousel_item {
+        flex: 0 0 50%; /* Two items on small screens */
+    }
+}
+
+@media (min-width: 1024px) {
+    .carousel_item {
+        flex: 0 0 33.333%; /* Three items on larger screens */
+    }
 }
 
 @media (max-width: 768px) {
     .carousel_item {
         flex: 0 0 100%;
+        padding: 0 0.5rem;
     }
 }
 
@@ -1037,9 +1021,21 @@
     gap: 1rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
+    .filter_grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
     .filter_grid {
         grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 768px) {
+    .filter_grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -1232,6 +1228,12 @@
     gap: 2rem;
 }
 
+@media (min-width: 640px) {
+    .team_grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (min-width: 768px) {
     .team_grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1306,7 +1308,7 @@
 
 @media (min-width: 768px) {
     .form_row {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -1441,14 +1443,14 @@
 
 .quick_contact_buttons {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Stack buttons on mobile */
     gap: 1rem;
-    justify-content: center;
 }
 
 @media (min-width: 640px) {
     .quick_contact_buttons {
-        flex-direction: row;
+        flex-direction: row; /* Side-by-side on larger screens */
+        justify-content: center;
     }
 }
 

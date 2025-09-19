@@ -3,29 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PropDeal Login</title>
+    <title>PropDeal - Login & Signup</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/feather-icons"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .left-panel {
-            background-image: url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1974&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-        }
-    </style>
+ <link rel="stylesheet" href="login.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            feather.replace();
+        });
+    </script>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4 md:p-8">
+<body class="bg-black">
 
-    <div class="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 bg-black rounded-3xl overflow-hidden shadow-2xl">
+    <div class="min-h-screen grid grid-cols-1 lg:grid-cols-2">
         <!-- Left Panel -->
-        <div class="left-panel text-white p-8 md:p-12 flex flex-col justify-between order-2 lg:order-1 h-[400px] lg:h-auto">
+        <div id="left-panel" class="left-panel text-white p-8 md:p-12 flex flex-col justify-between order-2 lg:order-1 h-[400px] lg:h-auto">
             <!-- Header -->
             <div class="flex justify-between items-center">
-                <h2 class="text-xl font-bold">Featured Properties</h2>
+                <h2 id="left-panel-header" class="text-xl font-bold">Featured Properties</h2>
                 <div class="flex items-center space-x-4">
                     <button id="header-signup-btn" class="text-sm font-medium hover:text-gray-300 transition-colors">Sign Up</button>
                     <button class="text-sm font-medium px-4 py-2 border border-white rounded-full hover:bg-white hover:text-black transition-colors">List Property</button>
@@ -51,12 +47,12 @@
             </div>
         </div>
 
-        <!-- Right Panel (Login & Signup Forms) -->
-        <div class="bg-black text-white p-8 md:p-16 flex flex-col justify-center order-1 lg:order-2">
+        <!-- Right Panel (Forms) -->
+        <div class="bg-white p-8 md:p-16 flex flex-col justify-center order-1 lg:order-2">
             <!-- Form Header -->
             <div class="flex justify-between items-center mb-8">
-                <h1 class="text-2xl font-bold text-white">PropDeal</h1>
-                <div class="flex items-center space-x-2 text-sm text-gray-300 border border-gray-700 px-2 py-1 rounded-md">
+                <h1 class="text-2xl font-bold text-gray-800">PropDeal</h1>
+                <div class="flex items-center space-x-2 text-sm text-gray-600 border px-2 py-1 rounded-md">
                     <span class="text-lg">🇬🇧</span>
                     <span>EN</span>
                     <i data-feather="chevron-down" class="w-4 h-4"></i>
@@ -65,127 +61,78 @@
 
             <!-- Form Content -->
             <div class="w-full max-w-sm mx-auto">
-                <h2 id="form-title" class="text-3xl font-bold text-white">Find Your Next Property</h2>
-                <p id="form-subtitle" class="text-gray-400 mt-2 mb-8">Log in to continue your search</p>
-
                 <!-- Login Form -->
-                <form id="login-form">
-                    <div class="mb-4">
-                        <label for="email" class="text-sm font-medium text-gray-400 block mb-2">Email</label>
-                        <input type="email" id="email" name="email" class="w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition-shadow placeholder:text-gray-500" placeholder="your.email@example.com">
-                    </div>
-                    <div class="mb-4">
-                        <label for="password" class="text-sm font-medium text-gray-400 block mb-2">Password</label>
-                        <input type="password" id="password" name="password" class="w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition-shadow placeholder:text-gray-500" placeholder="••••••••">
-                    </div>
-                    <div class="text-right mb-6">
-                        <a href="#" class="text-sm text-red-500 hover:underline">Forgot password?</a>
-                    </div>
-                    <div class="flex items-center my-6">
-                        <div class="flex-grow border-t border-gray-700"></div>
-                        <span class="mx-4 text-xs text-gray-500 font-medium">or</span>
-                        <div class="flex-grow border-t border-gray-700"></div>
-                    </div>
-                    <button type="button" class="w-full flex items-center justify-center px-4 py-2.5 border border-gray-700 rounded-lg text-gray-200 font-medium hover:bg-gray-800 transition-colors mb-4">
-                        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google logo" class="w-5 h-5 mr-3">
-                        Login with Google
-                    </button>
-                    <button type="submit" class="w-full bg-red-500 text-white font-semibold py-3 rounded-lg hover:bg-red-600 transition-transform transform active:scale-95">
-                        Login
-                    </button>
-                </form>
+                <div id="login-section">
+                    <h2 class="text-3xl font-bold text-gray-900">Find Your Next Property</h2>
+                    <p class="text-gray-500 mt-2 mb-8">Log in to continue your search</p>
+                    <form id="login-form">
+                        <div class="mb-4">
+                            <label for="email" class="text-sm font-medium text-gray-600 block mb-2">Email</label>
+                            <input type="email" id="login-email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition-shadow" placeholder="your.email@example.com">
+                        </div>
+                        <div class="mb-4">
+                            <label for="password" class="text-sm font-medium text-gray-600 block mb-2">Password</label>
+                            <input type="password" id="login-password" name="password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition-shadow" placeholder="••••••••">
+                        </div>
+                        <div class="text-right mb-6">
+                            <a href="#" class="text-sm text-red-500 hover:underline">Forgot password?</a>
+                        </div>
+                        <div class="flex items-center my-6">
+                            <div class="flex-grow border-t border-gray-200"></div><span class="mx-4 text-xs text-gray-400 font-medium">or</span><div class="flex-grow border-t border-gray-200"></div>
+                        </div>
+                        <button type="button" class="w-full flex items-center justify-center px-4 py-2.5 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 transition-colors mb-4">
+                            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google logo" class="w-5 h-5 mr-3">
+                            Login with Google
+                        </button>
+                        <button type="submit" class="w-full bg-red-500 text-white font-semibold py-3 rounded-lg hover:bg-red-600 transition-transform transform active:scale-95">Login</button>
+                    </form>
+                    <p class="text-center text-sm text-gray-600 mt-8">
+                        Don't have an account? <a href="#" id="show-signup" class="text-red-500 font-medium hover:underline">Sign up</a>
+                    </p>
+                </div>
 
-                <!-- Signup Form (hidden by default) -->
-                <form id="signup-form" class="hidden">
-                     <div class="mb-4">
-                        <label for="signup-name" class="text-sm font-medium text-gray-400 block mb-2">Full Name</label>
-                        <input type="text" id="signup-name" name="signup-name" class="w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition-shadow placeholder:text-gray-500" placeholder="John Doe">
-                    </div>
-                    <div class="mb-4">
-                        <label for="signup-email" class="text-sm font-medium text-gray-400 block mb-2">Email</label>
-                        <input type="email" id="signup-email" name="signup-email" class="w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition-shadow placeholder:text-gray-500" placeholder="your.email@example.com">
-                    </div>
-                    <div class="mb-6">
-                        <label for="signup-password" class="text-sm font-medium text-gray-400 block mb-2">Password</label>
-                        <input type="password" id="signup-password" name="signup-password" class="w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition-shadow placeholder:text-gray-500" placeholder="••••••••">
-                    </div>
-                     <div class="flex items-center my-6">
-                        <div class="flex-grow border-t border-gray-700"></div>
-                        <span class="mx-4 text-xs text-gray-500 font-medium">or</span>
-                        <div class="flex-grow border-t border-gray-700"></div>
-                    </div>
-                    <button type="button" class="w-full flex items-center justify-center px-4 py-2.5 border border-gray-700 rounded-lg text-gray-200 font-medium hover:bg-gray-800 transition-colors mb-4">
-                        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google logo" class="w-5 h-5 mr-3">
-                        Sign up with Google
-                    </button>
-                    <button type="submit" class="w-full bg-red-500 text-white font-semibold py-3 rounded-lg hover:bg-red-600 transition-transform transform active:scale-95">
-                        Create Account
-                    </button>
-                </form>
-
-                <p id="login-prompt" class="text-center text-sm text-gray-400 mt-8">
-                    Don't have an account? <a href="#" id="show-signup" class="text-red-500 font-medium hover:underline">Sign up</a>
-                </p>
-                <p id="signup-prompt" class="text-center text-sm text-gray-400 mt-8 hidden">
-                    Already have an account? <a href="#" id="show-login" class="text-red-500 font-medium hover:underline">Log in</a>
-                </p>
+                <!-- Signup Form -->
+                <div id="signup-section" class="hidden">
+                    <h2 class="text-3xl font-bold text-gray-900">Create Your Account</h2>
+                    <p class="text-gray-500 mt-2 mb-8">Join PropDeal to find your dream home</p>
+                    <form id="signup-form">
+                        <div class="mb-4">
+                            <label for="fullname" class="text-sm font-medium text-gray-600 block mb-2">Full Name</label>
+                            <input type="text" id="fullname" name="fullname" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition-shadow" placeholder="John Doe">
+                        </div>
+                        <div class="mb-4">
+                            <label for="signup-email" class="text-sm font-medium text-gray-600 block mb-2">Email</label>
+                            <input type="email" id="signup-email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition-shadow" placeholder="your.email@example.com">
+                        </div>
+                        <div class="mb-4">
+                            <label for="signup-password" class="text-sm font-medium text-gray-600 block mb-2">Password</label>
+                            <input type="password" id="signup-password" name="password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition-shadow" placeholder="••••••••">
+                        </div>
+                        <div class="flex items-center my-6">
+                            <div class="flex-grow border-t border-gray-200"></div><span class="mx-4 text-xs text-gray-400 font-medium">or</span><div class="flex-grow border-t border-gray-200"></div>
+                        </div>
+                        <button type="button" class="w-full flex items-center justify-center px-4 py-2.5 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 transition-colors mb-4">
+                            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google logo" class="w-5 h-5 mr-3">
+                            Sign up with Google
+                        </button>
+                        <button type="submit" class="w-full bg-red-500 text-white font-semibold py-3 rounded-lg hover:bg-red-600 transition-transform transform active:scale-95">Create Account</button>
+                    </form>
+                    <p class="text-center text-sm text-gray-600 mt-8">
+                        Already have an account? <a href="#" id="show-login" class="text-red-500 font-medium hover:underline">Log in</a>
+                    </p>
+                </div>
 
                 <div class="flex justify-center space-x-6 mt-8">
-                    <a href="#" class="text-gray-500 hover:text-white transition-colors"><i data-feather="facebook" class="w-5 h-5"></i></a>
-                    <a href="#" class="text-gray-500 hover:text-white transition-colors"><i data-feather="twitter" class="w-5 h-5"></i></a>
-                    <a href="#" class="text-gray-500 hover:text-white transition-colors"><i data-feather="linkedin" class="w-5 h-5"></i></a>
-                    <a href="#" class="text-gray-500 hover:text-white transition-colors"><i data-feather="instagram" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-gray-600"><i data-feather="facebook" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-gray-600"><i data-feather="twitter" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-gray-600"><i data-feather="linkedin" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-gray-600"><i data-feather="instagram" class="w-5 h-5"></i></a>
                 </div>
             </div>
         </div>
     </div>
 
-    <script>
-        feather.replace();
-
-        const loginForm = document.getElementById('login-form');
-        const signupForm = document.getElementById('signup-form');
-        const showSignupLink = document.getElementById('show-signup');
-        const showLoginLink = document.getElementById('show-login');
-        const loginPrompt = document.getElementById('login-prompt');
-        const signupPrompt = document.getElementById('signup-prompt');
-        const formTitle = document.getElementById('form-title');
-        const formSubtitle = document.getElementById('form-subtitle');
-        const headerSignupButton = document.getElementById('header-signup-btn');
-
-        function switchToSignup() {
-            loginForm.classList.add('hidden');
-            loginPrompt.classList.add('hidden');
-            signupForm.classList.remove('hidden');
-            signupPrompt.classList.remove('hidden');
-            formTitle.textContent = 'Create an Account';
-            formSubtitle.textContent = 'Get started with PropDeal today';
-        }
-
-        function switchToLogin() {
-            signupForm.classList.add('hidden');
-            signupPrompt.classList.add('hidden');
-            loginForm.classList.remove('hidden');
-            loginPrompt.classList.remove('hidden');
-            formTitle.textContent = 'Find Your Next Property';
-            formSubtitle.textContent = 'Log in to continue your search';
-        }
-
-        showSignupLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            switchToSignup();
-        });
-        
-        headerSignupButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            switchToSignup();
-        });
-
-        showLoginLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            switchToLogin();
-        });
-    </script>
+    <script src="login.js"></script>
 </body>
 </html>
 

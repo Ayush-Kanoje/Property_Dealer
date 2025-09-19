@@ -1,58 +1,29 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Form validation logic
-    const loginForm = document.querySelector('.credentials-form');
-    const emailField = document.getElementById('email-field');
-    const passwordField = document.getElementById('password-field');
-    const loginButton = document.querySelector('.primary-login-button');
-    
-    loginButton.addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent actual form submission
-        
-        let isFormValid = true;
-        
-        // Validate email
-        if (!emailField.value || !emailField.value.includes('@')) {
-            emailField.style.borderColor = '#ff5a5f'; // Highlight invalid field
-            isFormValid = false;
-        } else {
-            emailField.style.borderColor = '#ddd'; // Reset border color
-        }
-        
-        // Validate password
-        if (!passwordField.value || passwordField.value.length < 6) {
-            passwordField.style.borderColor = '#ff5a5f'; // Highlight invalid field
-            isFormValid = false;
-        } else {
-            passwordField.style.borderColor = '#ddd'; // Reset border color
-        }
-        
-        if (isFormValid) {
-            // Placeholder for form submission
-            console.log('Form is valid and ready to be submitted.');
-            alert('Login successful!');
-        }
-    });
-    
-    // Slider navigation controls
-    const prevArrow = document.querySelector('.slider-arrow.prev');
-    const nextArrow = document.querySelector('.slider-arrow.next');
-    
-    prevArrow.addEventListener('click', function() {
-        console.log('Navigate to previous item.');
-        // Add functionality to navigate slider
-    });
-    
-    nextArrow.addEventListener('click', function() {
-        console.log('Navigate to next item.');
-        // Add functionality to navigate slider
-    });
-    
-    // Google Sign-In button interaction
-    const googleButton = document.querySelector('.google-signin-button');
-    
-    googleButton.addEventListener('click', function() {
-        console.log('Google Sign-In initiated.');
-        // Add Google OAuth logic here
-        alert('Redirecting to Google Sign-In...');
-    });
-});
+      feather.replace();
+
+        const loginSection = document.getElementById('login-section');
+        const signupSection = document.getElementById('signup-section');
+        const showSignupBtn = document.getElementById('show-signup');
+        const showLoginBtn = document.getElementById('show-login');
+        const headerSignupBtn = document.getElementById('header-signup-btn');
+        const leftPanel = document.getElementById('left-panel');
+        const leftPanelHeader = document.getElementById('left-panel-header');
+
+        const switchToSignup = (e) => {
+            if (e) e.preventDefault();
+            loginSection.classList.add('hidden');
+            signupSection.classList.remove('hidden');
+            leftPanel.classList.add('left-panel-signup');
+            leftPanelHeader.textContent = 'Discover Your New Home';
+        };
+
+        const switchToLogin = (e) => {
+            if (e) e.preventDefault();
+            signupSection.classList.add('hidden');
+            loginSection.classList.remove('hidden');
+            leftPanel.classList.remove('left-panel-signup');
+            leftPanelHeader.textContent = 'Featured Properties';
+        };
+
+        showSignupBtn.addEventListener('click', switchToSignup);
+        headerSignupBtn.addEventListener('click', switchToSignup);
+        showLoginBtn.addEventListener('click', switchToLogin);
