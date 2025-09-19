@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     
     // --- Stepper and Form Navigation ---
@@ -91,8 +90,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentStep++;
                 showStep(currentStep);
             } else {
-                // Submit the form
-                submitPropertyWithMedia(form);
+                // Final step - Submit the form
+                submitProperty();
             }
         }
     });
@@ -103,6 +102,37 @@ document.addEventListener('DOMContentLoaded', function() {
             showStep(currentStep);
         }
     });
+    
+    function submitProperty() {
+        const formData = new FormData(form);
+        const propertyData = {};
+        for (let [key, value] of formData.entries()) {
+            propertyData[key] = value;
+        }
+
+        // Add unique ID, timestamp, and media
+        propertyData.id = 'prop_' + Date.now();
+        propertyData.postedOn = new Date().toISOString();
+        propertyData.photos = selectedPhotos.map(f => URL.createObjectURL(f)); // Note: This is temporary. For real apps, you'd upload and store URLs.
+        propertyData.videos = selectedVideos.map(f => URL.createObjectURL(f));
+
+        // Get existing properties from localStorage or initialize an empty array
+        const existingProperties = JSON.parse(localStorage.getItem('properties')) || [];
+        
+        // Add the new property
+        existingProperties.unshift(propertyData); // Add to the beginning of the array
+        
+        // Save back to localStorage
+        localStorage.setItem('properties', JSON.stringify(existingProperties));
+
+        // For the dashboard, we'll save the user's email
+        if(propertyData.email) {
+            sessionStorage.setItem('currentUserEmail', propertyData.email);
+        }
+
+        // Show confirmation and redirect
+        showPropertyConfirmation(propertyData);
+    }
     
     showStep(currentStep); // Initialize first step
 
