@@ -8,6 +8,8 @@ feather.replace();
         const imagePanel = document.getElementById('image_panel');
         const formPanel = document.getElementById('form_panel');
         const imagePanelHeader = document.getElementById('image_panel_header');
+        const loginQuote = document.getElementById('login_quote');
+        const signupQuote = document.getElementById('signup_quote');
         
         let isTransitioning = false;
         const transitionDuration = 800;
@@ -17,8 +19,6 @@ feather.replace();
             if (isTransitioning) return;
             isTransitioning = true;
 
-            // Slide panels out (current state: signup)
-            // formPanel is on the left (order-1), imagePanel is on the right (order-2)
             formPanel.classList.add('lg:-translate-x-full');
             imagePanel.classList.add('lg:translate-x-full');
 
@@ -26,10 +26,16 @@ feather.replace();
                 // Swap content and order for login view
                 signupSection.classList.add('hidden');
                 loginSection.classList.remove('hidden');
+                
+                // Toggle quotes
+                signupQuote.classList.add('hidden');
+                loginQuote.classList.remove('hidden');
 
                 imagePanel.classList.remove('image_panel_signup', 'lg:order-2');
                 imagePanel.classList.add('image_panel_login', 'lg:order-1');
-                imagePanelHeader.textContent = 'Featured Properties';
+                
+                // Update header with highlighted text
+                imagePanelHeader.innerHTML = '<span class="text-red-500">Welcome Back</span>, Future Homeowner';
 
                 formPanel.classList.remove('lg:order-1');
                 formPanel.classList.add('lg:order-2');
@@ -37,7 +43,6 @@ feather.replace();
                 headerToggleBtn.textContent = 'Sign Up';
 
                 // Slide panels back in to their new positions
-                // The classes are removed, and the new order places them correctly.
                 formPanel.classList.remove('lg:-translate-x-full');
                 imagePanel.classList.remove('lg:translate-x-full');
                 
@@ -50,8 +55,6 @@ feather.replace();
             if (isTransitioning) return;
             isTransitioning = true;
 
-            // Slide panels out (current state: login)
-            // imagePanel is on the left (order-1), formPanel is on the right (order-2)
             imagePanel.classList.add('lg:-translate-x-full');
             formPanel.classList.add('lg:translate-x-full');
 
@@ -59,6 +62,10 @@ feather.replace();
                 // Swap content and order for signup view
                 loginSection.classList.add('hidden');
                 signupSection.classList.remove('hidden');
+                
+                // Toggle quotes
+                loginQuote.classList.add('hidden');
+                signupQuote.classList.remove('hidden');
 
                 imagePanel.classList.remove('image_panel_login', 'lg:order-1');
                 imagePanel.classList.add('image_panel_signup', 'lg:order-2');
@@ -69,8 +76,6 @@ feather.replace();
 
                 headerToggleBtn.textContent = 'Log In';
                 
-                // Slide panels back in to their new positions
-                // The classes are removed, and the new order places them correctly.
                 imagePanel.classList.remove('lg:-translate-x-full');
                 formPanel.classList.remove('lg:translate-x-full');
                 
