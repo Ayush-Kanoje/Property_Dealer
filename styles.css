@@ -637,6 +637,7 @@
     /* -webkit-backdrop-filter: blur(8px); */
     /* backdrop-filter: blur(8px); */
     height: 3.5rem;
+    width: 210px;
 }
 
 .select-items {
