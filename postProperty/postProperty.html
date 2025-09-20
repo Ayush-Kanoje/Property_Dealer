@@ -1,419 +1,645 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>List Your Property for Free | PropertyHub</title>
-    
+
     <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
     <!-- Google Fonts for a modern look -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="postProperty.css">
-<link rel="stylesheet" href="../Footer/footer.css">
-</head>
-<body>
-
-   
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="postProperty.css" />
+    <link rel="stylesheet" href="../Footer/footer.css" />
+  </head>
+  <body>
     <div id="page_container">
-        <!-- Sidebar Section -->
-        <aside id="sidebar_container">
-            <div class="sidebar_content">
-                <a href="#" class="header_class">
-                     <svg class="logo_icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                    <span class="logo_text">PropertyHub</span>
-                </a>
-                <h1 class="sidebar_title">Find the Right Person for Your Perfect Place.</h1>
-                <p class="sidebar_description">Post your property for free and connect with thousands of verified buyers and tenants today.</p>
-                <div class="features_list">
-                    <div class="feature_item">
-                        <div class="feature_icon_background"><i class="fas fa-shield feature_icon"></i></div>
-                        <div>
-                            <h3 class="feature_title">Verified Leads Only</h3>
-                            <p class="feature_description">We filter out time-wasters so you can focus on genuine enquiries.</p>
-                        </div>
-                    </div>
-                    <div class="feature_item">
-                        <div class="feature_icon_background"><i class="fas fa-rocket feature_icon"></i></div>
-                        <div>
-                            <h3 class="feature_title">Faster & More Secure</h3>
-                            <p class="feature_description">Reach a wider audience and close deals with confidence and speed.</p>
-                        </div>
-                    </div>
-                    <div class="feature_item">
-                        <div class="feature_icon_background"><i class="fas fa-mobile-screen-button feature_icon"></i></div>
-                        <div>
-                            <h3 class="feature_title">All-in-One Dashboard</h3>
-                            <p class="feature_description">Track listings, manage enquiries, and sign deals from anywhere.</p>
-                        </div>
-                    </div>
-                </div>
+      <!-- Sidebar Section -->
+      <aside id="sidebar_container">
+        <div class="sidebar_content">
+          <a href="#" class="header_class">
+            <svg
+              class="logo_icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+              ></path>
+            </svg>
+            <span class="logo_text">PropertyHub</span>
+          </a>
+          <h1 class="sidebar_title">
+            Find the Right Person for Your Perfect Place.
+          </h1>
+          <p class="sidebar_description">
+            Post your property for free and connect with thousands of verified
+            buyers and tenants today.
+          </p>
+          <div class="features_list">
+            <div class="feature_item">
+              <div class="feature_icon_background">
+                <i class="fas fa-shield feature_icon"></i>
+              </div>
+              <div>
+                <h3 class="feature_title">Verified Leads Only</h3>
+                <p class="feature_description">
+                  We filter out time-wasters so you can focus on genuine
+                  enquiries.
+                </p>
+              </div>
             </div>
-        </aside>
-
-        <!-- Main Form Section -->
-        <main id="main_content_container">
-            <!-- Background Image -->
-            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=2070&auto=format&fit=crop" alt="Modern apartment background" class="background_image">
-            <div class="background_overlay"></div>
-
-            <div class="form_wrapper">
-                <h2 class="form_title">Sell or Rent your Property for <span class="form_title_highlight">Free!</span></h2>
-                <p class="form_description">Follow these simple steps to get your property listed.</p>
-
-                <!-- Stepper -->
-                <div id="stepper_container">
-                    <div class="stepper-item active" data-step-item="1">
-                        <div class="step-counter">1</div>
-                        <div class="step-name">Details</div>
-                    </div>
-                    <div class="stepper-item" data-step-item="2">
-                        <div class="step-counter">2</div>
-                        <div class="step-name">Location</div>
-                    </div>
-                    <div class="stepper-item" data-step-item="3">
-                        <div class="step-counter">3</div>
-                        <div class="step-name">Media</div>
-                    </div>
-                    <div class="stepper-item" data-step-item="4">
-                        <div class="step-counter">4</div>
-                        <div class="step-name">Contact</div>
-                    </div>
-                </div>
-
-                <!-- Form -->
-                <form id="property-form" onsubmit="return false;">
-                    
-                    <!-- Step 1: Property Details -->
-                    <div class="form-step active" data-step="1">
-                        <h3 class="step_heading">Property Details</h3>
-                        <div class="form_fields_container">
-                            <div>
-                                <label class="form_label">You are listing this property for:</label>
-                                <div class="custom-radio">
-                                    <div>
-                                        <input type="radio" id="for-rent" name="propertyFor" value="rent" checked>
-                                        <label for="for-rent">
-                                            <i class="fa-solid fa-key"></i>
-                                            <span>Rent / Lease</span>
-                                        </label>
-                                    </div>
-                                    <div>
-                                        <input type="radio" id="for-sale" name="propertyFor" value="sale">
-                                        <label for="for-sale">
-                                            <i class="fa-solid fa-tag"></i>
-                                            <span>Sale</span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <label for="property-type" class="form_label">Property Type</label>
-                                <select id="property-type" name="propertyType" class="select_field">
-                                    <option>Select Property Type</option>
-                                    <option>Apartment / Flat</option>
-                                    <option>Independent House / Villa</option>
-                                    <option>Plot / Land</option>
-                                    <option>Commercial Space</option>
-                                    <option>PG / Hostel</option>
-                                </select>
-                            </div>
-                            <!-- Price Details -->
-                            <div>
-                                <label class="form_label">Price Details</label>
-                                <!-- Rent Price Section -->
-                                <div id="rent-price-section">
-                                    <div class="price_input_container">
-                                        <input type="number" id="rent-price" name="rent-price" placeholder="Enter Rent Amount" class="input_field">
-                                        <select id="rent-period" name="rent-period" class="select_field price_period_selector">
-                                            <option value="monthly">/ month</option>
-                                            <option value="yearly">/ year</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <!-- Sale Price Section (Initially Hidden) -->
-                                <div id="sale-price-section" style="display: none;">
-                                    <input type="number" id="sale-price" name="sale-price" placeholder="Enter Total Sale Price" class="input_field">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Step 2: Property Location -->
-                    <div class="form-step" data-step="2">
-                        <h3 class="step_heading">Property Location</h3>
-                        <div class="form_fields_container">
-                             <div>
-                                <label for="city" class="form_label">City</label>
-                                <input type="text" id="city" name="city" placeholder="e.g., Mumbai" class="input_field">
-                            </div>
-                             <div>
-                                <label for="locality" class="form_label">Locality / Area</label>
-                                <input type="text" id="locality" name="locality" placeholder="e.g., Bandra West" class="input_field">
-                            </div>
-                             <div>
-                                <label for="address" class="form_label">Building / Project Name</label>
-                                <input type="text" id="address" name="address" placeholder="e.g., Galaxy Apartments" class="input_field">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Step 3: Media Upload -->
-                    <div class="form-step" data-step="3">
-                        <h3 class="step_heading">Photos & Videos</h3>
-                         <div class="media_upload_area">
-                            <div class="media_cards_container">
-                              <!-- Photo Upload Card -->
-                              <div class="upload-card" id="photo-card">
-                                <div class="upload_card_header">
-                                  <i class="fas fa-images photo_icon"></i>
-                                  <span>Property Photos</span>
-                                </div>
-                                <div id="photo-upload-initial">
-                                  <p class="upload_card_description">Upload up to 10 photos. Good photos get 5x more responses.</p>
-                                  <input type="file" id="property-photos" multiple accept="image/*" class="hidden" style="display:none;" />
-                                  <label for="property-photos" class="upload_button photo_upload_button">Select Photos</label>
-                                </div>
-                                <div id="photo-upload-complete" style="display: none;">
-                                  <div class="photo_preview_grid" id="photo-preview"></div>
-                                  <button type="button" class="upload_button reupload_button" id="photo-reupload">
-                                    <i class="fas fa-sync-alt mr-2"></i>Change Photos
-                                  </button>
-                                </div>
-                              </div>
-                              
-                              <!-- Video Upload Card -->
-                              <div class="upload-card" id="video-card">
-                                <div class="upload_card_header">
-                                  <i class="fas fa-video video_icon"></i>
-                                  <span>Property Videos</span>
-                                </div>
-                                <div id="video-upload-initial">
-                                  <p class="upload_card_description">Upload up to 2 videos. Add a walk-through tour!</p>
-                                  <input type="file" id="property-videos" multiple accept="video/*" class="hidden" style="display:none;" />
-                                  <label for="property-videos" class="upload_button video_upload_button">Select Videos</label>
-                                </div>
-                                <div id="video-upload-complete" style="display: none;">
-                                  <div class="video_preview_grid" id="video-preview"></div>
-                                  <button type="button" class="upload_button reupload_button" id="video-reupload">
-                                    <i class="fas fa-sync-alt mr-2"></i>Change Videos
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                            
-                            <div class="progress_bar_container">
-                              <div class="progress_bar_background">
-                                <div id="upload-progress-fill" style="width: 0%"></div>
-                              </div>
-                              <p id="upload-status">Ready to upload</p>
-                            </div>
-                          </div>
-                    </div>
-                    
-                    <!-- Step 4: Personal Details -->
-                    <div class="form-step" data-step="4">
-                        <h3 class="step_heading">Your Contact Details</h3>
-                        <div class="form_fields_container">
-                            <div>
-                                <label for="user-type" class="form_label">I am the:</label>
-                                <select id="user-type" name="userType" class="select_field">
-                                    <option disabled selected>Select your role</option>
-                                    <option value="owner">Owner</option>
-                                    <option value="agent">Agent</option>
-                                    <option value="builder">Builder</option>
-                                </select>
-                            </div>
-                             <div>
-                                <label for="name" class="form_label">Full Name</label>
-                                <input type="text" id="name" name="name" placeholder="Enter Your Name" class="input_field">
-                            </div>
-                             <div>
-                                <label for="phone" class="form_label">Mobile Number</label>
-                                <div class="mobile_input_container">
-                                    <span class="country_code">IND +91</span>
-                                    <input type="tel" id="phone" name="phone" placeholder="98765 43210" class="input_field">
-                                </div>
-                            </div>
-                             <div>
-                                <label for="email" class="form_label">Email Address</label>
-                                <input type="email" id="email" name="email" placeholder="you@example.com" class="input_field">
-                            </div>
-                            <div class="whatsapp_banner">
-                                <i class="fab fa-whatsapp"></i>
-                                <p>Enter your <strong>WhatsApp No.</strong> to get instant enquiries from buyers/tenants.</p>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-
-                <!-- Navigation Buttons -->
-                <div class="navigation_buttons_container">
-                    <button id="prev-btn" class="nav_button" style="display: none;">
-                        Back
-                    </button>
-                    <button id="next-btn" class="nav_button">
-                        Next Step
-                    </button>
-                </div>
+            <div class="feature_item">
+              <div class="feature_icon_background">
+                <i class="fas fa-rocket feature_icon"></i>
+              </div>
+              <div>
+                <h3 class="feature_title">Faster & More Secure</h3>
+                <p class="feature_description">
+                  Reach a wider audience and close deals with confidence and
+                  speed.
+                </p>
+              </div>
             </div>
-        </main>
+            <div class="feature_item">
+              <div class="feature_icon_background">
+                <i class="fas fa-mobile-screen-button feature_icon"></i>
+              </div>
+              <div>
+                <h3 class="feature_title">All-in-One Dashboard</h3>
+                <p class="feature_description">
+                  Track listings, manage enquiries, and sign deals from
+                  anywhere.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Form Section -->
+      <main id="main_content_container">
+        <!-- Background Image -->
+        <img
+          src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=2070&auto=format&fit=crop"
+          alt="Modern apartment background"
+          class="background_image"
+        />
+        <div class="background_overlay"></div>
+
+        <div class="form_wrapper">
+          <h2 class="form_title">
+            Sell or Rent your Property for
+            <span class="form_title_highlight">Free!</span>
+          </h2>
+          <p class="form_description">
+            Follow these simple steps to get your property listed.
+          </p>
+
+          <!-- Stepper -->
+          <div id="stepper_container">
+            <div class="stepper-item active" data-step-item="1">
+              <div class="step-counter">1</div>
+              <div class="step-name">Details</div>
+            </div>
+            <div class="stepper-item" data-step-item="2">
+              <div class="step-counter">2</div>
+              <div class="step-name">Location</div>
+            </div>
+            <div class="stepper-item" data-step-item="3">
+              <div class="step-counter">3</div>
+              <div class="step-name">Media</div>
+            </div>
+            <div class="stepper-item" data-step-item="4">
+              <div class="step-counter">4</div>
+              <div class="step-name">Contact</div>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <form id="property-form" onsubmit="return false;">
+            <!-- Step 1: Property Details -->
+            <div class="form-step active" data-step="1">
+              <h3 class="step_heading">Property Details</h3>
+              <div class="form_fields_container">
+                <div>
+                  <label class="form_label"
+                    >You are listing this property for:</label
+                  >
+                  <div class="custom-radio">
+                    <div>
+                      <input
+                        type="radio"
+                        id="for-rent"
+                        name="propertyFor"
+                        value="rent"
+                        checked
+                      />
+                      <label for="for-rent">
+                        <i class="fa-solid fa-key"></i>
+                        <span>Rent / Lease</span>
+                      </label>
+                    </div>
+                    <div>
+                      <input
+                        type="radio"
+                        id="for-sale"
+                        name="propertyFor"
+                        value="sale"
+                      />
+                      <label for="for-sale">
+                        <i class="fa-solid fa-tag"></i>
+                        <span>Sale</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <label for="property-type" class="form_label"
+                    >Property Type</label
+                  >
+                  <select
+                    id="property-type"
+                    name="propertyType"
+                    class="select_field"
+                  >
+                    <option>Select Property Type</option>
+                    <option>Apartment / Flat</option>
+                    <option>Independent House / Villa</option>
+                    <option>Plot / Land</option>
+                    <option>Commercial Space</option>
+                    <option>PG / Hostel</option>
+                  </select>
+                </div>
+                <!-- Price Details -->
+                <div>
+                  <label class="form_label">Price Details</label>
+                  <!-- Rent Price Section -->
+                  <div id="rent-price-section">
+                    <div class="price_input_container">
+                      <input
+                        type="number"
+                        id="rent-price"
+                        name="rent-price"
+                        placeholder="Enter Rent Amount"
+                        class="input_field"
+                      />
+                      <select
+                        id="rent-period"
+                        name="rent-period"
+                        class="select_field price_period_selector"
+                      >
+                        <option value="monthly">/ month</option>
+                        <option value="yearly">/ year</option>
+                      </select>
+                    </div>
+                  </div>
+                  <!-- Sale Price Section (Initially Hidden) -->
+                  <div id="sale-price-section" style="display: none">
+                    <input
+                      type="number"
+                      id="sale-price"
+                      name="sale-price"
+                      placeholder="Enter Total Sale Price"
+                      class="input_field"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2: Property Location -->
+            <div class="form-step" data-step="2">
+              <h3 class="step_heading">Property Location</h3>
+              <div class="form_fields_container">
+                <div>
+                  <label for="city" class="form_label">City</label>
+                  <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    placeholder="e.g., Mumbai"
+                    class="input_field"
+                  />
+                </div>
+                <div>
+                  <label for="locality" class="form_label"
+                    >Locality / Area</label
+                  >
+                  <input
+                    type="text"
+                    id="locality"
+                    name="locality"
+                    placeholder="e.g., Bandra West"
+                    class="input_field"
+                  />
+                </div>
+                <div>
+                  <label for="address" class="form_label"
+                    >Building / Project Name</label
+                  >
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    placeholder="e.g., Galaxy Apartments"
+                    class="input_field"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: Media Upload -->
+            <div class="form-step" data-step="3">
+              <h3 class="step_heading">Photos & Videos</h3>
+              <div class="media_upload_area">
+                <div class="media_cards_container">
+                  <!-- Photo Upload Card -->
+                  <div class="upload-card" id="photo-card">
+                    <div class="upload_card_header">
+                      <i class="fas fa-images photo_icon"></i>
+                      <span>Property Photos</span>
+                    </div>
+                    <div id="photo-upload-initial">
+                      <p class="upload_card_description">
+                        Upload up to 10 photos. Good photos get 5x more
+                        responses.
+                      </p>
+                      <input
+                        type="file"
+                        id="property-photos"
+                        multiple
+                        accept="image/*"
+                        class="hidden"
+                        style="display: none"
+                      />
+                      <label
+                        for="property-photos"
+                        class="upload_button photo_upload_button"
+                        >Select Photos</label
+                      >
+                    </div>
+                    <div id="photo-upload-complete" style="display: none">
+                      <div class="photo_preview_grid" id="photo-preview"></div>
+                      <button
+                        type="button"
+                        class="upload_button reupload_button"
+                        id="photo-reupload"
+                      >
+                        <i class="fas fa-sync-alt mr-2"></i>Change Photos
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Video Upload Card -->
+                  <div class="upload-card" id="video-card">
+                    <div class="upload_card_header">
+                      <i class="fas fa-video video_icon"></i>
+                      <span>Property Videos</span>
+                    </div>
+                    <div id="video-upload-initial">
+                      <p class="upload_card_description">
+                        Upload up to 2 videos. Add a walk-through tour!
+                      </p>
+                      <input
+                        type="file"
+                        id="property-videos"
+                        multiple
+                        accept="video/*"
+                        class="hidden"
+                        style="display: none"
+                      />
+                      <label
+                        for="property-videos"
+                        class="upload_button video_upload_button"
+                        >Select Videos</label
+                      >
+                    </div>
+                    <div id="video-upload-complete" style="display: none">
+                      <div class="video_preview_grid" id="video-preview"></div>
+                      <button
+                        type="button"
+                        class="upload_button reupload_button"
+                        id="video-reupload"
+                      >
+                        <i class="fas fa-sync-alt mr-2"></i>Change Videos
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="progress_bar_container">
+                  <div class="progress_bar_background">
+                    <div id="upload-progress-fill" style="width: 0%"></div>
+                  </div>
+                  <p id="upload-status">Ready to upload</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4: Personal Details -->
+            <div class="form-step" data-step="4">
+              <h3 class="step_heading">Your Contact Details</h3>
+              <div class="form_fields_container">
+                <div>
+                  <label for="user-type" class="form_label">I am the:</label>
+                  <select id="user-type" name="userType" class="select_field">
+                    <option disabled selected>Select your role</option>
+                    <option value="owner">Owner</option>
+                    <option value="agent">Agent</option>
+                    <option value="builder">Builder</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="name" class="form_label">Full Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter Your Name"
+                    class="input_field"
+                  />
+                </div>
+                <div>
+                  <label for="phone" class="form_label">Mobile Number</label>
+                  <div class="mobile_input_container">
+                    <span class="country_code">IND +91</span>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      placeholder="98765 43210"
+                      class="input_field"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label for="email" class="form_label">Email Address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    class="input_field"
+                  />
+                </div>
+                <div class="whatsapp_banner">
+                  <i class="fab fa-whatsapp"></i>
+                  <p>
+                    Enter your <strong>WhatsApp No.</strong> to get instant
+                    enquiries from buyers/tenants.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <!-- Navigation Buttons -->
+          <div class="navigation_buttons_container">
+            <button id="prev-btn" class="nav_button" style="display: none">
+              Back
+            </button>
+            <button id="next-btn" class="nav_button">Next Step</button>
+          </div>
+        </div>
+      </main>
     </div>
 
     <div class="additional_content_wrapper">
-        <!-- Experience Section -->
-        <div class="section_container experience_section">
-            <h2 class="section_title">What Happens <span class="section_title_highlight">After You List?</span></h2>
-            <div class="experience_steps_container">
-                <div class="experience_step">
-                    <div class="experience_icon_wrapper"><i class="fas fa-check-double"></i></div>
-                    <h3>1. Verification</h3>
-                    <p>Our team quickly reviews your submission to ensure all details are accurate and complete.</p>
-                </div>
-                <div class="experience_step">
-                    <div class="experience_icon_wrapper"><i class="fas fa-rocket"></i></div>
-                    <h3>2. Go Live!</h3>
-                    <p>Once approved, your property listing goes live and is visible to thousands of potential buyers and tenants.</p>
-                </div>
-                <div class="experience_step">
-                    <div class="experience_icon_wrapper"><i class="fas fa-bell"></i></div>
-                    <h3>3. Receive Enquiries</h3>
-                    <p>Interested parties will contact you directly via phone, email, or WhatsApp as provided by you.</p>
-                </div>
-                <div class="experience_step">
-                    <div class="experience_icon_wrapper"><i class="fas fa-chart-line"></i></div>
-                    <h3>4. Manage Leads</h3>
-                    <p>Use your dashboard to track enquiries, manage responses, and close the deal successfully.</p>
-                </div>
+      <!-- Experience Section -->
+      <div class="section_container experience_section">
+        <h2 class="section_title">
+          What Happens
+          <span class="section_title_highlight">After You List?</span>
+        </h2>
+        <div class="experience_steps_container">
+          <div class="experience_step">
+            <div class="experience_icon_wrapper">
+              <i class="fas fa-check-double"></i>
             </div>
+            <h3>1. Verification</h3>
+            <p>
+              Our team quickly reviews your submission to ensure all details are
+              accurate and complete.
+            </p>
+          </div>
+          <div class="experience_step">
+            <div class="experience_icon_wrapper">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <h3>2. Go Live!</h3>
+            <p>
+              Once approved, your property listing goes live and is visible to
+              thousands of potential buyers and tenants.
+            </p>
+          </div>
+          <div class="experience_step">
+            <div class="experience_icon_wrapper">
+              <i class="fas fa-bell"></i>
+            </div>
+            <h3>3. Receive Enquiries</h3>
+            <p>
+              Interested parties will contact you directly via phone, email, or
+              WhatsApp as provided by you.
+            </p>
+          </div>
+          <div class="experience_step">
+            <div class="experience_icon_wrapper">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>4. Manage Leads</h3>
+            <p>
+              Use your dashboard to track enquiries, manage responses, and close
+              the deal successfully.
+            </p>
+          </div>
         </div>
+      </div>
 
-        <!-- FAQ Section -->
-        <div class="section_container faq_section">
-            <h2 class="section_title">Frequently Asked <span class="section_title_highlight">Questions</span></h2>
-            <div class="faq_container">
-                <div class="faq_item">
-                    <button class="faq_question">
-                        <span>Is it really free to list my property on PropertyHub?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq_answer">
-                        <div class="faq_answer_content">
-                            <p>Yes, absolutely! Our standard listing service for owners, agents, and builders is completely free. We believe in connecting you with the right audience without any upfront costs.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="faq_item">
-                    <button class="faq_question">
-                        <span>How long will my property listing stay active?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq_answer">
-                        <div class="faq_answer_content">
-                            <p>Your free listing remains active for 90 days. We'll send you a notification before it expires, and you can easily renew it for free from your dashboard if the property is still available.</p>
-                        </div>
-                    </div>
-                </div>
-                 <div class="faq_item">
-                    <button class="faq_question">
-                        <span>Can I edit my listing after it has been posted?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq_answer">
-                        <div class="faq_answer_content">
-                            <p>Of course! You have full control over your listing. You can log in to your PropertyHub dashboard anytime to edit details, update the price, add new photos, or change the status of your property.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="faq_item">
-                    <button class="faq_question">
-                        <span>How will interested people contact me?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq_answer">
-                        <div class="faq_answer_content">
-                            <p>Potential buyers or tenants will contact you directly using the mobile number and email address you provide in the form. We do not hide your contact details behind a paywall.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="faq_item">
-                    <button class="faq_question">
-                        <span>What kind of photos and videos should I upload?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq_answer">
-                        <div class="faq_answer_content">
-                            <p>High-quality, well-lit photos get the most attention. We recommend uploading pictures of every room, the exterior, and any special amenities. A short video walk-through can also significantly increase interest.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="faq_item">
-                    <button class="faq_question">
-                        <span>Is my contact information safe?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq_answer">
-                        <div class="faq_answer_content">
-                            <p>We take your privacy seriously. While your contact details are shared with users who show interest in your property, we have systems in place to prevent spam and misuse. We never sell your data to third parties.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="faq_item">
-                    <button class="faq_question">
-                        <span>Are the leads I receive verified?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq_answer">
-                        <div class="faq_answer_content">
-                            <p>We encourage all users to verify their profiles, and our system filters for suspicious activity. While we strive to provide high-quality leads, we always recommend you practice due diligence when interacting with potential clients.</p>
-                        </div>
-                    </div>
-                </div>
-                 <div class="faq_item">
-                    <button class="faq_question">
-                        <span>How do I mark my property as "Sold" or "Rented"?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq_answer">
-                        <div class="faq_answer_content">
-                            <p>Once you have finalized a deal, you can simply log into your dashboard and change the status of your listing to "Sold" or "Rented". This will remove it from the active search results.</p>
-                        </div>
-                    </div>
-                </div>
-                 <div class="faq_item">
-                    <button class="faq_question">
-                        <span>Can I list commercial properties as well?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq_answer">
-                        <div class="faq_answer_content">
-                            <p>Yes, you can. In the 'Property Type' dropdown during the listing process, you can select "Commercial Space" to list offices, shops, and other commercial properties.</p>
-                        </div>
-                    </div>
-                </div>
-                 <div class="faq_item">
-                    <button class="faq_question">
-                        <span>What if I need help with my listing?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq_answer">
-                        <div class="faq_answer_content">
-                            <p>Our support team is here to help! You can reach out to us through the "Contact Us" page on our website, and we'll be happy to assist you with any questions or issues you may have.</p>
-                        </div>
-                    </div>
-                </div>
+      <!-- FAQ Section -->
+      <div class="section_container faq_section">
+        <h2 class="section_title">
+          Frequently Asked
+          <span class="section_title_highlight">Questions</span>
+        </h2>
+        <div class="faq_container">
+          <div class="faq_item">
+            <button class="faq_question">
+              <span>Is it really free to list my property on PropertyHub?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq_answer">
+              <div class="faq_answer_content">
+                <p>
+                  Yes, absolutely! Our standard listing service for owners,
+                  agents, and builders is completely free. We believe in
+                  connecting you with the right audience without any upfront
+                  costs.
+                </p>
+              </div>
             </div>
+          </div>
+          <div class="faq_item">
+            <button class="faq_question">
+              <span>How long will my property listing stay active?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq_answer">
+              <div class="faq_answer_content">
+                <p>
+                  Your free listing remains active for 90 days. We'll send you a
+                  notification before it expires, and you can easily renew it
+                  for free from your dashboard if the property is still
+                  available.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="faq_item">
+            <button class="faq_question">
+              <span>Can I edit my listing after it has been posted?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq_answer">
+              <div class="faq_answer_content">
+                <p>
+                  Of course! You have full control over your listing. You can
+                  log in to your PropertyHub dashboard anytime to edit details,
+                  update the price, add new photos, or change the status of your
+                  property.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="faq_item">
+            <button class="faq_question">
+              <span>How will interested people contact me?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq_answer">
+              <div class="faq_answer_content">
+                <p>
+                  Potential buyers or tenants will contact you directly using
+                  the mobile number and email address you provide in the form.
+                  We do not hide your contact details behind a paywall.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="faq_item">
+            <button class="faq_question">
+              <span>What kind of photos and videos should I upload?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq_answer">
+              <div class="faq_answer_content">
+                <p>
+                  High-quality, well-lit photos get the most attention. We
+                  recommend uploading pictures of every room, the exterior, and
+                  any special amenities. A short video walk-through can also
+                  significantly increase interest.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="faq_item">
+            <button class="faq_question">
+              <span>Is my contact information safe?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq_answer">
+              <div class="faq_answer_content">
+                <p>
+                  We take your privacy seriously. While your contact details are
+                  shared with users who show interest in your property, we have
+                  systems in place to prevent spam and misuse. We never sell
+                  your data to third parties.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="faq_item">
+            <button class="faq_question">
+              <span>Are the leads I receive verified?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq_answer">
+              <div class="faq_answer_content">
+                <p>
+                  We encourage all users to verify their profiles, and our
+                  system filters for suspicious activity. While we strive to
+                  provide high-quality leads, we always recommend you practice
+                  due diligence when interacting with potential clients.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="faq_item">
+            <button class="faq_question">
+              <span>How do I mark my property as "Sold" or "Rented"?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq_answer">
+              <div class="faq_answer_content">
+                <p>
+                  Once you have finalized a deal, you can simply log into your
+                  dashboard and change the status of your listing to "Sold" or
+                  "Rented". This will remove it from the active search results.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="faq_item">
+            <button class="faq_question">
+              <span>Can I list commercial properties as well?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq_answer">
+              <div class="faq_answer_content">
+                <p>
+                  Yes, you can. In the 'Property Type' dropdown during the
+                  listing process, you can select "Commercial Space" to list
+                  offices, shops, and other commercial properties.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="faq_item">
+            <button class="faq_question">
+              <span>What if I need help with my listing?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq_answer">
+              <div class="faq_answer_content">
+                <p>
+                  Our support team is here to help! You can reach out to us
+                  through the "Contact Us" page on our website, and we'll be
+                  happy to assist you with any questions or issues you may have.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-    
+
     <!-- footer -->
     <div id="footer-placeholder"></div>
 
-<script src="postProperty.js"></script>
-
-</body>
+    <script src="postProperty.js"></script>
+  </body>
 </html>
-
