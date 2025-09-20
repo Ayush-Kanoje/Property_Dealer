@@ -1,599 +1,639 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PropDeal - Find Your Dream Property</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#030213',
-                        'primary-foreground': '#ffffff',
-                        secondary: '#f1f5f9',
-                        'secondary-foreground': '#030213',
-                        muted: '#ececf0',
-                        'muted-foreground': '#717182',
-                        accent: '#e9ebef',
-                        'accent-foreground': '#030213',
-                        destructive: '#d4183d',
-                        'destructive-foreground': '#ffffff',
-                        border: 'rgba(0, 0, 0, 0.1)',
-                        input: 'transparent',
-                        'input-background': '#f3f3f5',
-                        card: '#ffffff',
-                        'card-foreground': '#030213',
-                        popover: '#ffffff',
-                        'popover-foreground': '#030213',
-                        ring: '#717182',
-                    },
-                    borderRadius: {
-                        'lg': '0.625rem',
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#030213",
+              "primary-foreground": "#ffffff",
+              secondary: "#f1f5f9",
+              "secondary-foreground": "#030213",
+              muted: "#ececf0",
+              "muted-foreground": "#717182",
+              accent: "#e9ebef",
+              "accent-foreground": "#030213",
+              destructive: "#d4183d",
+              "destructive-foreground": "#ffffff",
+              border: "rgba(0, 0, 0, 0.1)",
+              input: "transparent",
+              "input-background": "#f3f3f5",
+              card: "#ffffff",
+              "card-foreground": "#030213",
+              popover: "#ffffff",
+              "popover-foreground": "#030213",
+              ring: "#717182",
+            },
+            borderRadius: {
+              lg: "0.625rem",
+            },
+          },
+        },
+      };
     </script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="Footer/footer.css">
-    <link rel="stylesheet" href="logindetail/login.css"> <!-- Add this line for modal styles -->
-</head>
-<body class="page_body">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="Footer/footer.css" />
+    <link rel="stylesheet" href="logindetail/login.css" />
+    <link rel="stylesheet" href="Page_Animation/animations.css" />
+    <!-- Add this line for modal styles -->
+  </head>
+  <body class="page_body">
+    <!-- Loading animation -->
+    <div id="loader" class="loader">
+      <figure class="iconLoaderProgress">
+        <svg class="iconLoaderProgressFirst" width="240" height="240">
+          <circle cx="120" cy="120" r="100"></circle>
+        </svg>
 
+        <svg class="iconLoaderProgressSecond" width="240" height="240">
+          <circle cx="120" cy="120" r="100"></circle>
+        </svg>
+      </figure>
+    </div>
 
-    <!-- Loading animation --> 
-<div id="loader" class="loader">
-    <figure class="iconLoaderProgress">
-      <svg class="iconLoaderProgressFirst" width="240" height="240">
-        <circle cx="120" cy="120" r="100"></circle>
-      </svg>
-  
-      <svg class="iconLoaderProgressSecond" width="240" height="240">
-        <circle cx="120" cy="120" r="100"></circle>
-      </svg>
-    </figure>
-  </div>
-
-  
     <!-- Main Navigation Header -->
     <header class="header">
-        <div class="header_container">
-            <div class="logo_wrapper">
-                <h1 class="logo">PropDeal</h1>
-            </div>
-            
-            <nav class="nav_menu">
-                <button class="nav_link active" data-page="home">Home</button>
-                <button class="nav_link" data-page="listings">Properties</button>
-                <button class="nav_link" data-page="about">About Us</button>
-                <button class="nav_link" data-page="contact">Contact</button>
-                <!-- Modified Sign In button to trigger the modal -->
-                <a href="logindetail/login.html" target="_blank"><button id="open-login-modal-btn" class="nav_link">Create Profile</button></a>
-            </nav>
-
-            <!-- post property svg button -->
-           <div class="header_actions">
-  <a
-    href="postProperty/postProperty.html"
-    class="flex justify-center gap-2 items-center mx-auto shadow-xl text-lg bg-gray-50 backdrop-blur-md lg:font-semibold isolation-auto border-gray-50 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-emerald-500 hover:text-gray-50 before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-4 py-2 overflow-hidden border-2 rounded-full group" target="_blank"
-  >
-    Post Property
-    <svg
-      class="w-8 h-8 justify-end group-hover:rotate-90 group-hover:bg-gray-50 text-gray-50 ease-linear duration-300 rounded-full border border-gray-700 group-hover:border-none p-2 rotate-45"
-      viewBox="0 0 16 19"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
-        class="fill-gray-800 group-hover:fill-gray-800"
-      ></path>
-    </svg>
-  </a>
-</div>
-
+      <div class="header_container">
+        <div class="logo_wrapper">
+          <h1 class="logo">PropDeal</h1>
         </div>
+
+        <nav class="nav_menu">
+          <button class="nav_link active" data-page="home">Home</button>
+          <button class="nav_link" data-page="listings">Properties</button>
+          <button class="nav_link" data-page="about">About Us</button>
+          <button class="nav_link" data-page="contact">Contact</button>
+          <!-- Modified Sign In button to trigger the modal -->
+          <a href="logindetail/login.html" target="_blank"
+            ><button id="open-login-modal-btn" class="nav_link">
+              Create Profile
+            </button></a
+          >
+        </nav>
+
+        <!-- post property svg button -->
+        <div class="header_actions">
+          <a
+            href="postProperty/postProperty.html"
+            class="flex justify-center gap-2 items-center mx-auto shadow-xl text-lg bg-gray-50 backdrop-blur-md lg:font-semibold isolation-auto border-gray-50 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-emerald-500 hover:text-gray-50 before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-4 py-2 overflow-hidden border-2 rounded-full group"
+            target="_blank"
+          >
+            Post Property
+            <svg
+              class="w-8 h-8 justify-end group-hover:rotate-90 group-hover:bg-gray-50 text-gray-50 ease-linear duration-300 rounded-full border border-gray-700 group-hover:border-none p-2 rotate-45"
+              viewBox="0 0 16 19"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
+                class="fill-gray-800 group-hover:fill-gray-800"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
     </header>
 
     <!-- Wrap all site content so JS can hide it while loader shows -->
     <div id="content">
-    <main>
+      <main>
         <!-- Home Page -->
         <div id="home" class="page active">
-            <!-- Enhanced Hero Section with Video -->
-            <section class="hero_section">
-                <!-- Video Background -->
-                <video 
-                    id="hero-background-video" 
-                    class="hero_video" 
-                    autoplay 
-                    muted 
-                    loop 
-                    playsinline
-                    preload="auto"
-                >
-                    <source src="assests/background_video.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                
-                <!-- Gradient Overlay -->
-                <div class="hero_overlay"></div>
-                
-                <!-- Loading State -->
-                <div id="video-loading-state" class="video_loading">
-                    <div class="loading_content">
-                        <div class="loading_spinner"></div>
-                        <p class="loading_text">Loading video...</p>
-                    </div>
-                </div>
-                
-                <!-- Video Content - Animated and Attractive -->
-                <div class="hero_content">
-                    <!-- Animated Main Heading -->
-                    <div class="hero_text">
-                        <h1 class="hero_title">
-                            <span class="hero_title_line">Find Your</span>
-                            <span class="hero_title_line accent">Dream Property</span>
-                        </h1>
-                        <p class="hero_subtitle">
-                            Turning Dreams into Addresses – Find the home that truly belongs to you.
-                        </p>
-                    </div>
+          <!-- Enhanced Hero Section with Video -->
+          <section class="hero_section">
+            <!-- Video Background -->
+            <video
+              id="hero-background-video"
+              class="hero_video"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="auto"
+            >
+              <source src="assests/background_video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
 
-                    <!-- Animated Search Container -->
-                    <div class="search_container">
-                        <div class="search_box">
-                            <!-- Navigation Tabs -->
-                            <div class="search_tabs">
-                                <button class="tab_btn active" data-tab="buy">
-                                    <i class="fas fa-home mr-2"></i>Buy
-                                </button>
-                                <button class="tab_btn" data-tab="rent">
-                                    <i class="fas fa-key mr-2"></i>Rent
-                                </button>
-                                <button class="tab_btn" data-tab="new-projects">
-                                    <i class="fas fa-building mr-2"></i>New Projects
-                                </button>
-                                <button class="tab_btn" data-tab="pg">
-                                    <i class="fas fa-bed mr-2"></i>PG
-                                </button>
-                                <button class="tab_btn" data-tab="plot">
-                                    <i class="fas fa-map mr-2"></i>Plot
-                                </button>
-                                <button class="tab_btn" data-tab="commercial">
-                                    <i class="fas fa-briefcase mr-2"></i>Commercial
-                                </button>
-                                <button class="tab_btn" data-tab="post-ad">
-                                    <i class="fas fa-plus mr-2"></i>Post Free Ad
-                                </button>
+            <!-- Gradient Overlay -->
+            <div class="hero_overlay"></div>
+
+            <!-- Loading State -->
+            <div id="video-loading-state" class="video_loading">
+              <div class="loading_content">
+                <div class="loading_spinner"></div>
+                <p class="loading_text">Loading video...</p>
+              </div>
+            </div>
+
+            <!-- Video Content - Animated and Attractive -->
+            <div class="hero_content">
+              <!-- Animated Main Heading -->
+              <div class="hero_text">
+                <h1 class="hero_title">
+                  <span class="hero_title_line">Find Your</span>
+                  <span class="hero_title_line accent">Dream Property</span>
+                </h1>
+                <p class="hero_subtitle">
+                  Turning Dreams into Addresses – Find the home that truly
+                  belongs to you.
+                </p>
+              </div>
+
+              <!-- Animated Search Container -->
+              <div class="search_container">
+                <div class="search_box">
+                  <!-- Navigation Tabs -->
+                  <div class="search_tabs">
+                    <button class="tab_btn active" data-tab="buy">
+                      <i class="fas fa-home mr-2"></i>Buy
+                    </button>
+                    <button class="tab_btn" data-tab="rent">
+                      <i class="fas fa-key mr-2"></i>Rent
+                    </button>
+                    <button class="tab_btn" data-tab="new-projects">
+                      <i class="fas fa-building mr-2"></i>New Projects
+                    </button>
+                    <button class="tab_btn" data-tab="pg">
+                      <i class="fas fa-bed mr-2"></i>PG
+                    </button>
+                    <button class="tab_btn" data-tab="plot">
+                      <i class="fas fa-map mr-2"></i>Plot
+                    </button>
+                    <button class="tab_btn" data-tab="commercial">
+                      <i class="fas fa-briefcase mr-2"></i>Commercial
+                    </button>
+                    <button class="tab_btn" data-tab="post-ad">
+                      <i class="fas fa-plus mr-2"></i>Post Free Ad
+                    </button>
+                  </div>
+
+                  <!-- Search Form -->
+                  <div class="search_form">
+                    <div class="search_inputs">
+                      <!-- Location Input -->
+                      <div class="location_container">
+                        <i class="location_icon fas fa-map-marker-alt"></i>
+                        <input
+                          type="text"
+                          placeholder="Enter City, Locality, Project"
+                          class="location_input"
+                        />
+                      </div>
+
+                      <!-- Property Type Dropdown -->
+                      <div class="property_type_container">
+                        <div class="custom-select">
+                          <div class="select-selected">
+                            <i class="fas fa-building mr-2"></i>Property Type
+                          </div>
+                          <div class="select-items select-hide">
+                            <div data-value="flat">
+                              <i class="fas fa-building mr-2"></i>Flat +1
                             </div>
-
-                            <!-- Search Form -->
-                            <div class="search_form">
-                                <div class="search_inputs">
-                                    <!-- Location Input -->
-                                    <div class="location_container">
-                                        <i class="location_icon fas fa-map-marker-alt"></i>
-                                        <input
-                                            type="text"
-                                            placeholder="Enter City, Locality, Project"
-                                            class="location_input"
-                                        />
-                                    </div>
-
-                                    <!-- Property Type Dropdown -->
-                                    <div class="property_type_container">
-                                        <div class="custom-select">
-                                            <div class="select-selected">
-                                                <i class="fas fa-building mr-2"></i>Property Type
-                                            </div>
-                                            <div class="select-items select-hide">
-                                                <div data-value="flat"><i class="fas fa-building mr-2"></i>Flat +1</div>
-                                                <div data-value="house"><i class="fas fa-home mr-2"></i>House</div>
-                                                <div data-value="plot"><i class="fas fa-map mr-2"></i>Plot</div>
-                                                <div data-value="commercial"><i class="fas fa-briefcase mr-2"></i>Commercial</div>
-                                            </div>
-                                            <select class="property_type_select hidden">
-                                                <option value="">Property Type</option>
-                                                <option value="flat">Flat +1</option>
-                                                <option value="house">House</option>
-                                                <option value="plot">Plot</option>
-                                                <option value="commercial">Commercial</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <!-- Budget Dropdown -->
-                                    <div class="budget_container">
-                                        <div class="custom-select">
-                                            <div class="select-selected">
-                                                <i class="fas fa-rupee-sign mr-2"></i>Budget
-                                            </div>
-                                            <div class="select-items select-hide">
-                                                <div data-value="0-25lac">Under ₹25 Lac</div>
-                                                <div data-value="25lac-50lac">₹25 Lac - ₹50 Lac</div>
-                                                <div data-value="50lac-1cr">₹50 Lac - ₹1 Cr</div>
-                                                <div data-value="1cr-2cr">₹1 Cr - ₹2 Cr</div>
-                                                <div data-value="2cr+">Above ₹2 Cr</div>
-                                            </div>
-                                            <select class="budget_select hidden">
-                                                <option value="">Budget</option>
-                                                <option value="0-25lac">Under ₹25 Lac</option>
-                                                <option value="25lac-50lac">₹25 Lac - ₹50 Lac</option>
-                                                <option value="50lac-1cr">₹50 Lac - ₹1 Cr</option>
-                                                <option value="1cr-2cr">₹1 Cr - ₹2 Cr</option>
-                                                <option value="2cr+">Above ₹2 Cr</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <!-- Search Button -->
-                                    <button class="search_btn">
-                                        <i class="search_icon fas fa-search"></i>
-                                        Search
-                                    </button>
-                                </div>
+                            <div data-value="house">
+                              <i class="fas fa-home mr-2"></i>House
                             </div>
+                            <div data-value="plot">
+                              <i class="fas fa-map mr-2"></i>Plot
+                            </div>
+                            <div data-value="commercial">
+                              <i class="fas fa-briefcase mr-2"></i>Commercial
+                            </div>
+                          </div>
+                          <select class="property_type_select hidden">
+                            <option value="">Property Type</option>
+                            <option value="flat">Flat +1</option>
+                            <option value="house">House</option>
+                            <option value="plot">Plot</option>
+                            <option value="commercial">Commercial</option>
+                          </select>
                         </div>
-                    </div>
+                      </div>
 
-                    <!-- Floating Action Buttons -->
-                    <div class="hero_actions">
-                        <button class="action_btn">
-                            <i class="fas fa-calculator mr-2"></i>EMI Calculator
-                        </button>
-                        <button class="action_btn">
-                            <i class="fas fa-chart-line mr-2"></i>Market Trends
-                        </button>
-                        <button class="action_btn">
-                            <i class="fas fa-phone mr-2"></i>Contact Agent
-                        </button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Featured Properties Section -->
-            <section class="properties_section">
-                <div class="container">
-                    <div class="section_header">
-                        <h2 class="section_title">Featured Properties</h2>
-                        <p class="section_subtitle">
-                            Discover our handpicked selection of premium properties available for sale and rent
-                        </p>
-                    </div>
-                    
-                    <div class="property_grid" id="featuredProperties">
-                        <!-- Featured properties will be populated by JavaScript -->
-                    </div>
-                </div>
-            </section>
-
-                        <!-- Features Section - Moved Outside Video -->
-                        <section class="features_section">
-                            <div class="container">
-                                <div class="section_header">
-                                    <h2 class="section_title">
-                                        <span class="title_part">Explore Our</span>
-                                        <span class="title_part accent">Features</span>
-                                    </h2>
-                                    <p class="section_subtitle">
-                                        Discover powerful tools and services designed to make your property journey seamless and successful
-                                    </p>
-                                </div>
-            
-                                <!-- Features Carousel -->
-                                <div class="carousel_wrapper">
-                                    <div class="carousel_nav">
-                                        <div class="nav_buttons">
-                                            <button id="prevFeature" class="nav_prev_btn">
-                                                <i class="fas fa-chevron-left"></i>
-                                            </button>
-                                            <button id="nextFeature" class="nav_next_btn">
-                                                <i class="fas fa-chevron-right"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-            
-                                    <div class="carousel_container">
-                                        <div id="features-carousel-track" class="carousel_track">
-                                            <!-- Feature cards will be populated by JavaScript -->
-                                        </div>
-                                    </div>
-            
-                                    Pagination Dots
-                                    <div class="pagination_dots">
-                                        <button class="pagination_dot active"></button>
-                                        <button class="pagination_dot"></button>
-                                    </div>
-                                </div>
+                      <!-- Budget Dropdown -->
+                      <div class="budget_container">
+                        <div class="custom-select">
+                          <div class="select-selected">
+                            <i class="fas fa-rupee-sign mr-2"></i>Budget
+                          </div>
+                          <div class="select-items select-hide">
+                            <div data-value="0-25lac">Under ₹25 Lac</div>
+                            <div data-value="25lac-50lac">
+                              ₹25 Lac - ₹50 Lac
                             </div>
-                        </section>
+                            <div data-value="50lac-1cr">₹50 Lac - ₹1 Cr</div>
+                            <div data-value="1cr-2cr">₹1 Cr - ₹2 Cr</div>
+                            <div data-value="2cr+">Above ₹2 Cr</div>
+                          </div>
+                          <select class="budget_select hidden">
+                            <option value="">Budget</option>
+                            <option value="0-25lac">Under ₹25 Lac</option>
+                            <option value="25lac-50lac">
+                              ₹25 Lac - ₹50 Lac
+                            </option>
+                            <option value="50lac-1cr">₹50 Lac - ₹1 Cr</option>
+                            <option value="1cr-2cr">₹1 Cr - ₹2 Cr</option>
+                            <option value="2cr+">Above ₹2 Cr</option>
+                          </select>
+                        </div>
+                      </div>
 
-            <!-- Reviews Section -->
-            <section class="testimonials_section">
-                <div class="container">
-                    <div class="section_header">
-                        <h2 class="section_title">What Our Clients say about us</h2>
-                        <p class="section_subtitle">
-                            Hear from satisfied customers who found their perfect properties with us
-                        </p>
+                      <!-- Search Button -->
+                      <button class="search_btn">
+                        <i class="search_icon fas fa-search"></i>
+                        Search
+                      </button>
                     </div>
-                    
-                    <div class="testimonial_grid" id="testimonials">
-                        <!-- Reviews will be populated by JavaScript -->
-                    </div>
+                  </div>
                 </div>
-            </section>
+              </div>
+
+              <!-- Floating Action Buttons -->
+              <div class="hero_actions">
+                <button class="action_btn">
+                  <i class="fas fa-calculator mr-2"></i>EMI Calculator
+                </button>
+                <button class="action_btn">
+                  <i class="fas fa-chart-line mr-2"></i>Market Trends
+                </button>
+                <button class="action_btn">
+                  <i class="fas fa-phone mr-2"></i>Contact Agent
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Featured Properties Section -->
+          <section class="properties_section">
+            <div class="container">
+              <div class="section_header">
+                <h2 class="section_title">Featured Properties</h2>
+                <p class="section_subtitle">
+                  Discover our handpicked selection of premium properties
+                  available for sale and rent
+                </p>
+              </div>
+
+              <div class="property_grid" id="featuredProperties">
+                <!-- Featured properties will be populated by JavaScript -->
+              </div>
+            </div>
+          </section>
+
+          <!-- Features Section - Moved Outside Video -->
+          <section class="features_section">
+            <div class="container">
+              <div class="section_header">
+                <h2 class="section_title">
+                  <span class="title_part">Explore Our</span>
+                  <span class="title_part accent">Features</span>
+                </h2>
+                <p class="section_subtitle">
+                  Discover powerful tools and services designed to make your
+                  property journey seamless and successful
+                </p>
+              </div>
+
+              <!-- Features Carousel -->
+              <div class="carousel_wrapper">
+                <div class="carousel_nav">
+                  <div class="nav_buttons">
+                    <button id="prevFeature" class="nav_prev_btn">
+                      <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="nextFeature" class="nav_next_btn">
+                      <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="carousel_container">
+                  <div id="features-carousel-track" class="carousel_track">
+                    <!-- Feature cards will be populated by JavaScript -->
+                  </div>
+                </div>
+
+                Pagination Dots
+                <div class="pagination_dots">
+                  <button class="pagination_dot active"></button>
+                  <button class="pagination_dot"></button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Reviews Section -->
+          <section class="testimonials_section">
+            <div class="container">
+              <div class="section_header">
+                <h2 class="section_title">What Our Clients say about us</h2>
+                <p class="section_subtitle">
+                  Hear from satisfied customers who found their perfect
+                  properties with us
+                </p>
+              </div>
+
+              <div class="testimonial_grid" id="testimonials">
+                <!-- Reviews will be populated by JavaScript -->
+              </div>
+            </div>
+          </section>
         </div>
 
         <!-- Property Listings Page -->
         <div id="listings" class="page">
-            <section class="listings_section">
-                <div class="container">
-                    <div class="section_header">
-                        <h1 class="section_title">Property Listings</h1>
-                        <p class="section_subtitle">
-                            Browse our extensive collection of properties available for sale and rent
-                        </p>
-                    </div>
+          <section class="listings_section">
+            <div class="container">
+              <div class="section_header">
+                <h1 class="section_title">Property Listings</h1>
+                <p class="section_subtitle">
+                  Browse our extensive collection of properties available for
+                  sale and rent
+                </p>
+              </div>
 
-                    <!-- Filters -->
-                    <div class="filter_container">
-                        <div class="filter_grid">
-                            <div class="filter_item">
-                                <label class="filter_label">Location</label>
-                                <input
-                                    type="text"
-                                    placeholder="Enter location..."
-                                    id="locationFilter"
-                                    class="filter_input"
-                                />
-                            </div>
-                            
-                            <div class="filter_item">
-                                <label class="filter_label">Property Type</label>
-                                <select id="typeFilter" class="filter_select">
-                                    <option value="all">All Types</option>
-                                    <option value="house">House</option>
-                                    <option value="apartment">Apartment</option>
-                                    <option value="condo">Condo</option>
-                                    <option value="commercial">Commercial</option>
-                                </select>
-                            </div>
-                            
-                            <div class="filter_item">
-                                <label class="filter_label">Price Range</label>
-                                <select id="priceFilter" class="filter_select">
-                                    <option value="all">All Prices</option>
-                                    <option value="0-200k">$0 - $200k</option>
-                                    <option value="200k-500k">$200k - $500k</option>
-                                    <option value="500k-1m">$500k - $1M</option>
-                                    <option value="1m+">$1M+</option>
-                                </select>
-                            </div>
-                            
-                            <div class="filter_action">
-                                <button id="applyFilters" class="apply_filter_btn">
-                                    <i class="filter_icon fas fa-filter"></i>
-                                    Apply Filters
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+              <!-- Filters -->
+              <div class="filter_container">
+                <div class="filter_grid">
+                  <div class="filter_item">
+                    <label class="filter_label">Location</label>
+                    <input
+                      type="text"
+                      placeholder="Enter location..."
+                      id="locationFilter"
+                      class="filter_input"
+                    />
+                  </div>
 
-                    <!-- Properties Grid -->
-                    <div class="property_grid" id="propertyListings">
-                        <!-- Properties will be populated by JavaScript -->
-                    </div>
+                  <div class="filter_item">
+                    <label class="filter_label">Property Type</label>
+                    <select id="typeFilter" class="filter_select">
+                      <option value="all">All Types</option>
+                      <option value="house">House</option>
+                      <option value="apartment">Apartment</option>
+                      <option value="condo">Condo</option>
+                      <option value="commercial">Commercial</option>
+                    </select>
+                  </div>
 
-                    <div id="noResults" class="no_results hidden">
-                        <p class="no_results_text">No properties found matching your criteria.</p>
-                        <button id="clearFilters" class="clear_filters_btn">
-                            Clear Filters
-                        </button>
-                    </div>
+                  <div class="filter_item">
+                    <label class="filter_label">Price Range</label>
+                    <select id="priceFilter" class="filter_select">
+                      <option value="all">All Prices</option>
+                      <option value="0-200k">$0 - $200k</option>
+                      <option value="200k-500k">$200k - $500k</option>
+                      <option value="500k-1m">$500k - $1M</option>
+                      <option value="1m+">$1M+</option>
+                    </select>
+                  </div>
+
+                  <div class="filter_action">
+                    <button id="applyFilters" class="apply_filter_btn">
+                      <i class="filter_icon fas fa-filter"></i>
+                      Apply Filters
+                    </button>
+                  </div>
                 </div>
-            </section>
+              </div>
+
+              <!-- Properties Grid -->
+              <div class="property_grid" id="propertyListings">
+                <!-- Properties will be populated by JavaScript -->
+              </div>
+
+              <div id="noResults" class="no_results hidden">
+                <p class="no_results_text">
+                  No properties found matching your criteria.
+                </p>
+                <button id="clearFilters" class="clear_filters_btn">
+                  Clear Filters
+                </button>
+              </div>
+            </div>
+          </section>
         </div>
 
         <!-- About Us Page -->
         <div id="about" class="page">
-            <div class="about_section">
-                <div class="container">
-                    <!-- Hero Section -->
-                    <div class="section_header">
-                        <h1 class="section_title">About PropertyHub</h1>
-                        <p class="section_subtitle large">
-                            For over 15 years, PropertyHub has been connecting people with their perfect properties. 
-                            We're more than just a real estate company – we're your trusted partners in finding home.
-                        </p>
-                    </div>
+          <div class="about_section">
+            <div class="container">
+              <!-- Hero Section -->
+              <div class="section_header">
+                <h1 class="section_title">About PropertyHub</h1>
+                <p class="section_subtitle large">
+                  For over 15 years, PropertyHub has been connecting people with
+                  their perfect properties. We're more than just a real estate
+                  company – we're your trusted partners in finding home.
+                </p>
+              </div>
 
-                    <!-- Mission Section -->
-                    <div class="mission_container">
-                        <div class="mission_text">
-                            <h2 class="mission_title">Our Mission</h2>
-                            <p class="mission_desc">
-                                At PropertyHub, we believe that finding the right property should be an exciting journey, 
-                                not a stressful experience. Our mission is to simplify the real estate process through 
-                                innovative technology, expert guidance, and personalized service.
-                            </p>
-                            <p class="mission_desc">
-                                We're committed to transparency, integrity, and delivering exceptional results for every 
-                                client. Whether you're buying your first home, upgrading to a larger space, or investing 
-                                in commercial property, we're here to make your real estate dreams a reality.
-                            </p>
-                        </div>
-                        <div class="mission_image">
-                            <div class="image_placeholder">
-                                <i class="fas fa-building"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Stats Section -->
-                    <div class="stats_grid" id="stats">
-                        <!-- Stats will be populated by JavaScript -->
-                    </div>
-
-                    <!-- Values Section -->
-                    <div class="values_container">
-                        <h2 class="values_title">Our Values</h2>
-                        <div class="values_grid" id="values">
-                            <!-- Values will be populated by JavaScript -->
-                        </div>
-                    </div>
-
-                    <!-- Team Section -->
-                    <div class="team_container">
-                        <h2 class="team_title">Meet Our Team</h2>
-                        <div class="team_grid" id="team">
-                            <!-- Team members will be populated by JavaScript -->
-                        </div>
-                    </div>
+              <!-- Mission Section -->
+              <div class="mission_container">
+                <div class="mission_text">
+                  <h2 class="mission_title">Our Mission</h2>
+                  <p class="mission_desc">
+                    At PropertyHub, we believe that finding the right property
+                    should be an exciting journey, not a stressful experience.
+                    Our mission is to simplify the real estate process through
+                    innovative technology, expert guidance, and personalized
+                    service.
+                  </p>
+                  <p class="mission_desc">
+                    We're committed to transparency, integrity, and delivering
+                    exceptional results for every client. Whether you're buying
+                    your first home, upgrading to a larger space, or investing
+                    in commercial property, we're here to make your real estate
+                    dreams a reality.
+                  </p>
                 </div>
+                <div class="mission_image">
+                  <div class="image_placeholder">
+                    <i class="fas fa-building"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Stats Section -->
+              <div class="stats_grid" id="stats">
+                <!-- Stats will be populated by JavaScript -->
+              </div>
+
+              <!-- Values Section -->
+              <div class="values_container">
+                <h2 class="values_title">Our Values</h2>
+                <div class="values_grid" id="values">
+                  <!-- Values will be populated by JavaScript -->
+                </div>
+              </div>
+
+              <!-- Team Section -->
+              <div class="team_container">
+                <h2 class="team_title">Meet Our Team</h2>
+                <div class="team_grid" id="team">
+                  <!-- Team members will be populated by JavaScript -->
+                </div>
+              </div>
             </div>
+          </div>
         </div>
 
         <!-- Contact Page -->
         <div id="contact" class="page">
-            <div class="contact_section">
-                <div class="container">
-                    <!-- Header -->
-                    <div class="section_header">
-                        <h1 class="section_title">Contact Us</h1>
-                        <p class="section_subtitle large">
-                            Ready to find your dream property? Get in touch with our expert team today. 
-                            We're here to help you every step of the way.
-                        </p>
+          <div class="contact_section">
+            <div class="container">
+              <!-- Header -->
+              <div class="section_header">
+                <h1 class="section_title">Contact Us</h1>
+                <p class="section_subtitle large">
+                  Ready to find your dream property? Get in touch with our
+                  expert team today. We're here to help you every step of the
+                  way.
+                </p>
+              </div>
+
+              <div class="contact_container">
+                <!-- Contact Form -->
+                <div class="form_container">
+                  <h2 class="form_title">Send us a Message</h2>
+                  <form id="contactForm" class="contact_form">
+                    <div class="form_row">
+                      <div class="form_group">
+                        <label for="name" class="form_label">Full Name *</label>
+                        <input
+                          type="text"
+                          id="name"
+                          name="name"
+                          required
+                          class="form_input"
+                        />
+                      </div>
+                      <div class="form_group">
+                        <label for="email" class="form_label"
+                          >Email Address *</label
+                        >
+                        <input
+                          type="email"
+                          id="email"
+                          name="email"
+                          required
+                          class="form_input"
+                        />
+                      </div>
                     </div>
 
-                    <div class="contact_container">
-                        <!-- Contact Form -->
-                        <div class="form_container">
-                            <h2 class="form_title">Send us a Message</h2>
-                            <form id="contactForm" class="contact_form">
-                                <div class="form_row">
-                                    <div class="form_group">
-                                        <label for="name" class="form_label">Full Name *</label>
-                                        <input
-                                            type="text"
-                                            id="name"
-                                            name="name"
-                                            required
-                                            class="form_input"
-                                        />
-                                    </div>
-                                    <div class="form_group">
-                                        <label for="email" class="form_label">Email Address *</label>
-                                        <input
-                                            type="email"
-                                            id="email"
-                                            name="email"
-                                            required
-                                            class="form_input"
-                                        />
-                                    </div>
-                                </div>
-
-                                <div class="form_row">
-                                    <div class="form_group">
-                                        <label for="phone" class="form_label">Phone Number</label>
-                                        <input
-                                            type="tel"
-                                            id="phone"
-                                            name="phone"
-                                            class="form_input"
-                                        />
-                                    </div>
-                                    <div class="form_group">
-                                        <label for="subject" class="form_label">Subject *</label>
-                                        <input
-                                            type="text"
-                                            id="subject"
-                                            name="subject"
-                                            required
-                                            class="form_input"
-                                        />
-                                    </div>
-                                </div>
-
-                                <div class="form_group">
-                                    <label for="message" class="form_label">Message *</label>
-                                    <textarea
-                                        id="message"
-                                        name="message"
-                                        rows="6"
-                                        placeholder="Tell us about your property needs or ask any questions..."
-                                        required
-                                        class="form_textarea"
-                                    ></textarea>
-                                </div>
-
-                                <button type="submit" class="submit_btn">
-                                    Send Message
-                                </button>
-                            </form>
-                        </div>
-
-                        <!-- Contact Information -->
-                        <div class="contact_info_container">
-                            <div class="info_header">
-                                <h2 class="info_title">Get in Touch</h2>
-                                <p class="info_desc">
-                                    Whether you're looking to buy, sell, or rent, our experienced team is ready to assist you. 
-                                    Contact us through any of the methods below or visit our office.
-                                </p>
-                            </div>
-
-                            <div class="info_items" id="contactInfo">
-                                <!-- Contact info will be populated by JavaScript -->
-                            </div>
-
-                            <!-- Map Placeholder -->
-                            <div class="map_container">
-                                <div class="map_placeholder">
-                                    <div class="map_content">
-                                        <i class="map_icon fas fa-map-marker-alt"></i>
-                                        <p class="map_text">Interactive Map</p>
-                                        <p class="map_address">
-                                            123 Real Estate Blvd, Los Angeles, CA 90210
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="form_row">
+                      <div class="form_group">
+                        <label for="phone" class="form_label"
+                          >Phone Number</label
+                        >
+                        <input
+                          type="tel"
+                          id="phone"
+                          name="phone"
+                          class="form_input"
+                        />
+                      </div>
+                      <div class="form_group">
+                        <label for="subject" class="form_label"
+                          >Subject *</label
+                        >
+                        <input
+                          type="text"
+                          id="subject"
+                          name="subject"
+                          required
+                          class="form_input"
+                        />
+                      </div>
                     </div>
 
-                    <!-- Quick Contact Section -->
-                    <div class="quick_contact">
-                        <h2 class="quick_contact_title">Need Immediate Assistance?</h2>
-                        <p class="quick_contact_desc">
-                            For urgent property inquiries or to schedule a viewing, call us directly or send us an email.
-                        </p>
-                        <div class="quick_contact_buttons">
-                            <button class="call_btn">
-                                <i class="call_icon fas fa-phone"></i>
-                                Call Now: +(555) 123-4567
-                            </button>
-                            <button class="email_btn">
-                                <i class="email_icon fas fa-envelope"></i>
-                                info@propertyhub.com
-                            </button>
-                        </div>
+                    <div class="form_group">
+                      <label for="message" class="form_label">Message *</label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        rows="6"
+                        placeholder="Tell us about your property needs or ask any questions..."
+                        required
+                        class="form_textarea"
+                      ></textarea>
                     </div>
+
+                    <button type="submit" class="submit_btn">
+                      Send Message
+                    </button>
+                  </form>
                 </div>
-            </div>
-        </div>
-    </main>
 
-    <!-- Footer will be injected here -->
-    <div id="footer-placeholder"></div>
+                <!-- Contact Information -->
+                <div class="contact_info_container">
+                  <div class="info_header">
+                    <h2 class="info_title">Get in Touch</h2>
+                    <p class="info_desc">
+                      Whether you're looking to buy, sell, or rent, our
+                      experienced team is ready to assist you. Contact us
+                      through any of the methods below or visit our office.
+                    </p>
+                  </div>
+
+                  <div class="info_items" id="contactInfo">
+                    <!-- Contact info will be populated by JavaScript -->
+                  </div>
+
+                  <!-- Map Placeholder -->
+                  <div class="map_container">
+                    <div class="map_placeholder">
+                      <div class="map_content">
+                        <i class="map_icon fas fa-map-marker-alt"></i>
+                        <p class="map_text">Interactive Map</p>
+                        <p class="map_address">
+                          123 Real Estate Blvd, Los Angeles, CA 90210
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick Contact Section -->
+              <div class="quick_contact">
+                <h2 class="quick_contact_title">Need Immediate Assistance?</h2>
+                <p class="quick_contact_desc">
+                  For urgent property inquiries or to schedule a viewing, call
+                  us directly or send us an email.
+                </p>
+                <div class="quick_contact_buttons">
+                  <button class="call_btn">
+                    <i class="call_icon fas fa-phone"></i>
+                    Call Now: +(555) 123-4567
+                  </button>
+                  <button class="email_btn">
+                    <i class="email_icon fas fa-envelope"></i>
+                    info@propertyhub.com
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer will be injected here -->
+      <div id="footer-placeholder"></div>
     </div>
 
     <script src="script.js"></script>
     <script src="postProperty/postProperty.js"></script>
-</body>
+    <script src="Page_Animation/animations.js"></script>
+  </body>
 </html>

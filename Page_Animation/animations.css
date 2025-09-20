@@ -1,0 +1,91 @@
+/* Basic Animations for PropDeal Website */
+
+/* Page transitions */
+.page-exit {
+  animation: slideOutLeft 0.6s forwards ease-in-out;
+}
+
+.page-enter {
+  animation: slideInRight 0.6s forwards ease-in-out;
+}
+
+/* Scroll animation base */
+.animate-scroll {
+  opacity: 0;
+  transition-duration: 0.8s;
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1.0);
+  transition-property: opacity, transform;
+}
+
+/* Visible state */
+.animate-scroll.visible {
+  opacity: 1;
+}
+
+/* Animation effects */
+.fade-in.visible {
+  opacity: 1;
+}
+
+.fade-up {
+  transform: translateY(40px);
+}
+.fade-up.visible {
+  transform: translateY(0);
+}
+
+.fade-down {
+  transform: translateY(-40px);
+}
+.fade-down.visible {
+  transform: translateY(0);
+}
+
+.fade-left {
+  transform: translateX(-40px);
+}
+.fade-left.visible {
+  transform: translateX(0);
+}
+
+.fade-right {
+  transform: translateX(40px);
+}
+.fade-right.visible {
+  transform: translateX(0);
+}
+
+.zoom-in {
+  transform: scale(0.85);
+}
+.zoom-in.visible {
+  transform: scale(1);
+}
+
+/* Animation keyframes */
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Make sure scrolling is smooth */
+html {
+  scroll-behavior: smooth;
+}
