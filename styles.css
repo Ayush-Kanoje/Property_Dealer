@@ -1227,51 +1227,6 @@
 .team_grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
-}
-
-@media (min-width: 640px) {
-  .team_grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 768px) {
-  .team_grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .team_grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-/* Team Card */
-.team_card {
-  background-color: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e5e7eb;
-  text-align: center;
-  padding: 1.5rem;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.team_card:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-
-/* Contact Page */
-.contact_section {
-  padding: 4rem 1rem;
-}
-
-.contact_container {
-  display: grid;
-  grid-template-columns: 1fr;
   gap: 3rem;
   margin-bottom: 4rem;
 }

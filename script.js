@@ -416,28 +416,45 @@ function createStarRating(rating) {
 
 // Navigation functions
 function showPage(pageId) {
-  // Hide all pages
-  document.querySelectorAll(".page").forEach((page) => {
-    page.classList.remove("active");
-  });
-
-  // Show selected page
-  const targetPage = document.getElementById(pageId);
-  if (targetPage) {
-    targetPage.classList.add("active");
-  }
-
-  // Update navigation
-  document.querySelectorAll(".nav_link").forEach((item) => {
-    item.classList.remove("active");
-  });
-
-  const activeNavItem = document.querySelector(`[data-page="${pageId}"]`);
-  if (activeNavItem) {
-    activeNavItem.classList.add("active");
-  }
-
+  const prevPageId = currentPage;
   currentPage = pageId;
+  
+  // If animation function exists, use it
+  if (window.animatePageTransition) {
+    window.animatePageTransition(prevPageId, pageId).then(() => {
+      // Update navigation
+      document.querySelectorAll(".nav_link").forEach((item) => {
+        item.classList.remove("active");
+      });
+      
+      const activeNavItem = document.querySelector(`[data-page="${pageId}"]`);
+      if (activeNavItem) {
+        activeNavItem.classList.add("active");
+      }
+      
+      // Scroll to top
+      window.scrollTo(0, 0);
+    });
+  } else {
+    // Fallback if no animations
+    document.querySelectorAll(".page").forEach((page) => {
+      page.classList.remove("active");
+    });
+
+    const targetPage = document.getElementById(pageId);
+    if (targetPage) {
+      targetPage.classList.add("active");
+    }
+
+    document.querySelectorAll(".nav_link").forEach((item) => {
+      item.classList.remove("active");
+    });
+
+    const activeNavItem = document.querySelector(`[data-page="${pageId}"]`);
+    if (activeNavItem) {
+      activeNavItem.classList.add("active");
+    }
+  }
 }
 
 // Property functions
