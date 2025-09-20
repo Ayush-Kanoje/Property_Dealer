@@ -71,7 +71,7 @@ const featuredProperties = [
     beds: 4,
     baths: 3,
     sqft: 2500,
-    type: "buy"
+    type: "buy",
   },
   {
     id: 2,
@@ -83,7 +83,7 @@ const featuredProperties = [
     beds: 2,
     baths: 2,
     sqft: 1200,
-    type: "buy"
+    type: "buy",
   },
   {
     id: 3,
@@ -95,7 +95,7 @@ const featuredProperties = [
     beds: 3,
     baths: 2,
     sqft: 1800,
-    type: "buy"
+    type: "buy",
   },
   {
     id: 4,
@@ -109,7 +109,7 @@ const featuredProperties = [
     sqft: 1200,
     type: "new project",
     amenities: [],
-    tags: ["New"]
+    tags: ["New"],
   },
   {
     id: 5,
@@ -123,7 +123,7 @@ const featuredProperties = [
     sqft: 3000,
     type: "buy",
     amenities: ["Parking", "Garden"],
-    tags: ["New", "Featured"]
+    tags: ["New", "Featured"],
   },
   {
     id: 6,
@@ -137,9 +137,8 @@ const featuredProperties = [
     sqft: 950,
     type: "buy",
     amenities: [],
-    tags: ["New"]
-  }
-
+    tags: ["New"],
+  },
 ];
 
 const allProperties = [
@@ -155,7 +154,7 @@ const allProperties = [
     baths: 3,
     sqft: 2200,
     type: "new project",
-    priceNum: 15400000
+    priceNum: 15400000,
   },
   {
     id: 8,
@@ -168,7 +167,7 @@ const allProperties = [
     baths: 4,
     sqft: 5000,
     type: "buy",
-    priceNum: 55110000
+    priceNum: 55110000,
   },
   {
     id: 9,
@@ -179,7 +178,7 @@ const allProperties = [
       "https://images.pexels.com/photos/1396132/pexels-photo-1396132.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     sqft: 3200,
     type: "rent",
-    priceNum: 48000
+    priceNum: 48000,
   },
   {
     id: 10,
@@ -192,7 +191,7 @@ const allProperties = [
     baths: 1,
     sqft: 120,
     type: "pg",
-    priceNum: 12000
+    priceNum: 12000,
   },
   {
     id: 11,
@@ -203,7 +202,7 @@ const allProperties = [
       "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?auto=format&fit=crop&q=80&w=1374",
     sqft: 1500,
     type: "plot",
-    priceNum: 3900000
+    priceNum: 3900000,
   },
   {
     id: 12,
@@ -216,7 +215,7 @@ const allProperties = [
     baths: 1,
     sqft: 480,
     type: "rent",
-    priceNum: 22000
+    priceNum: 22000,
   },
   {
     id: 13,
@@ -229,7 +228,7 @@ const allProperties = [
     baths: 3,
     sqft: 1600,
     type: "new project",
-    priceNum: 17600000
+    priceNum: 17600000,
   },
   {
     id: 14,
@@ -242,7 +241,7 @@ const allProperties = [
     baths: 2,
     sqft: 1200,
     type: "commercial",
-    priceNum: 60000000
+    priceNum: 60000000,
   },
   {
     id: 15,
@@ -255,7 +254,7 @@ const allProperties = [
     baths: 1,
     sqft: 100,
     type: "pg",
-    priceNum: 7200
+    priceNum: 7200,
   },
   {
     id: 16,
@@ -269,7 +268,7 @@ const allProperties = [
     sqft: 110,
     type: "pg",
     amenities: ["WiFi", "Mess", "Laundry"],
-    tags: ["Popular"]
+    tags: ["Popular"],
   },
   {
     id: 17,
@@ -283,7 +282,7 @@ const allProperties = [
     sqft: 1050,
     type: "rent",
     amenities: ["Parking", "24x7 Security"],
-    tags: ["Featured"]
+    tags: ["Featured"],
   },
   {
     id: 18,
@@ -297,7 +296,7 @@ const allProperties = [
     sqft: 100,
     type: "pg",
     amenities: ["Housekeeping", "AC Room"],
-    tags: ["New Listing", "Featured", "Furnished"]
+    tags: ["New Listing", "Featured", "Furnished"],
   },
   {
     id: 19,
@@ -308,8 +307,8 @@ const allProperties = [
       "https://images.pexels.com/photos/221540/pexels-photo-221540.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     sqft: 1800,
     type: "plot",
-    amenities: [ "Park", "Electricity", "Water Supply"],
-    tags: ["New Listing"]
+    amenities: ["Park", "Electricity", "Water Supply"],
+    tags: ["New Listing"],
   },
   {
     id: 20,
@@ -323,7 +322,7 @@ const allProperties = [
     sqft: 1400,
     type: "rent",
     amenities: ["Lift", "Gym", "Clubhouse"],
-    tags: [ "Popular", "Furnished"]
+    tags: ["Popular", "Furnished"],
   },
   {
     id: 21,
@@ -337,7 +336,7 @@ const allProperties = [
     sqft: 120,
     type: "pg",
     amenities: ["Food", "WiFi", "CCTV"],
-    tags: ["Popular", "Furnished"]
+    tags: ["Popular", "Furnished"],
   },
   {
     id: 22,
@@ -348,9 +347,9 @@ const allProperties = [
       "https://images.pexels.com/photos/221540/pexels-photo-221540.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     sqft: 2000,
     type: "plot",
-    amenities: [ "Park", "Water Supply", "Electricity"],
-    tags: ["New Listing"]
-  }
+    amenities: ["Park", "Water Supply", "Electricity"],
+    tags: ["New Listing"],
+  },
 ];
 
 const testimonials = [
@@ -587,7 +586,7 @@ function createStarRating(rating) {
 function showPage(pageId) {
   const prevPageId = currentPage;
   currentPage = pageId;
-  
+
   // If animation function exists, use it
   if (window.animatePageTransition) {
     window.animatePageTransition(prevPageId, pageId).then(() => {
@@ -595,12 +594,12 @@ function showPage(pageId) {
       document.querySelectorAll(".nav_link").forEach((item) => {
         item.classList.remove("active");
       });
-      
+
       const activeNavItem = document.querySelector(`[data-page="${pageId}"]`);
       if (activeNavItem) {
         activeNavItem.classList.add("active");
       }
-      
+
       // Scroll to top
       window.scrollTo(0, 0);
     });
@@ -808,26 +807,26 @@ function applyFilters() {
       matches = matches && property.type.toLowerCase() === typeFilter;
     }
 
-if (priceFilter !== "all") {
-  const price = property.priceNum || 0;
-  switch (priceFilter) {
-    case "0-10L": // Up to 10 lakh
-      matches = matches && price <= 1000000;
-      break;
-    case "10L-50L": // 10–50 lakh
-      matches = matches && price > 1000000 && price <= 5000000;
-      break;
-    case "50L-1Cr": // 50 lakh – 1 crore
-      matches = matches && price > 5000000 && price <= 10000000;
-      break;
-    case "1Cr-3Cr": // 1–3 crore
-      matches = matches && price > 10000000 && price <= 30000000;
-      break;
-    case "3Cr+": // above 3 crore
-      matches = matches && price > 30000000;
-      break;
-  }
-}
+    if (priceFilter !== "all") {
+      const price = property.priceNum || 0;
+      switch (priceFilter) {
+        case "0-10L": // Up to 10 lakh
+          matches = matches && price <= 1000000;
+          break;
+        case "10L-50L": // 10–50 lakh
+          matches = matches && price > 1000000 && price <= 5000000;
+          break;
+        case "50L-1Cr": // 50 lakh – 1 crore
+          matches = matches && price > 5000000 && price <= 10000000;
+          break;
+        case "1Cr-3Cr": // 1–3 crore
+          matches = matches && price > 10000000 && price <= 30000000;
+          break;
+        case "3Cr+": // above 3 crore
+          matches = matches && price > 30000000;
+          break;
+      }
+    }
 
     if (locationFilter) {
       matches =
