@@ -63,125 +63,294 @@
 const featuredProperties = [
   {
     id: 1,
-    title: "Modern Family Home",
-    price: "$750,000",
-    location: "Beverly Hills, CA",
+    title: "Modern Family Home — Powai, Mumbai",
+    price: "₹16,400,000",
+    location: "Powai, Mumbai, Maharashtra",
     image:
-      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBob3VzZSUyMGV4dGVyaW9yfGVufDF8fHx8MTc1Nzg0OTU1Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     beds: 4,
     baths: 3,
     sqft: 2500,
-    type: "House",
+    type: "buy"
   },
   {
     id: 2,
-    title: "Luxury Downtown Apartment",
-    price: "$550,000",
-    location: "Manhattan, NY",
+    title: "Luxury Downtown Apartment — Indira Nagar, Bengaluru",
+    price: "₹22,800,000",
+    location: "Indiranagar, Bengaluru, Karnataka",
     image:
-      "https://images.unsplash.com/photo-1638454668466-e8dbd5462f20?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBhcGFydG1lbnQlMjBpbnRlcmlvcnxlbnwxfHx8fDE3NTc4MDM1NDB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     beds: 2,
     baths: 2,
     sqft: 1200,
-    type: "Apartment",
+    type: "buy"
   },
   {
     id: 3,
-    title: "Contemporary Living Space",
-    price: "$425,000",
-    location: "Austin, TX",
+    title: "Contemporary Living Space — Whitefield, Bengaluru",
+    price: "₹13,500,000",
+    location: "Whitefield, Bengaluru, Karnataka",
     image:
-      "https://images.unsplash.com/photo-1638284457192-27d3d0ec51aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb250ZW1wb3JhcnklMjBob21lJTIwbGl2aW5nJTIwcm9vbXxlbnwxfHx8fDE3NTc3NTY5MjV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      "https://images.pexels.com/photos/271816/pexels-photo-271816.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     beds: 3,
     baths: 2,
     sqft: 1800,
-    type: "Condo",
+    type: "buy"
   },
   {
     id: 4,
-    title: "Contemporary 3BHK — Bright & Airy",
-    price: 8500000,
-    location: "Bandra West, Mumbai",
+    title: "Contemporary 3BHK — Bright & Airy — Bandra West, Mumbai",
+    price: "₹20,400,000",
+    location: "Bandra West, Mumbai, Maharashtra",
     image:
-      " https://images.unsplash.com/photo-1638454668466-e8dbd5462f20?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBhcGFydG1lbnQlMjBpbnRlcmlvcnxlbnwxfHx8fDE3NTc4MDM1NDB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    bedrooms: 3,
-    bathrooms: 2,
+      "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    beds: 3,
+    baths: 2,
     sqft: 1200,
-    type: "Apartment",
+    type: "new project",
     amenities: [],
-    tags: ["New"],
+    tags: ["New"]
   },
   {
     id: 5,
-    title: "Modern Villa with Private Garden",
-    price: 42000000,
-    location: "Whitefield, Bengaluru",
+    title: "Modern Villa with Private Garden — Whitefield, Bengaluru",
+    price: "₹42,000,000",
+    location: "Whitefield, Bengaluru, Karnataka",
     image:
-      " https://images.unsplash.com/photo-1638284457192-27d3d0ec51aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb250ZW1wb3JhcnklMjBob21lJTIwbGl2aW5nJTIwcm9vbXxlbnwxfHx8fDE3NTc3NTY5MjV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    bedrooms: 4,
-    bathrooms: 4,
+      "https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    beds: 4,
+    baths: 4,
     sqft: 3000,
-    type: "Villa",
+    type: "buy",
     amenities: ["Parking", "Garden"],
-    tags: ["New", "Featured"],
+    tags: ["New", "Featured"]
   },
   {
     id: 6,
-    title: "Chic 2BHK Near Metro — Ready to Move",
-    price: 6500000,
+    title: "Chic 2BHK Near Metro — Hauz Khas, New Delhi",
+    price: "₹6,650,000",
     location: "Hauz Khas, New Delhi",
     image:
-      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBob3VzZSUyMGV4dGVyaW9yfGVufDF8fHx8MTc1Nzg0OTU1Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    bedrooms: 2,
-    bathrooms: 2,
+      "https://images.pexels.com/photos/6283961/pexels-photo-6283961.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    beds: 2,
+    baths: 2,
     sqft: 950,
-    type: "Apartment",
+    type: "buy",
     amenities: [],
-    tags: ["New"],
-  },
+    tags: ["New"]
+  }
+
 ];
 
 const allProperties = [
   ...featuredProperties,
   {
-    id: 4,
-    title: "Modern Office Building",
-    price: "$2,500,000",
-    location: "Downtown Seattle, WA",
+    id: 7,
+    title: "Premium Penthouse — Salt Lake, Kolkata",
+    price: "₹15,400,000",
+    location: "Salt Lake Sector V, Kolkata, West Bengal",
     image:
-      "https://images.unsplash.com/photo-1694702740570-0a31ee1525c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjBidWlsZGluZ3xlbnwxfHx8fDE3NTc4Mzk3MTV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    beds: 0,
-    baths: 8,
-    sqft: 15000,
-    type: "Commercial",
-    priceNum: 2500000,
-  },
-  {
-    id: 5,
-    title: "Cozy Suburban Home",
-    price: "$385,000",
-    location: "Phoenix, AZ",
-    image:
-      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBob3VzZSUyMGV4dGVyaW9yfGVufDF8fHx8MTc1Nzg0OTU1Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     beds: 3,
-    baths: 2,
-    sqft: 1600,
-    type: "House",
-    priceNum: 385000,
+    baths: 3,
+    sqft: 2200,
+    type: "new project",
+    priceNum: 15400000
   },
   {
-    id: 6,
-    title: "Urban Studio Apartment",
-    price: "$285,000",
-    location: "Portland, OR",
+    id: 8,
+    title: "Elegant Farmhouse — Whitefield, Bengaluru",
+    price: "₹55,110,000",
+    location: "Whitefield, Bengaluru, Karnataka",
     image:
-      "https://images.unsplash.com/photo-1638454668466-e8dbd5462f20?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBhcGFydG1lbnQlMjBpbnRlcmlvcnxlbnwxfHx8fDE3NTc4MDM1NDB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      "https://images.pexels.com/photos/164558/pexels-photo-164558.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    beds: 5,
+    baths: 4,
+    sqft: 5000,
+    type: "buy",
+    priceNum: 55110000
+  },
+  {
+    id: 9,
+    title: "Serviced Office Space — Andheri East, Mumbai (Monthly)",
+    price: "₹48,000 / month",
+    location: "Andheri East, Mumbai, Maharashtra",
+    image:
+      "https://images.pexels.com/photos/1396132/pexels-photo-1396132.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    sqft: 3200,
+    type: "rent",
+    priceNum: 48000
+  },
+  {
+    id: 10,
+    title: "PG Accommodation — Near IIT Bombay, Powai",
+    price: "₹12,000 / month (approx.)",
+    location: "Hiranandani Gardens, Powai, Mumbai",
+    image:
+      "https://images.pexels.com/photos/775219/pexels-photo-775219.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     beds: 1,
     baths: 1,
-    sqft: 650,
-    type: "Apartment",
-    priceNum: 285000,
+    sqft: 120,
+    type: "pg",
+    priceNum: 12000
   },
+  {
+    id: 11,
+    title: "Residential Plot — Hinjewadi, Pune (1500 sq.ft)",
+    price: "₹3,900,000",
+    location: "Hinjewadi, Pune, Maharashtra",
+    image:
+      "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?auto=format&fit=crop&q=80&w=1374",
+    sqft: 1500,
+    type: "plot",
+    priceNum: 3900000
+  },
+  {
+    id: 12,
+    title: "1BHK Fully Furnished — BTM Layout, Bengaluru (Monthly)",
+    price: "₹22,000 / month",
+    location: "BTM Layout, Bengaluru, Karnataka",
+    image:
+      "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    beds: 1,
+    baths: 1,
+    sqft: 480,
+    type: "rent",
+    priceNum: 22000
+  },
+  {
+    id: 13,
+    title: "New Launch 3BHK — Kasarvadavali, Thane",
+    price: "₹17,600,000",
+    location: "Kasarvadavali, Thane, Maharashtra",
+    image:
+      "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    beds: 3,
+    baths: 3,
+    sqft: 1600,
+    type: "new project",
+    priceNum: 17600000
+  },
+  {
+    id: 14,
+    title: "Retail Shop — Connaught Place, New Delhi",
+    price: "₹60,000,000",
+    location: "Connaught Place, New Delhi, Delhi",
+    image:
+      "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?auto=format&fit=crop&q=80&w=1374",
+    beds: 0,
+    baths: 2,
+    sqft: 1200,
+    type: "commercial",
+    priceNum: 60000000
+  },
+  {
+    id: 15,
+    title: "Shared PG — HSR Layout, Bengaluru (Monthly)",
+    price: "₹7,200 / month",
+    location: "HSR Layout, Bengaluru, Karnataka",
+    image:
+      "https://images.pexels.com/photos/775219/pexels-photo-775219.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    beds: "3-4",
+    baths: 1,
+    sqft: 100,
+    type: "pg",
+    priceNum: 7200
+  },
+  {
+    id: 16,
+    title: "Shared PG for Students — Koramangala, Bengaluru",
+    price: "₹9,500 / month",
+    location: "Koramangala, Bengaluru, Karnataka",
+    image:
+      "https://images.pexels.com/photos/667838/pexels-photo-667838.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    beds: "3-4",
+    baths: 1,
+    sqft: 110,
+    type: "pg",
+    amenities: ["WiFi", "Mess", "Laundry"],
+    tags: ["Popular"]
+  },
+  {
+    id: 17,
+    title: "2BHK Apartment for Rent — Gachibowli, Hyderabad",
+    price: "₹28,000 / month",
+    location: "Gachibowli, Hyderabad, Telangana",
+    image:
+      "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    beds: 2,
+    baths: 2,
+    sqft: 1050,
+    type: "rent",
+    amenities: ["Parking", "24x7 Security"],
+    tags: ["Featured"]
+  },
+  {
+    id: 18,
+    title: "1RK PG for Working Professionals — Noida Sector 62",
+    price: "₹7,800 / month",
+    location: "Sector 62, Noida, Uttar Pradesh",
+    image:
+      "https://images.pexels.com/photos/5998138/pexels-photo-5998138.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    beds: "2-3",
+    baths: 2,
+    sqft: 100,
+    type: "pg",
+    amenities: ["Housekeeping", "AC Room"],
+    tags: ["New Listing", "Featured", "Furnished"]
+  },
+  {
+    id: 19,
+    title: "Residential Plot — Sohna Road, Gurugram (1800 sq.ft)",
+    price: "₹10,800,000",
+    location: "Sohna Road, Gurugram, Haryana",
+    image:
+      "https://images.pexels.com/photos/221540/pexels-photo-221540.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    sqft: 1800,
+    type: "plot",
+    amenities: [ "Park", "Electricity", "Water Supply"],
+    tags: ["New Listing"]
+  },
+  {
+    id: 20,
+    title: "3BHK Apartment for Rent — Hinjewadi Phase 1, Pune",
+    price: "₹32,000 / month",
+    location: "Hinjewadi Phase 1, Pune, Maharashtra",
+    image:
+      "https://images.pexels.com/photos/2089698/pexels-photo-2089698.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    beds: 3,
+    baths: 1,
+    sqft: 1400,
+    type: "rent",
+    amenities: ["Lift", "Gym", "Clubhouse"],
+    tags: [ "Popular", "Furnished"]
+  },
+  {
+    id: 21,
+    title: "Premium PG with Meals — HSR Layout, Bengaluru",
+    price: "₹13,000 / month",
+    location: "HSR Layout, Bengaluru, Karnataka",
+    image:
+      "https://images.pexels.com/photos/775219/pexels-photo-775219.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    beds: 4,
+    baths: 1,
+    sqft: 120,
+    type: "pg",
+    amenities: ["Food", "WiFi", "CCTV"],
+    tags: ["Popular", "Furnished"]
+  },
+  {
+    id: 22,
+    title: "Residential Plot — Shadnagar, Hyderabad (2000 sq.ft)",
+    price: "₹4,400,000",
+    location: "Shadnagar, Hyderabad, Telangana",
+    image:
+      "https://images.pexels.com/photos/221540/pexels-photo-221540.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    sqft: 2000,
+    type: "plot",
+    amenities: [ "Park", "Water Supply", "Electricity"],
+    tags: ["New Listing"]
+  }
 ];
 
 const testimonials = [
@@ -639,23 +808,26 @@ function applyFilters() {
       matches = matches && property.type.toLowerCase() === typeFilter;
     }
 
-    if (priceFilter !== "all") {
-      const price = property.priceNum || 0;
-      switch (priceFilter) {
-        case "0-200k":
-          matches = matches && price <= 200000;
-          break;
-        case "200k-500k":
-          matches = matches && price > 200000 && price <= 500000;
-          break;
-        case "500k-1m":
-          matches = matches && price > 500000 && price <= 1000000;
-          break;
-        case "1m+":
-          matches = matches && price > 1000000;
-          break;
-      }
-    }
+if (priceFilter !== "all") {
+  const price = property.priceNum || 0;
+  switch (priceFilter) {
+    case "0-10L": // Up to 10 lakh
+      matches = matches && price <= 1000000;
+      break;
+    case "10L-50L": // 10–50 lakh
+      matches = matches && price > 1000000 && price <= 5000000;
+      break;
+    case "50L-1Cr": // 50 lakh – 1 crore
+      matches = matches && price > 5000000 && price <= 10000000;
+      break;
+    case "1Cr-3Cr": // 1–3 crore
+      matches = matches && price > 10000000 && price <= 30000000;
+      break;
+    case "3Cr+": // above 3 crore
+      matches = matches && price > 30000000;
+      break;
+  }
+}
 
     if (locationFilter) {
       matches =
