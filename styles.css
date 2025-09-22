@@ -318,12 +318,54 @@
   height: 100%;
   object-fit: cover;
   z-index: 0;
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  filter: brightness(0.8) contrast(1.1);
+  will-change: transform; /* Optimize rendering performance */
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+}
+
+/* Video poster (shown while video loads) */
+video[poster] {
+  object-fit: cover;
+}
+
+/* Better loading animation that doesn't block the UI */
+.video_loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  transition: opacity 0.5s ease;
+}
+
+.hero_image_fallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  display: none;
+}
+
+/* Instead, add this to always show video and hide the fallback image */
+.hero_video {
+  display: block;
+}
+
+.hero_image_fallback {
+  display: none;
 }
 
 .hero_overlay {
@@ -1528,4 +1570,138 @@
 /* Optional: Add a subtle hover effect to cards */
 .testimonial-slider .testimonial_card:hover {
   transform: translateY(-10px);
+}
+
+/* Media queries for responsive header */
+@media screen and (max-width: 1024px) {
+  /* Tablet view */
+  .header {
+    position: relative;
+    width: 100%;
+    z-index: 100;
+  }
+
+  .header_container {
+    padding: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo_wrapper {
+    margin-bottom: 1rem;
+  }
+
+  .nav_menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  /* Adjust nav links for tablet */
+  .nav_link {
+    width: auto;
+    min-width: 6em;
+    height: 2.4em;
+    margin: 10px;
+    font-size: 16px;
+  }
+
+  /* Adjust hover effect for tablet */
+  .nav_link:before {
+    height: 120px;
+    width: 160px;
+  }
+
+  .header_actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* Mobile view */
+  .nav_menu {
+    gap: 0.25rem;
+  }
+
+  .nav_link {
+    width: auto;
+    min-width: 5em;
+    height: 2.2em;
+    line-height: 2.2em;
+    font-size: 0.9rem;
+    margin: 8px;
+    padding: 0 0.75rem;
+  }
+
+  /* Adjust hover effect for mobile */
+  .nav_link:before {
+    height: 100px;
+    width: 120px;
+  }
+
+  /* More visible hover state for touch devices */
+  .nav_link:active {
+    color: #fff;
+    transform: scale(0.96);
+  }
+
+  .nav_link:active:before {
+    top: -20px;
+    left: -20px;
+  }
+
+  .header_actions a {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .header_actions a svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Small mobile view */
+  .nav_menu {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav_link {
+    width: 90%;
+    min-width: unset;
+    height: 2em;
+    line-height: 2em;
+    text-align: center;
+    margin: 5px 0;
+    font-size: 0.85rem;
+  }
+
+  /* Simplified hover effect for very small screens */
+  .nav_link:before {
+    height: 80px;
+    width: 100px;
+  }
+
+  /* Make tap state more visible */
+  .nav_link:active {
+    background-color: rgba(13, 12, 14, 0.1);
+  }
+
+  /* Post Property button adjustment for small screens */
+  .header_actions a {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.75rem;
+  }
+  
+  .header_actions a svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
 }
