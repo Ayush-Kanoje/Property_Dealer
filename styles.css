@@ -1287,6 +1287,7 @@
   padding: 0.5rem 0.75rem;
   border: 1px solid var(--border);
   border-radius: 0.5rem;
+
   transition: all 0.3s;
 }
 
@@ -1311,7 +1312,8 @@
 }
 
 .submit_btn:hover {
-  background-color: rgba(3, 2, 19, 0.9);
+  background-color: rgba(238, 238, 243, 0.9);
+  color: #0a0c1f;
 }
 
 .contact_info_container {

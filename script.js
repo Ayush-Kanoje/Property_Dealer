@@ -468,11 +468,11 @@ const features = [
 const teamMembers = [
   {
     id: 1,
-    name: "Sarah Mitchell",
+    name: "Anushka Raut",
     role: "CEO & Founder",
     image:
-      "https://images.unsplash.com/photo-1652878530627-cc6f063e3947?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsJTIwZXN0YXRlJTIwYWdlbnQlMjBwcm9mZXNzaW9uYWx8ZW58MXx8fHwxNTc3ODEyNzB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    bio: "With over 15 years in real estate, Sarah founded PropertyHub to revolutionize how people find and buy properties.",
+      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=400&fit=crop&crop=face",
+    bio: "With over 15 years in real estate, Anushka founded PropDeal to revolutionize how people find and buy properties.",
   },
   {
     id: 2,
@@ -550,6 +550,70 @@ const contactInfo = [
     value: "Mon - Fri: 9:00 AM - 6:00 PM\nSat: 10:00 AM - 4:00 PM\nSun: Closed",
   },
 ];
+
+// Google Maps Integration
+function initMap() {
+  // Replace these coordinates with your actual office location
+  const officeLocation = { lat: 34.0741057, lng: -118.4004343 };
+
+  const map = new google.maps.Map(document.getElementById("google-map"), {
+    zoom: 15,
+    center: officeLocation,
+    styles: [
+      {
+        featureType: "all",
+        elementType: "geometry.fill",
+        stylers: [{ weight: "2.00" }],
+      },
+      {
+        featureType: "administrative",
+        elementType: "all",
+        stylers: [{ color: "#f2f2f2" }],
+      },
+      // Add more custom styles as needed
+    ],
+  });
+
+  // Add marker for office location
+  const marker = new google.maps.Marker({
+    position: officeLocation,
+    map: map,
+    title: "PropDeal Office",
+    animation: google.maps.Animation.DROP,
+  });
+
+  // Add info window when clicking on marker
+  const infoWindow = new google.maps.InfoWindow({
+    content: `
+      <div style="padding: 8px; max-width: 200px;">
+        <h3 style="margin: 0 0 8px; font-weight: 600;">PropDeal Office</h3>
+        <p style="margin: 0 0 5px;">123 Real Estate Blvd,<br>Los Angeles, CA 90210</p>
+        <p style="margin: 0;"><a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+      </div>
+    `,
+  });
+
+  marker.addListener("click", () => {
+    infoWindow.open(map, marker);
+  });
+}
+
+// Initialize map when DOM is loaded
+document.addEventListener("DOMContentLoaded", function () {
+  // Check if we're on the contact page
+  if (
+    document.getElementById("contact").classList.contains("active") ||
+    window.location.hash === "#contact"
+  ) {
+    // Load Google Maps API
+    const script = document.createElement("script");
+    script.src =
+      "https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap";
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+  }
+});
 
 // Global state
 let currentPage = "home";
