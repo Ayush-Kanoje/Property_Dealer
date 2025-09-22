@@ -1161,99 +1161,31 @@ function initializeVideoBackground() {
   const videoLoading = document.getElementById("video-loading-state");
 
   if (heroVideo) {
-    // Hide loading state when video can play
-    heroVideo.addEventListener("canplaythrough", () => {
-      if (videoLoading) {
-        videoLoading.style.display = "none";
-      }
-    });
-
-    // Show loading state if video fails to load
-    heroVideo.addEventListener("error", () => {
-      if (videoLoading) {
-        videoLoading.innerHTML =
-          '<div class="text-center"><p class="text-muted-foreground">Video unavailable</p></div>';
-      }
-    });
-
-    // Ensure video plays when page loads
-    const playVideo = () => {
-      heroVideo.currentTime = 0;
-      heroVideo.play().catch((error) => {
-        console.log("Video autoplay failed:", error);
-        // If autoplay fails, try again after user interaction
-        document.addEventListener(
-          "click",
-          () => {
-            heroVideo
-              .play()
-              .catch((e) =>
-                console.log("Video play after interaction failed:", e)
-              );
-          },
-          { once: true }
-        );
-      });
-    };
-
-    // Initial play
-    playVideo();
-
-    // Restart video when user navigates back to home page
-    const homePage = document.getElementById("home");
-    if (homePage) {
-      const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-          if (
-            mutation.type === "attributes" &&
-            mutation.attributeName === "class"
-          ) {
-            if (homePage.classList.contains("active")) {
-              // Restart video when home page becomes active
-              playVideo();
-            }
-          }
-        });
-      });
-
-      observer.observe(homePage, { attributes: true });
-    }
+    // Load optimized video based on screen size
+    loadOptimizedVideo();
 
     // Handle visibility change to restart video when user returns to tab
     document.addEventListener("visibilitychange", () => {
       const homePage = document.getElementById("home");
-      if (
-        !document.hidden &&
-        homePage &&
-        homePage.classList.contains("active")
-      ) {
-        playVideo();
+      if (!document.hidden && homePage && homePage.classList.contains("active")) {
+        heroVideo.play().catch(e => console.log("Video play error:", e));
       }
     });
 
-    // Restart video on window focus
-    window.addEventListener("focus", () => {
-      const homePage = document.getElementById("home");
-      if (homePage && homePage.classList.contains("active")) {
-        playVideo();
-      }
-    });
-
-    // Restart video when user scrolls back to top (if they're on home page)
-    let lastScrollTop = 0;
+    // Optimize performance during scroll
+    let scrollTimer;
     window.addEventListener("scroll", () => {
-      const scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
-      const homePage = document.getElementById("home");
-      if (
-        scrollTop < lastScrollTop &&
-        homePage &&
-        homePage.classList.contains("active")
-      ) {
-        // User scrolled up, restart video
-        playVideo();
-      }
-      lastScrollTop = scrollTop;
+      // When scrolling, reduce video quality by applying blur filter
+      // This improves performance on mobile
+      heroVideo.style.filter = "blur(5px)";
+      
+      // Clear any existing timers
+      clearTimeout(scrollTimer);
+      
+      // After scrolling stops, restore video quality
+      scrollTimer = setTimeout(() => {
+        heroVideo.style.filter = "none";
+      }, 150);
     });
   }
 }
@@ -1437,4 +1369,60 @@ document.addEventListener("DOMContentLoaded", function () {
           '<p style="color: red; text-align: center;">Error: Could not load property listings.</p>';
       });
   }
+});
+
+// Replace the existing loadOptimizedVideo function with this improved version
+function loadOptimizedVideo() {
+  const heroVideo = document.getElementById("hero-background-video");
+  const videoLoading = document.getElementById("video-loading-state");
+  
+  if (!heroVideo) return;
+  
+  // Check screen size to determine appropriate video version
+  const screenWidth = window.innerWidth;
+  let videoUrl;
+  
+  if (screenWidth <= 640) {
+    // Mobile version (lower resolution)
+    videoUrl = "assests/background_video_mobile.mp4";
+  } else if (screenWidth <= 1024) {
+    // Tablet version (medium resolution)
+    videoUrl = "assests/background_video_tablet.mp4";
+  } else {
+    // Desktop version (full resolution)
+    videoUrl = "assests/background_video.mp4";
+  }
+  
+  // Set the source directly
+  heroVideo.src = videoUrl;
+  
+  // Show loading state
+  if (videoLoading) videoLoading.style.display = "flex";
+  
+  // Hide loading when video can play
+  heroVideo.addEventListener("canplay", () => {
+    if (videoLoading) videoLoading.style.display = "none";
+  });
+  
+  // Play the video
+  heroVideo.load();
+  heroVideo.play().catch(error => {
+    console.log("Video autoplay failed:", error);
+  });
+  
+  // Fallback: Hide loading after 5 seconds even if video hasn't loaded
+  setTimeout(() => {
+    if (videoLoading && videoLoading.style.display !== "none") {
+      videoLoading.style.display = "none";
+    }
+  }, 5000);
+}
+
+// Add this to ensure video source is updated when window is resized
+window.addEventListener("resize", () => {
+  // Add debounce to avoid excessive calls during resize
+  clearTimeout(window.resizeTimer);
+  window.resizeTimer = setTimeout(() => {
+    loadOptimizedVideo();
+  }, 250);
 });

@@ -118,9 +118,10 @@
               muted
               loop
               playsinline
-              preload="auto"
+              preload="metadata"
+              poster="assests/video-poster.jpg"
             >
-              <source src="assests/background_video.mp4" type="video/mp4" />
+              <!-- Sources will be set dynamically by JavaScript -->
               Your browser does not support the video tag.
             </video>
 
@@ -271,6 +272,15 @@
                 </button>
               </div>
             </div>
+
+            <!-- Fallback Image for Browsers that Don't Support Video -->
+            <img
+              src="assests/hero-background-fallback.png"
+              alt="Property background"
+              class="hero_image_fallback"
+              loading="eager"
+              fetchpriority="high"
+            />
           </section>
 
           <!-- Featured Properties Section -->
