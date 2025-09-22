@@ -1085,7 +1085,8 @@
 }
 
 .apply_filter_btn:hover {
-  background-color: rgba(3, 2, 19, 0.9);
+  background-color: rgba(229, 228, 235, 0.9);
+  color: black;
 }
 
 .filter_icon {
