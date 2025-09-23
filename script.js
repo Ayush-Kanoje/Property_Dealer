@@ -1254,11 +1254,74 @@ function initializeAnimations() {
   }
 }
 
+// Mobile menu functionality
+function initializeMobileMenu() {
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (mobileMenuBtn && mobileMenu) {
+    // Toggle mobile menu on button click
+    mobileMenuBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      mobileMenu.classList.toggle('active');
+      
+      // Change icon based on menu state
+      const icon = this.querySelector('i');
+      if (mobileMenu.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+    
+    // Set up navigation for mobile menu items
+    document.querySelectorAll('.mobile_nav_link').forEach((item) => {
+      item.addEventListener('click', (e) => {
+        const page = e.target.getAttribute('data-page');
+        if (page) {
+          showPage(page);
+          
+          // Update active states
+          document.querySelectorAll('.mobile_nav_link').forEach((navItem) => {
+            navItem.classList.remove('active');
+          });
+          item.classList.add('active');
+          
+          // Close the mobile menu
+          mobileMenu.classList.remove('active');
+          
+          // Reset hamburger icon
+          const icon = mobileMenuBtn.querySelector('i');
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+        }
+      });
+    });
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (mobileMenu.classList.contains('active') && 
+          !mobileMenu.contains(e.target) && 
+          e.target !== mobileMenuBtn) {
+        mobileMenu.classList.remove('active');
+        
+        // Reset hamburger icon
+        const icon = mobileMenuBtn.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+  }
+}
+
 // Initialize when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   initializeApp();
   initializeVideoBackground();
   initializeAnimations();
+  initializeMobileMenu();
   // Inject footer
   const footerMount = document.getElementById("footer-placeholder");
   if (footerMount) {
@@ -1426,3 +1489,7 @@ window.addEventListener("resize", () => {
     loadOptimizedVideo();
   }, 250);
 });
+
+
+
+

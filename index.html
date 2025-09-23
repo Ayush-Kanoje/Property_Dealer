@@ -67,6 +67,11 @@
           <h1 class="logo">PropDeal</h1>
         </div>
 
+        <!-- Add this mobile menu button before the nav_menu -->
+        <button id="mobile-menu-btn" class="mobile_menu_btn">
+          <i class="fas fa-bars"></i>
+        </button>
+
         <nav class="nav_menu">
           <button class="nav_link active" data-page="home">Home</button>
           <button class="nav_link" data-page="listings">Properties</button>
@@ -80,7 +85,18 @@
           >
         </nav>
 
-        <!-- post property svg button -->
+        <!-- Add this mobile menu container after the nav_menu -->
+        <div id="mobile-menu" class="mobile_menu">
+          <button class="mobile_nav_link active" data-page="home">Home</button>
+          <button class="mobile_nav_link" data-page="listings">Properties</button>
+          <button class="mobile_nav_link" data-page="about">About Us</button>
+          <button class="mobile_nav_link" data-page="contact">Contact</button>
+          <a href="logindetail/login.html" target="_blank">
+            <button class="mobile_nav_link">Create Profile</button>
+          </a>
+        </div>
+
+        <!-- Rest of your header stays the same -->
         <div class="header_actions">
           <a
             href="postProperty/postProperty.html"

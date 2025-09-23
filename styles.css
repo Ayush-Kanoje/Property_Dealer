@@ -172,6 +172,13 @@
 @media (min-width: 1024px) {
   .nav_menu {
     display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  /* Hide mobile menu button on desktop */
+  .mobile_menu_btn {
+    display: none;
   }
 }
 
@@ -267,34 +274,73 @@
   display: inline-flex;
   background: none;
   border: none;
+  padding: 0.5rem;
   cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--primary);
+  transition: color 0.3s;
+  z-index: 100;
 }
+
+.mobile_menu_btn:hover {
+  color: #dc2626;
+}
+
+/* Hide mobile button on desktop */
 @media (min-width: 1024px) {
-  /* Show only on screens smaller than 1024px */
   .mobile_menu_btn {
     display: none;
   }
 }
-.mobile_menu_icon {
-  height: 1.5rem;
-  width: 1.5rem;
-  color: var(--muted-foreground);
-}
+
 .mobile_menu {
   position: absolute;
   top: 100%;
-  right: 1rem;
+  left: 0;
+  right: 0;
   background-color: white;
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
+  border-bottom: 1px solid var(--border);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   display: none;
   flex-direction: column;
-  width: 200px;
-  z-index: 100;
+  align-items: center;
+  padding: 1rem;
+  z-index: 99;
+  width: 100%;
+  transform-origin: top;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform: scaleY(0);
+  opacity: 0;
 }
+
 .mobile_menu.active {
   display: flex;
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+.mobile_nav_link {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  font-size: 1rem;
+  margin: 0.25rem 0;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.mobile_nav_link:hover,
+.mobile_nav_link.active {
+  background-color: #f3f4f6;
+  color: #dc2626;
+}
+
+.mobile_menu a {
+  width: 100%;
+  text-decoration: none;
 }
 
 /* Hero Section */
