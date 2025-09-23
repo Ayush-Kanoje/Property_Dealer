@@ -1,4 +1,4 @@
-.page_body {
+body {
   min-height: 100vh;
   background-color: whitesmoke;
   color: var(--foreground);
@@ -104,14 +104,12 @@
   }
 }
 
-/* smooth fade-out for the fullscreen loader */
 #loader {
   transition: opacity 450ms ease, visibility 450ms ease;
   opacity: 1;
   visibility: visible;
 }
 
-/* class added by JS to start fade out */
 #loader.loader--fadeout {
   opacity: 0;
   visibility: hidden;
@@ -136,7 +134,6 @@
 /* Header and Navigation */
 .header {
   background: linear-gradient(to right, #f5f5dc, #fdf5e6);
-
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
@@ -149,7 +146,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1rem; /* Add padding for smaller screens */
+  padding: 0 1rem;
 }
 
 .logo_wrapper {
@@ -164,7 +161,6 @@
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Hide desktop nav on mobile */
 .nav_menu {
   display: none;
 }
@@ -175,14 +171,12 @@
     align-items: center;
     gap: 0.75rem;
   }
-  
-  /* Hide mobile menu button on desktop */
+
   .mobile_menu_btn {
     display: none;
   }
 }
 
-/* nav menu bar */
 .nav_link {
   --color: #0d0c0e;
   font-family: inherit;
@@ -194,13 +188,14 @@
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  /* border: 2px solid var(--color); */
   transition: color 0.5s;
   z-index: 1;
   font-size: 17px;
   border-radius: 6px;
   font-weight: 500;
   color: var(--color);
+  text-decoration: none;
+  text-align: center;
 }
 
 .nav_link:before {
@@ -239,12 +234,11 @@
   gap: 1rem;
 }
 
-/* Responsive adjustments for header actions */
-@media (max-width: 1023px) {
+/* @media (max-width: 1023px) {
   .header_actions .group {
-    display: none; /* Hide Post Property button on tablets and mobile */
+    display: none;
   }
-}
+} */
 
 .signin_btn {
   padding: 0.5rem 1rem;
@@ -280,13 +274,13 @@
   color: var(--primary);
   transition: color 0.3s;
   z-index: 100;
+  margin-left: 145px;
 }
 
 .mobile_menu_btn:hover {
   color: #dc2626;
 }
 
-/* Hide mobile button on desktop */
 @media (min-width: 1024px) {
   .mobile_menu_btn {
     display: none;
@@ -364,19 +358,16 @@
   height: 100%;
   object-fit: cover;
   z-index: 0;
-  will-change: transform; /* Optimize rendering performance */
-  -webkit-transform: translateZ(0);
+  will-change: transform;
   transform: translateZ(0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
-/* Video poster (shown while video loads) */
 video[poster] {
   object-fit: cover;
 }
 
-/* Better loading animation that doesn't block the UI */
 .video_loading {
   position: absolute;
   top: 0;
@@ -390,24 +381,6 @@ video[poster] {
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(5px);
   transition: opacity 0.5s ease;
-}
-
-.hero_image_fallback {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
-  display: none;
-}
-
-/* Instead, add this to always show video and hide the fallback image */
-.hero_video {
-  display: block;
 }
 
 .hero_image_fallback {
@@ -426,20 +399,6 @@ video[poster] {
     rgba(0, 0, 0, 0.6) 100%
   );
   z-index: 10;
-}
-
-.video_loading {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 15;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-  min-height: 80vh;
 }
 
 .loading_content {
@@ -474,10 +433,9 @@ video[poster] {
   width: 100%;
 }
 
-/* Responsive Hero Content */
 @media (max-width: 767px) {
   .hero_content {
-    padding: 1rem 1rem 3rem 1rem; /* Reduce bottom padding on mobile */
+    padding: 1rem 1rem 3rem 1rem;
     justify-content: center;
   }
 }
@@ -488,12 +446,12 @@ video[poster] {
 
 @media (max-width: 767px) {
   .hero_text {
-    margin-bottom: 1.5rem; /* Less space on mobile */
+    margin-bottom: 1.5rem;
   }
 }
 
 .hero_title {
-  font-size: 2.5rem; /* Adjusted for smaller screens */
+  font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
   color: white;
@@ -511,7 +469,7 @@ video[poster] {
 
 @media (max-width: 480px) {
   .hero_title {
-    font-size: 2rem; /* Smaller font for small mobile */
+    font-size: 2rem;
   }
 }
 
@@ -528,7 +486,7 @@ video[poster] {
 }
 
 .hero_subtitle {
-  font-size: 1.1rem; /* Adjusted for smaller screens */
+  font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.9);
   max-width: 52rem;
   margin: 0 auto;
@@ -547,50 +505,45 @@ video[poster] {
 
 @media (max-width: 480px) {
   .hero_subtitle {
-    font-size: 1rem; /* Smaller font for small mobile */
+    font-size: 1rem;
     line-height: 1.5;
   }
 }
 
-/* Animated Search Container */
 .search_container {
   width: 100%;
-  max-width: 60rem; /* Increased max-width for better layout */
+  max-width: 60rem;
   margin: 0 auto;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 1s ease-out 0.8s forwards;
 }
 
-/* Main search box with backdrop blur */
 .search_box {
-  background: rgba(15, 23, 42, 0.4); /* Darker, less transparent background */
+  background: rgba(15, 23, 42, 0.4);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
-  border-radius: 1rem; /* Larger border radius */
+  border-radius: 1rem;
   padding: 0.75rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-/* Tab container styling */
 .search_tabs {
   display: flex;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   margin-bottom: 1rem;
-  overflow-x: auto; /* Allow horizontal scrolling for tabs on small screens */
-  white-space: nowrap; /* Prevent tabs from wrapping */
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  overflow-x: auto;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   color: #ffffff;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
 .search_tabs::-webkit-scrollbar {
   display: none;
 }
 
-/* Individual tab button styling */
 .tab_btn {
   padding: 1rem 1.5rem;
   font-size: 0.875rem;
@@ -605,7 +558,7 @@ video[poster] {
 
 @media (max-width: 767px) {
   .tab_btn {
-    padding: 0.75rem 1rem; /* Less padding on mobile tabs */
+    padding: 0.75rem 1rem;
     font-size: 0.8rem;
   }
 }
@@ -624,33 +577,30 @@ video[poster] {
   color: red;
 }
 
-/* Form area remains transparent */
 .search_form {
-  padding: 1rem; /* Simplified padding */
+  padding: 1rem;
   background: transparent;
 }
 
 @media (max-width: 767px) {
   .search_form {
-    padding: 0.5rem; /* Less padding on mobile */
+    padding: 0.5rem;
   }
 }
 
-/* Inputs grouping */
 .search_inputs {
   display: grid;
-  grid-template-columns: 1fr; /* Default to single column for mobile */
+  grid-template-columns: 1fr;
   gap: 1rem;
   align-items: flex-end;
 }
 
 @media (min-width: 1024px) {
   .search_inputs {
-    grid-template-columns: 2fr 1fr 1fr auto; /* Multi-column for desktop */
+    grid-template-columns: 2fr 1fr 1fr auto;
   }
 }
 
-/* Location container/icon */
 .location_container,
 .property_type_container,
 .budget_container {
@@ -664,16 +614,14 @@ video[poster] {
   left: 1rem;
   transform: translateY(-50%);
   color: rgba(255, 255, 255, 0.6);
-  transition: all 0.3s ease; /* Add transition for smooth effect */
+  transition: all 0.3s ease;
 }
 
-/* Add this new rule for the icon glow effect */
 .location_container:focus-within .location_icon {
   color: #ef4444;
   text-shadow: 0 0 8px rgba(239, 68, 68, 0.7);
 }
 
-/* Shared input styles */
 .location_input,
 .property_type_select,
 .budget_select {
@@ -695,18 +643,16 @@ video[poster] {
   .property_type_select,
   .budget_select,
   .select-selected {
-    height: 3rem !important; /* Smaller height for inputs on mobile */
-    font-size: 1rem !important; /* Smaller font size */
-    padding-left: 2.5rem; /* Adjust icon padding */
+    height: 3rem !important;
+    font-size: 1rem !important;
+    padding-left: 2.5rem;
   }
 }
 
-/* Placeholder text color */
 .location_input::placeholder {
   color: rgba(255, 255, 255, 0.6);
 }
 
-/* Custom select styles */
 .custom-select {
   position: relative;
 }
@@ -721,10 +667,8 @@ video[poster] {
   border: 1px solid rgba(255, 255, 255, 0.14);
   color: #ffffff;
   font-size: 1.125rem;
-  /* -webkit-backdrop-filter: blur(8px); */
-  /* backdrop-filter: blur(8px); */
   height: 3.5rem;
-  width: 210px;
+  width: 100%;
 }
 
 .select-items {
@@ -759,7 +703,6 @@ video[poster] {
   display: none;
 }
 
-/* Search button */
 .search_btn {
   height: 3.5rem;
   padding: 0 2.5rem;
@@ -779,18 +722,17 @@ video[poster] {
 
 @media (max-width: 1023px) {
   .search_btn {
-    width: 100%; /* Full width button on tablet/mobile */
+    width: 100%;
   }
 }
 
 @media (max-width: 767px) {
   .search_btn {
-    height: 3rem; /* Match input height on mobile */
+    height: 3rem;
     font-size: 1rem;
   }
 }
 
-/* Red CTA hover */
 .search_btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(220, 38, 38, 0.25);
@@ -800,7 +742,6 @@ video[poster] {
   font-size: 1rem;
 }
 
-/* Hero Actions */
 .hero_actions {
   display: flex;
   flex-wrap: wrap;
@@ -943,19 +884,19 @@ video[poster] {
 }
 
 .carousel_item {
-  flex: 0 0 100%; /* Full width on mobile */
+  flex: 0 0 100%;
   padding: 0 0.75rem;
 }
 
 @media (min-width: 640px) {
   .carousel_item {
-    flex: 0 0 50%; /* Two items on small screens */
+    flex: 0 0 50%;
   }
 }
 
 @media (min-width: 1024px) {
   .carousel_item {
-    flex: 0 0 33.333%; /* Three items on larger screens */
+    flex: 0 0 33.333%;
   }
 }
 
@@ -989,7 +930,6 @@ video[poster] {
   background-color: #9ca3af;
 }
 
-/* Feature Card */
 .feature_card {
   background-color: white;
   border-radius: 1rem;
@@ -1036,7 +976,6 @@ video[poster] {
   }
 }
 
-/* Property Card */
 .property_card {
   background-color: white;
   border-radius: 0.5rem;
@@ -1075,7 +1014,6 @@ video[poster] {
   }
 }
 
-/* Testimonial Card */
 .testimonial_card {
   background-color: white;
   border-radius: 0.5rem;
@@ -1491,13 +1429,13 @@ video[poster] {
 
 .quick_contact_buttons {
   display: flex;
-  flex-direction: column; /* Stack buttons on mobile */
+  flex-direction: column;
   gap: 1rem;
 }
 
 @media (min-width: 640px) {
   .quick_contact_buttons {
-    flex-direction: row; /* Side-by-side on larger screens */
+    flex-direction: row;
     justify-content: center;
   }
 }
@@ -1543,7 +1481,6 @@ video[poster] {
   margin-right: 0.5rem;
 }
 
-/* Contact Card */
 .contact_card {
   background-color: white;
   border-radius: 0.5rem;
@@ -1558,9 +1495,6 @@ video[poster] {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Add this to your main CSS file */
-
-/* Keyframes for the sliding animation */
 @keyframes slide {
   from {
     transform: translateX(0);
@@ -1570,7 +1504,6 @@ video[poster] {
   }
 }
 
-/* Container to act as a viewport */
 .testimonial-carousel-container {
   overflow: hidden;
   padding: 2rem 0;
@@ -1592,162 +1525,23 @@ video[poster] {
   );
 }
 
-/* The slider track that holds all cards */
 .testimonial-slider {
   display: flex;
-  /* Duplicate the content to create a seamless loop */
-  width: calc(250px * 14); /* 250px card width * 7 original cards * 2 */
+  width: calc(250px * 14);
   animation: slide 60s linear infinite;
 }
 
-/* Style for individual cards in the carousel */
 .testimonial-slider .testimonial_card {
-  width: 250px; /* Or your desired card width */
+  width: 250px;
   flex-shrink: 0;
   margin: 0 1rem;
   transition: transform 0.3s ease;
 }
 
-/* Pause animation on hover */
 .testimonial-carousel-container:hover .testimonial-slider {
   animation-play-state: paused;
 }
 
-/* Optional: Add a subtle hover effect to cards */
 .testimonial-slider .testimonial_card:hover {
   transform: translateY(-10px);
-}
-
-/* Media queries for responsive header */
-@media screen and (max-width: 1024px) {
-  /* Tablet view */
-  .header {
-    position: relative;
-    width: 100%;
-    z-index: 100;
-  }
-
-  .header_container {
-    padding: 1rem;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .logo_wrapper {
-    margin-bottom: 1rem;
-  }
-
-  .nav_menu {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-    width: 100%;
-  }
-
-  /* Adjust nav links for tablet */
-  .nav_link {
-    width: auto;
-    min-width: 6em;
-    height: 2.4em;
-    margin: 10px;
-    font-size: 16px;
-  }
-
-  /* Adjust hover effect for tablet */
-  .nav_link:before {
-    height: 120px;
-    width: 160px;
-  }
-
-  .header_actions {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  /* Mobile view */
-  .nav_menu {
-    gap: 0.25rem;
-  }
-
-  .nav_link {
-    width: auto;
-    min-width: 5em;
-    height: 2.2em;
-    line-height: 2.2em;
-    font-size: 0.9rem;
-    margin: 8px;
-    padding: 0 0.75rem;
-  }
-
-  /* Adjust hover effect for mobile */
-  .nav_link:before {
-    height: 100px;
-    width: 120px;
-  }
-
-  /* More visible hover state for touch devices */
-  .nav_link:active {
-    color: #fff;
-    transform: scale(0.96);
-  }
-
-  .nav_link:active:before {
-    top: -20px;
-    left: -20px;
-  }
-
-  .header_actions a {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-  }
-
-  .header_actions a svg {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  /* Small mobile view */
-  .nav_menu {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .nav_link {
-    width: 90%;
-    min-width: unset;
-    height: 2em;
-    line-height: 2em;
-    text-align: center;
-    margin: 5px 0;
-    font-size: 0.85rem;
-  }
-
-  /* Simplified hover effect for very small screens */
-  .nav_link:before {
-    height: 80px;
-    width: 100px;
-  }
-
-  /* Make tap state more visible */
-  .nav_link:active {
-    background-color: rgba(13, 12, 14, 0.1);
-  }
-
-  /* Post Property button adjustment for small screens */
-  .header_actions a {
-    font-size: 0.85rem;
-    padding: 0.4rem 0.75rem;
-  }
-  
-  .header_actions a svg {
-    width: 1.25rem;
-    height: 1.25rem;
-  }
 }

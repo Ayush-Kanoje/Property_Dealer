@@ -44,30 +44,25 @@
     <link rel="stylesheet" href="Footer/footer.css" />
     <link rel="stylesheet" href="logindetail/login.css" />
     <link rel="stylesheet" href="Page_Animation/animations.css" />
-    <!-- Add this line for modal styles -->
   </head>
   <body class="page_body">
-    <!-- Loading animation -->
     <div id="loader" class="loader">
       <figure class="iconLoaderProgress">
         <svg class="iconLoaderProgressFirst" width="240" height="240">
           <circle cx="120" cy="120" r="100"></circle>
         </svg>
-
         <svg class="iconLoaderProgressSecond" width="240" height="240">
           <circle cx="120" cy="120" r="100"></circle>
         </svg>
       </figure>
     </div>
 
-    <!-- Main Navigation Header -->
     <header class="header">
       <div class="header_container">
         <div class="logo_wrapper">
           <h1 class="logo">PropDeal</h1>
         </div>
 
-        <!-- Add this mobile menu button before the nav_menu -->
         <button id="mobile-menu-btn" class="mobile_menu_btn">
           <i class="fas fa-bars"></i>
         </button>
@@ -77,15 +72,11 @@
           <button class="nav_link" data-page="listings">Properties</button>
           <button class="nav_link" data-page="about">About Us</button>
           <button class="nav_link" data-page="contact">Contact</button>
-          <!-- Modified Sign In button to trigger the modal -->
-          <a href="logindetail/login.html" target="_blank"
-            ><button id="open-login-modal-btn" class="nav_link">
-              Create Profile
-            </button></a
-          >
+          <a href="logindetail/login.html" target="_blank" class="nav_link">
+            Create Profile
+          </a>
         </nav>
 
-        <!-- Add this mobile menu container after the nav_menu -->
         <div id="mobile-menu" class="mobile_menu">
           <button class="mobile_nav_link active" data-page="home">Home</button>
           <button class="mobile_nav_link" data-page="listings">Properties</button>
@@ -96,7 +87,6 @@
           </a>
         </div>
 
-        <!-- Rest of your header stays the same -->
         <div class="header_actions">
           <a
             href="postProperty/postProperty.html"
@@ -119,14 +109,10 @@
       </div>
     </header>
 
-    <!-- Wrap all site content so JS can hide it while loader shows -->
     <div id="content">
       <main>
-        <!-- Home Page -->
         <div id="home" class="page active">
-          <!-- Enhanced Hero Section with Video -->
           <section class="hero_section">
-            <!-- Video Background -->
             <video
               id="hero-background-video"
               class="hero_video"
@@ -137,24 +123,16 @@
               preload="metadata"
               poster="assests/video-poster.jpg"
             >
-              <!-- Sources will be set dynamically by JavaScript -->
               Your browser does not support the video tag.
             </video>
-
-            <!-- Gradient Overlay -->
             <div class="hero_overlay"></div>
-
-            <!-- Loading State -->
             <div id="video-loading-state" class="video_loading">
               <div class="loading_content">
                 <div class="loading_spinner"></div>
                 <p class="loading_text">Loading video...</p>
               </div>
             </div>
-
-            <!-- Video Content - Animated and Attractive -->
             <div class="hero_content">
-              <!-- Animated Main Heading -->
               <div class="hero_text">
                 <h1 class="hero_title">
                   <span class="hero_title_line">Find Your</span>
@@ -165,11 +143,8 @@
                   belongs to you.
                 </p>
               </div>
-
-              <!-- Animated Search Container -->
               <div class="search_container">
                 <div class="search_box">
-                  <!-- Navigation Tabs -->
                   <div class="search_tabs">
                     <button class="tab_btn active" data-tab="buy">
                       <i class="fas fa-home mr-2"></i>Buy
@@ -193,11 +168,8 @@
                       <i class="fas fa-plus mr-2"></i>Post Free Ad
                     </button>
                   </div>
-
-                  <!-- Search Form -->
                   <div class="search_form">
                     <div class="search_inputs">
-                      <!-- Location Input -->
                       <div class="location_container">
                         <i class="location_icon fas fa-map-marker-alt"></i>
                         <input
@@ -206,8 +178,6 @@
                           class="location_input"
                         />
                       </div>
-
-                      <!-- Property Type Dropdown -->
                       <div class="property_type_container">
                         <div class="custom-select">
                           <div class="select-selected">
@@ -236,8 +206,6 @@
                           </select>
                         </div>
                       </div>
-
-                      <!-- Budget Dropdown -->
                       <div class="budget_container">
                         <div class="custom-select">
                           <div class="select-selected">
@@ -264,8 +232,6 @@
                           </select>
                         </div>
                       </div>
-
-                      <!-- Search Button -->
                       <button class="search_btn">
                         <i class="search_icon fas fa-search"></i>
                         Search
@@ -274,8 +240,6 @@
                   </div>
                 </div>
               </div>
-
-              <!-- Floating Action Buttons -->
               <div class="hero_actions">
                 <button class="action_btn">
                   <i class="fas fa-calculator mr-2"></i>EMI Calculator
@@ -288,8 +252,6 @@
                 </button>
               </div>
             </div>
-
-            <!-- Fallback Image for Browsers that Don't Support Video -->
             <img
               src="assests/hero-background-fallback.png"
               alt="Property background"
@@ -299,7 +261,6 @@
             />
           </section>
 
-          <!-- Featured Properties Section -->
           <section class="properties_section">
             <div class="container">
               <div class="section_header">
@@ -309,14 +270,11 @@
                   available for sale and rent
                 </p>
               </div>
-
               <div class="property_grid" id="featuredProperties">
-                <!-- Featured properties will be populated by JavaScript -->
-              </div>
+                </div>
             </div>
           </section>
 
-          <!-- Features Section - Moved Outside Video -->
           <section class="features_section">
             <div class="container">
               <div class="section_header">
@@ -329,8 +287,6 @@
                   property journey seamless and successful
                 </p>
               </div>
-
-              <!-- Features Carousel -->
               <div class="carousel_wrapper">
                 <div class="carousel_nav">
                   <div class="nav_buttons">
@@ -342,14 +298,10 @@
                     </button>
                   </div>
                 </div>
-
                 <div class="carousel_container">
                   <div id="features-carousel-track" class="carousel_track">
-                    <!-- Feature cards will be populated by JavaScript -->
-                  </div>
+                    </div>
                 </div>
-
-                Pagination Dots
                 <div class="pagination_dots">
                   <button class="pagination_dot active"></button>
                   <button class="pagination_dot"></button>
@@ -358,7 +310,6 @@
             </div>
           </section>
 
-          <!-- Reviews Section -->
           <section class="testimonials_section">
             <div class="container">
               <div class="section_header">
@@ -368,15 +319,12 @@
                   properties with us
                 </p>
               </div>
-
               <div class="testimonial_grid" id="testimonials">
-                <!-- Reviews will be populated by JavaScript -->
-              </div>
+                </div>
             </div>
           </section>
         </div>
 
-        <!-- Property Listings Page -->
         <div id="listings" class="page">
           <section class="listings_section">
             <div class="container">
@@ -387,8 +335,6 @@
                   sale and rent
                 </p>
               </div>
-
-              <!-- Filters -->
               <div class="filter_container">
                 <div class="filter_grid">
                   <div class="filter_item">
@@ -400,7 +346,6 @@
                       class="filter_input"
                     />
                   </div>
-
                   <div class="filter_item">
                     <label class="filter_label">Property Type</label>
                     <select id="typeFilter" class="filter_select">
@@ -413,18 +358,17 @@
                       <option value="pg">PG</option>
                     </select>
                   </div>
-
                   <div class="filter_item">
                     <label class="filter_label">Price Range</label>
                     <select id="priceFilter" class="filter_select">
                       <option value="all">All Prices</option>
-                      <option value="0-200k">$0 - $200k</option>
-                      <option value="200k-500k">$200k - $500k</option>
-                      <option value="500k-1m">$500k - $1M</option>
-                      <option value="1m+">$1M+</option>
+                      <option value="0-10L">Up to ₹10 Lakh</option>
+                      <option value="10L-50L">₹10 Lakh - ₹50 Lakh</option>
+                      <option value="50L-1Cr">₹50 Lakh - ₹1 Crore</option>
+                      <option value="1Cr-3Cr">₹1 Crore - ₹3 Crore</option>
+                      <option value="3Cr+">Above ₹3 Crore</option>
                     </select>
                   </div>
-
                   <div class="filter_action">
                     <button id="applyFilters" class="apply_filter_btn">
                       <i class="filter_icon fas fa-filter"></i>
@@ -433,12 +377,8 @@
                   </div>
                 </div>
               </div>
-
-              <!-- Properties Grid -->
               <div class="property_grid" id="propertyListings">
-                <!-- Properties will be populated by JavaScript -->
-              </div>
-
+                </div>
               <div id="noResults" class="no_results hidden">
                 <p class="no_results_text">
                   No properties found matching your criteria.
@@ -451,11 +391,9 @@
           </section>
         </div>
 
-        <!-- About Us Page -->
         <div id="about" class="page">
           <div class="about_section">
             <div class="container">
-              <!-- Hero Section -->
               <div class="section_header">
                 <h1 class="section_title">About PropDeal</h1>
                 <p class="section_subtitle large">
@@ -464,8 +402,6 @@
                   company – we're your trusted partners in finding home.
                 </p>
               </div>
-
-              <!-- Mission Section -->
               <div class="mission_container">
                 <div class="mission_text">
                   <h2 class="mission_title">Our Mission</h2>
@@ -490,36 +426,25 @@
                   </div>
                 </div>
               </div>
-
-              <!-- Stats Section -->
               <div class="stats_grid" id="stats">
-                <!-- Stats will be populated by JavaScript -->
-              </div>
-
-              <!-- Values Section -->
+                </div>
               <div class="values_container">
                 <h2 class="values_title">Our Values</h2>
                 <div class="values_grid" id="values">
-                  <!-- Values will be populated by JavaScript -->
-                </div>
+                  </div>
               </div>
-
-              <!-- Team Section -->
               <div class="team_container">
                 <h2 class="team_title">Meet Our Team</h2>
                 <div class="team_grid" id="team">
-                  <!-- Team members will be populated by JavaScript -->
-                </div>
+                  </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Contact Page -->
         <div id="contact" class="page">
           <div class="contact_section">
             <div class="container">
-              <!-- Header -->
               <div class="section_header">
                 <h1 class="section_title">Contact Us</h1>
                 <p class="section_subtitle large">
@@ -528,9 +453,7 @@
                   way.
                 </p>
               </div>
-
               <div class="contact_container">
-                <!-- Contact Form -->
                 <div class="form_container">
                   <h2 class="form_title">Send us a Message</h2>
                   <form id="contactForm" class="contact_form">
@@ -558,7 +481,6 @@
                         />
                       </div>
                     </div>
-
                     <div class="form_row">
                       <div class="form_group">
                         <label for="phone" class="form_label"
@@ -584,7 +506,6 @@
                         />
                       </div>
                     </div>
-
                     <div class="form_group">
                       <label for="message" class="form_label">Message *</label>
                       <textarea
@@ -596,14 +517,11 @@
                         class="form_textarea"
                       ></textarea>
                     </div>
-
                     <button type="submit" class="submit_btn">
                       Send Message
                     </button>
                   </form>
                 </div>
-
-                <!-- Contact Information -->
                 <div class="contact_info_container">
                   <div class="info_header">
                     <h2 class="info_title">Get in Touch</h2>
@@ -613,27 +531,12 @@
                       through any of the methods below or visit our office.
                     </p>
                   </div>
-
                   <div class="info_items" id="contactInfo">
-                    <!-- Contact info will be populated by JavaScript -->
-                  </div>
-
-                  <!-- Map Placeholder -->
-                  <div class="map_container">
-                    <iframe 
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.7152203577924!2d-118.40043432392436!3d34.0741057211275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bc04d6912b31%3A0x40319cc3619e49ce!2s123%20S%20Beverly%20Dr%2C%20Beverly%20Hills%2C%20CA%2090212%2C%20USA!5e0!3m2!1sen!2sin!4v1695382868279!5m2!1sen!2sin" 
-                      width="100%" 
-                      height="450" 
-                      style="border:0; border-radius: 0.5rem;" 
-                      allowfullscreen="" 
-                      loading="lazy" 
-                      referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                  </div>
+                    </div>
+                  <div id="google-map" class="map_container" style="height: 450px; border-radius: 0.5rem;">
+                    </div>
                 </div>
               </div>
-
-              <!-- Quick Contact Section -->
               <div class="quick_contact">
                 <h2 class="quick_contact_title">Need Immediate Assistance?</h2>
                 <p class="quick_contact_desc">
@@ -656,7 +559,6 @@
         </div>
       </main>
 
-      <!-- Footer will be injected here -->
       <div id="footer-placeholder"></div>
     </div>
 

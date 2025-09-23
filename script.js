@@ -6,14 +6,11 @@
   const content = document.getElementById("content");
 
   if (!loader || !content) {
-    // nothing to do if structure is not present
     return;
   }
 
-  // it Make sure main content stays hidden until loader removed
   content.style.display = "none";
 
-  // Prevent scrolling while loader is visible
   const disableScroll = () => {
     document.documentElement.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
@@ -25,19 +22,15 @@
   disableScroll();
 
   function finalizeHide() {
-    // Ensure loader removed from layout after fade
     if (loader) loader.style.display = "none";
     enableScroll();
   }
 
   function hideLoader() {
     if (!loader) return;
-    // show content right away (so it can paint while loader fades)
     content.style.display = "block";
-    // add class that triggers CSS fade
     loader.classList.add("loader--fadeout");
 
-    // Wait for transition to finish and then remove loader from DOM/layout
     const onTransitionEnd = (e) => {
       if (e.propertyName === "opacity") {
         finalizeHide();
@@ -46,14 +39,11 @@
     };
     loader.addEventListener("transitionend", onTransitionEnd);
 
-    // Safety fallback in case transitionend doesn't fire
     setTimeout(finalizeHide, 800);
   }
 
-  // Hide when whole page (images, css, subresources) finishes loading
   window.addEventListener("load", hideLoader);
 
-  // Extra safety: if load never fires (rare), hide after 6s
   setTimeout(() => {
     if (loader && getComputedStyle(loader).display !== "none") hideLoader();
   }, 6000);
@@ -551,12 +541,20 @@ const contactInfo = [
   },
 ];
 
+// Global state
+let currentPage = "home";
+let currentFeatureIndex = 0;
+let filteredProperties = [...allProperties];
+let isMapApiLoaded = false; // Flag to check if Google Maps API is loaded
+
 // Google Maps Integration
 function initMap() {
-  // Replace these coordinates with your actual office location
   const officeLocation = { lat: 34.0741057, lng: -118.4004343 };
+  const mapElement = document.getElementById("google-map");
 
-  const map = new google.maps.Map(document.getElementById("google-map"), {
+  if (!mapElement) return;
+
+  const map = new google.maps.Map(mapElement, {
     zoom: 15,
     center: officeLocation,
     styles: [
@@ -570,11 +568,9 @@ function initMap() {
         elementType: "all",
         stylers: [{ color: "#f2f2f2" }],
       },
-      // Add more custom styles as needed
     ],
   });
 
-  // Add marker for office location
   const marker = new google.maps.Marker({
     position: officeLocation,
     map: map,
@@ -582,7 +578,6 @@ function initMap() {
     animation: google.maps.Animation.DROP,
   });
 
-  // Add info window when clicking on marker
   const infoWindow = new google.maps.InfoWindow({
     content: `
       <div style="padding: 8px; max-width: 200px;">
@@ -598,27 +593,18 @@ function initMap() {
   });
 }
 
-// Initialize map when DOM is loaded
-document.addEventListener("DOMContentLoaded", function () {
-  // Check if we're on the contact page
-  if (
-    document.getElementById("contact").classList.contains("active") ||
-    window.location.hash === "#contact"
-  ) {
-    // Load Google Maps API
-    const script = document.createElement("script");
-    script.src =
-      "https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap";
-    script.async = true;
-    script.defer = true;
-    document.head.appendChild(script);
-  }
-});
+function loadGoogleMapsApi() {
+  if (isMapApiLoaded) return;
 
-// Global state
-let currentPage = "home";
-let currentFeatureIndex = 0;
-let filteredProperties = [...allProperties];
+  const script = document.createElement("script");
+  // IMPORTANT: Replace 'YOUR_API_KEY' with your actual Google Maps API key
+  script.src =
+    "https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap";
+  script.async = true;
+  script.defer = true;
+  document.head.appendChild(script);
+  isMapApiLoaded = true;
+}
 
 // Utility functions
 function createImageWithFallback(src, alt, className) {
@@ -651,41 +637,32 @@ function showPage(pageId) {
   const prevPageId = currentPage;
   currentPage = pageId;
 
-  // If animation function exists, use it
+  // Load Google Maps API only when navigating to the contact page
+  if (pageId === "contact") {
+    loadGoogleMapsApi();
+  }
+
   if (window.animatePageTransition) {
     window.animatePageTransition(prevPageId, pageId).then(() => {
-      // Update navigation
       document.querySelectorAll(".nav_link").forEach((item) => {
         item.classList.remove("active");
       });
-
       const activeNavItem = document.querySelector(`[data-page="${pageId}"]`);
-      if (activeNavItem) {
-        activeNavItem.classList.add("active");
-      }
-
-      // Scroll to top
+      if (activeNavItem) activeNavItem.classList.add("active");
       window.scrollTo(0, 0);
     });
   } else {
-    // Fallback if no animations
     document.querySelectorAll(".page").forEach((page) => {
       page.classList.remove("active");
     });
-
     const targetPage = document.getElementById(pageId);
-    if (targetPage) {
-      targetPage.classList.add("active");
-    }
+    if (targetPage) targetPage.classList.add("active");
 
     document.querySelectorAll(".nav_link").forEach((item) => {
       item.classList.remove("active");
     });
-
     const activeNavItem = document.querySelector(`[data-page="${pageId}"]`);
-    if (activeNavItem) {
-      activeNavItem.classList.add("active");
-    }
+    if (activeNavItem) activeNavItem.classList.add("active");
   }
 }
 
@@ -753,7 +730,6 @@ function createPropertyCard(property) {
 }
 
 function viewPropertyDetails(propertyId) {
-  // For now, just show an alert. In a real app, this would navigate to a details page
   const property = allProperties.find((p) => p.id === propertyId);
   if (property) {
     alert(
@@ -800,10 +776,8 @@ function updateFeatureCarousel() {
     )
     .join("");
 
-  // Update pagination dots
   updatePaginationDots();
 
-  // Add stagger animation to cards
   const cards = carousel.querySelectorAll(".feature_card");
   cards.forEach((card, index) => {
     card.style.opacity = "0";
@@ -874,19 +848,19 @@ function applyFilters() {
     if (priceFilter !== "all") {
       const price = property.priceNum || 0;
       switch (priceFilter) {
-        case "0-10L": // Up to 10 lakh
+        case "0-10L":
           matches = matches && price <= 1000000;
           break;
-        case "10L-50L": // 10–50 lakh
+        case "10L-50L":
           matches = matches && price > 1000000 && price <= 5000000;
           break;
-        case "50L-1Cr": // 50 lakh – 1 crore
+        case "50L-1Cr":
           matches = matches && price > 5000000 && price <= 10000000;
           break;
-        case "1Cr-3Cr": // 1–3 crore
+        case "1Cr-3Cr":
           matches = matches && price > 10000000 && price <= 30000000;
           break;
-        case "3Cr+": // above 3 crore
+        case "3Cr+":
           matches = matches && price > 30000000;
           break;
       }
@@ -933,12 +907,11 @@ function handleContactForm(e) {
   e.target.reset();
 }
 
-// --- NEW: Testimonial Carousel Function ---
+// Testimonial Carousel Function
 function initializeTestimonialCarousel() {
   const container = document.getElementById("testimonials");
   if (!container) return;
 
-  // 1. Create the slider structure
   container.innerHTML = `
         <div class="testimonial-slider">
             ${[...testimonials, ...testimonials]
@@ -977,9 +950,110 @@ function initializeTestimonialCarousel() {
         </div>
     `;
 
-  // 2. Add animation class to the container
   container.classList.add("testimonial-carousel-container");
 }
+
+// Custom select dropdown functionality
+function initializeCustomSelects() {
+    const customSelects = document.querySelectorAll(".custom-select");
+
+    customSelects.forEach((select) => {
+        const selectedDiv = select.querySelector(".select-selected");
+        const itemsDiv = select.querySelector(".select-items");
+        const nativeSelect = select.querySelector("select");
+
+        selectedDiv.addEventListener("click", (e) => {
+            e.stopPropagation();
+            itemsDiv.classList.toggle("select-hide");
+        });
+
+        const items = itemsDiv.querySelectorAll("div");
+        items.forEach((item) => {
+            item.addEventListener("click", function () {
+                const value = this.getAttribute("data-value");
+                let textContent = this.textContent;
+                let icon = this.querySelector("i");
+
+                selectedDiv.innerHTML = "";
+                if (icon) {
+                    selectedDiv.appendChild(icon.cloneNode(true));
+                    selectedDiv.appendChild(document.createTextNode(" "));
+                }
+                selectedDiv.appendChild(document.createTextNode(textContent));
+
+                nativeSelect.value = value;
+                const event = new Event("change", { bubbles: true });
+                nativeSelect.dispatchEvent(event);
+                itemsDiv.classList.add("select-hide");
+            });
+        });
+    });
+
+    document.addEventListener("click", () => {
+        customSelects.forEach(select => {
+            select.querySelector(".select-items").classList.add("select-hide");
+        });
+    });
+}
+
+// Load the footer content
+function loadFooter() {
+    const footerPlaceholder = document.getElementById("footer-placeholder");
+    if (footerPlaceholder) {
+        fetch("Footer/footer.html")
+            .then((response) => {
+                if (!response.ok) throw new Error("Footer not found");
+                return response.text();
+            })
+            .then((data) => {
+                footerPlaceholder.innerHTML = data;
+            })
+            .catch((error) => {
+                console.error("Error loading footer:", error);
+                footerPlaceholder.innerHTML = "<p>Failed to load footer content.</p>";
+            });
+    }
+}
+
+// Load optimized video based on screen size
+function loadOptimizedVideo() {
+  const heroVideo = document.getElementById("hero-background-video");
+  const videoLoading = document.getElementById("video-loading-state");
+  
+  if (!heroVideo) return;
+  
+  const screenWidth = window.innerWidth;
+  let videoUrl;
+  
+  if (screenWidth <= 640) {
+    videoUrl = "assests/background_video_mobile.mp4";
+  } else if (screenWidth <= 1024) {
+    videoUrl = "assests/background_video_tablet.mp4";
+  } else {
+    videoUrl = "assests/background_video.mp4";
+  }
+  
+  if (heroVideo.src !== videoUrl) {
+    heroVideo.src = videoUrl;
+    heroVideo.load();
+  }
+  
+  if (videoLoading) videoLoading.style.display = "flex";
+  
+  heroVideo.addEventListener("canplay", () => {
+    if (videoLoading) videoLoading.style.display = "none";
+    heroVideo.play().catch(error => {
+        console.log("Video autoplay failed:", error);
+    });
+  });
+  
+  setTimeout(() => {
+    if (videoLoading && videoLoading.style.display !== "none") {
+      videoLoading.style.display = "none";
+    }
+  }, 5000);
+}
+
 
 // Initialize the application
 function initializeApp() {
@@ -1158,13 +1232,10 @@ function initializeApp() {
 // Video background functionality
 function initializeVideoBackground() {
   const heroVideo = document.getElementById("hero-background-video");
-  const videoLoading = document.getElementById("video-loading-state");
 
   if (heroVideo) {
-    // Load optimized video based on screen size
     loadOptimizedVideo();
 
-    // Handle visibility change to restart video when user returns to tab
     document.addEventListener("visibilitychange", () => {
       const homePage = document.getElementById("home");
       if (!document.hidden && homePage && homePage.classList.contains("active")) {
@@ -1172,17 +1243,10 @@ function initializeVideoBackground() {
       }
     });
 
-    // Optimize performance during scroll
     let scrollTimer;
     window.addEventListener("scroll", () => {
-      // When scrolling, reduce video quality by applying blur filter
-      // This improves performance on mobile
       heroVideo.style.filter = "blur(5px)";
-      
-      // Clear any existing timers
       clearTimeout(scrollTimer);
-      
-      // After scrolling stops, restore video quality
       scrollTimer = setTimeout(() => {
         heroVideo.style.filter = "none";
       }, 150);
@@ -1192,7 +1256,6 @@ function initializeVideoBackground() {
 
 // Enhanced animations and interactions
 function initializeAnimations() {
-  // Add scroll-triggered animations
   const observerOptions = {
     threshold: 0.1,
     rootMargin: "0px 0px -50px 0px",
@@ -1206,12 +1269,10 @@ function initializeAnimations() {
     });
   }, observerOptions);
 
-  // Observe elements for scroll animations
   document.querySelectorAll(".animate-on-scroll").forEach((el) => {
     observer.observe(el);
   });
 
-  // Add parallax effect to hero content
   window.addEventListener("scroll", () => {
     const scrolled = window.pageYOffset;
     const heroContent = document.querySelector(".hero_content_container");
@@ -1221,13 +1282,11 @@ function initializeAnimations() {
     }
   });
 
-  // Add floating animation to action buttons
   const floatingBtns = document.querySelectorAll(".action_btn");
   floatingBtns.forEach((btn, index) => {
     btn.style.animation = `float 3s ease-in-out infinite ${index * 0.5}s`;
   });
 
-  // Add typing effect to hero title
   const heroTitle = document.querySelector(".hero_title");
   if (heroTitle) {
     const textSpans = heroTitle.querySelectorAll(".hero_title_line");
@@ -1246,7 +1305,7 @@ function initializeAnimations() {
         } else {
           currentSpan++;
           i = 0;
-          setTimeout(typeWriter, 500); // Pause between lines
+          setTimeout(typeWriter, 500);
         }
       }
     };
@@ -1260,12 +1319,10 @@ function initializeMobileMenu() {
   const mobileMenu = document.getElementById('mobile-menu');
   
   if (mobileMenuBtn && mobileMenu) {
-    // Toggle mobile menu on button click
     mobileMenuBtn.addEventListener('click', function(e) {
       e.stopPropagation();
       mobileMenu.classList.toggle('active');
       
-      // Change icon based on menu state
       const icon = this.querySelector('i');
       if (mobileMenu.classList.contains('active')) {
         icon.classList.remove('fa-bars');
@@ -1276,23 +1333,19 @@ function initializeMobileMenu() {
       }
     });
     
-    // Set up navigation for mobile menu items
     document.querySelectorAll('.mobile_nav_link').forEach((item) => {
       item.addEventListener('click', (e) => {
         const page = e.target.getAttribute('data-page');
         if (page) {
           showPage(page);
           
-          // Update active states
           document.querySelectorAll('.mobile_nav_link').forEach((navItem) => {
             navItem.classList.remove('active');
           });
           item.classList.add('active');
           
-          // Close the mobile menu
           mobileMenu.classList.remove('active');
           
-          // Reset hamburger icon
           const icon = mobileMenuBtn.querySelector('i');
           icon.classList.remove('fa-times');
           icon.classList.add('fa-bars');
@@ -1300,14 +1353,12 @@ function initializeMobileMenu() {
       });
     });
     
-    // Close mobile menu when clicking outside
     document.addEventListener('click', function(e) {
       if (mobileMenu.classList.contains('active') && 
           !mobileMenu.contains(e.target) && 
           e.target !== mobileMenuBtn) {
         mobileMenu.classList.remove('active');
         
-        // Reset hamburger icon
         const icon = mobileMenuBtn.querySelector('i');
         icon.classList.remove('fa-times');
         icon.classList.add('fa-bars');
@@ -1322,174 +1373,14 @@ document.addEventListener("DOMContentLoaded", () => {
   initializeVideoBackground();
   initializeAnimations();
   initializeMobileMenu();
-  // Inject footer
-  const footerMount = document.getElementById("footer-placeholder");
-  if (footerMount) {
-    fetch("footer.html")
-      .then((res) => res.text())
-      .then((html) => {
-        const temp = document.createElement("div");
-        temp.innerHTML = html;
-        const footerEl = temp.querySelector("footer");
-        if (footerEl) {
-          footerMount.replaceWith(footerEl);
-        }
-      })
-      .catch(() => {
-        // Fallback minimal footer
-        footerMount.innerHTML =
-          '<footer class="footer"><div class="footer_container"><p>Footer failed to load.</p></div></footer>';
-      });
-  }
+  initializeCustomSelects();
+  loadFooter();
 });
 
-//To add funtionality
-document.addEventListener("DOMContentLoaded", function () {
-  const customSelects = document.querySelectorAll(".custom-select");
-
-  customSelects.forEach((select) => {
-    const selectedDiv = select.querySelector(".select-selected");
-    const itemsDiv = select.querySelector(".select-items");
-    const nativeSelect = select.querySelector("select");
-
-    // Toggle dropdown on click
-    selectedDiv.addEventListener("click", function (e) {
-      e.stopPropagation();
-      itemsDiv.classList.toggle("select-hide");
-    });
-
-    // Handle item selection
-    const items = itemsDiv.querySelectorAll("div");
-    items.forEach((item) => {
-      item.addEventListener("click", function () {
-        const value = this.getAttribute("data-value");
-        let textContent = this.textContent;
-        let icon = this.querySelector("i");
-
-        // Update the selected display
-        selectedDiv.innerHTML = "";
-        if (icon) {
-          selectedDiv.appendChild(icon.cloneNode(true));
-          // Add a space if there's an icon
-          selectedDiv.appendChild(document.createTextNode(" "));
-        }
-        selectedDiv.appendChild(document.createTextNode(textContent));
-
-        // Update the native select
-        nativeSelect.value = value;
-
-        // Trigger change event on native select
-        const event = new Event("change", { bubbles: true });
-        nativeSelect.dispatchEvent(event);
-
-        // Hide dropdown
-        itemsDiv.classList.add("select-hide");
-      });
-    });
-
-    // Close dropdown when clicking elsewhere
-    document.addEventListener("click", function () {
-      itemsDiv.classList.add("select-hide");
-    });
-  });
-});
-
-// Load the footer
-document.addEventListener("DOMContentLoaded", function () {
-  const footerPlaceholder = document.getElementById("footer-placeholder");
-
-  fetch("Footer/footer.html")
-    .then((response) => response.text())
-    .then((data) => {
-      footerPlaceholder.innerHTML = data;
-    })
-    .catch((error) => {
-      console.error("Error loading footer:", error);
-      footerPlaceholder.innerHTML = "<p>Failed to load footer content.</p>";
-    });
-});
-
-// Load Property List
-document.addEventListener("DOMContentLoaded", function () {
-  // Load Property List
-  const propertyListPlaceholder = document.getElementById(
-    "property-list-placeholder"
-  );
-  if (propertyListPlaceholder) {
-    fetch("propertyList/propertyList.html")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.text();
-      })
-      .then((data) => {
-        propertyListPlaceholder.innerHTML = data;
-      })
-      .catch((error) => {
-        console.error("Error loading property list:", error);
-        propertyListPlaceholder.innerHTML =
-          '<p style="color: red; text-align: center;">Error: Could not load property listings.</p>';
-      });
-  }
-});
-
-// Replace the existing loadOptimizedVideo function with this improved version
-function loadOptimizedVideo() {
-  const heroVideo = document.getElementById("hero-background-video");
-  const videoLoading = document.getElementById("video-loading-state");
-  
-  if (!heroVideo) return;
-  
-  // Check screen size to determine appropriate video version
-  const screenWidth = window.innerWidth;
-  let videoUrl;
-  
-  if (screenWidth <= 640) {
-    // Mobile version (lower resolution)
-    videoUrl = "assests/background_video_mobile.mp4";
-  } else if (screenWidth <= 1024) {
-    // Tablet version (medium resolution)
-    videoUrl = "assests/background_video_tablet.mp4";
-  } else {
-    // Desktop version (full resolution)
-    videoUrl = "assests/background_video.mp4";
-  }
-  
-  // Set the source directly
-  heroVideo.src = videoUrl;
-  
-  // Show loading state
-  if (videoLoading) videoLoading.style.display = "flex";
-  
-  // Hide loading when video can play
-  heroVideo.addEventListener("canplay", () => {
-    if (videoLoading) videoLoading.style.display = "none";
-  });
-  
-  // Play the video
-  heroVideo.load();
-  heroVideo.play().catch(error => {
-    console.log("Video autoplay failed:", error);
-  });
-  
-  // Fallback: Hide loading after 5 seconds even if video hasn't loaded
-  setTimeout(() => {
-    if (videoLoading && videoLoading.style.display !== "none") {
-      videoLoading.style.display = "none";
-    }
-  }, 5000);
-}
-
-// Add this to ensure video source is updated when window is resized
+// Update video source on window resize (debounced)
 window.addEventListener("resize", () => {
-  // Add debounce to avoid excessive calls during resize
   clearTimeout(window.resizeTimer);
   window.resizeTimer = setTimeout(() => {
     loadOptimizedVideo();
   }, 250);
 });
-
-
-
-
