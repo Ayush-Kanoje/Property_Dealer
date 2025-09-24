@@ -234,11 +234,11 @@ body {
   gap: 1rem;
 }
 
-/* @media (max-width: 1023px) {
+@media (max-width: 1023px) {
   .header_actions .group {
     display: none;
   }
-} */
+}
 
 .signin_btn {
   padding: 0.5rem 1rem;
@@ -274,7 +274,7 @@ body {
   color: var(--primary);
   transition: color 0.3s;
   z-index: 100;
-  margin-left: 145px;
+
 }
 
 .mobile_menu_btn:hover {
