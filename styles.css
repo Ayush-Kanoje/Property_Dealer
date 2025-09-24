@@ -234,12 +234,6 @@ body {
   gap: 1rem;
 }
 
-@media (max-width: 1023px) {
-  .header_actions .group {
-    display: none;
-  }
-}
-
 .signin_btn {
   padding: 0.5rem 1rem;
   background-color: var(--primary);
